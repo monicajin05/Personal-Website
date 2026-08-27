@@ -30,9 +30,9 @@ export default function Home() {
               className="text-[clamp(3.5rem,9vw,8rem)] font-display font-light leading-[0.9] tracking-tight"
               style={{ fontFamily: "var(--font-display)", color: "#1A0D12" }}
             >
-              Jordan
+              Monica
               <br />
-              Lee.
+              Jin.
             </h1>
             <div className="mt-8 flex items-center gap-3">
               <div className="w-8 h-px" style={{ background: "#4A7C64" }} />
@@ -40,7 +40,7 @@ export default function Home() {
                 className="text-xs tracking-[0.18em] uppercase font-medium"
                 style={{ color: "#9A7A88" }}
               >
-                CS + Art & Design · RISD '27
+                CS + Art & Design junior · NC State
               </span>
             </div>
           </div>
@@ -50,14 +50,14 @@ export default function Home() {
         <div className="absolute right-0 top-0 h-full flex flex-col justify-end pb-20 px-8 md:px-16 w-1/2">
           <div className="max-w-sm ml-auto">
             <p className="text-foreground text-lg md:text-xl leading-relaxed font-light">
-              I build software that thinks{" "}
+              I combine programming, art, and storytelling to make{" "}
               <em
                 className="not-italic text-accent"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                visually
+                games
               </em>{" "}
-              — products where the code and the craft are one.
+              and research projects.
             </p>
             <div className="mt-8 flex items-center gap-6">
               <Link
@@ -156,13 +156,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-3">
             <a
-              href="mailto:jordan.lee@risd.edu"
-              className="text-sm font-medium text-muted-fg hover:text-accent transition-colors duration-200"
-            >
-              jordan.lee@risd.edu
-            </a>
-            <a
-              href="https://github.com"
+              href="https://github.com/monicajin05"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-muted-fg hover:text-accent transition-colors duration-200"
@@ -170,7 +164,7 @@ export default function Home() {
               GitHub →
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/monicajin/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-muted-fg hover:text-accent transition-colors duration-200"

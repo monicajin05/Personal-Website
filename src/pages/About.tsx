@@ -28,14 +28,14 @@ export default function About() {
             </div>
             <div className="space-y-1">
               <p className="text-xs tracking-widest uppercase text-muted-fg">Currently</p>
-              <p className="text-sm text-foreground">Junior, CS + Art & Design</p>
+              <p className="text-sm text-foreground">Junior, CS + Art & Design · NC State</p>
               <p className="text-sm text-foreground">Working on Slimed: Rebirth</p>
             </div>
             <div className="mt-6 flex flex-col gap-2">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-fg hover:text-accent transition-colors duration-200">
+              <a href="https://www.linkedin.com/in/monicajin/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-fg hover:text-accent transition-colors duration-200">
                 LinkedIn →
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-fg hover:text-accent transition-colors duration-200">
+              <a href="https://github.com/monicajin05" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-fg hover:text-accent transition-colors duration-200">
                 GitHub →
               </a>
             </div>
@@ -48,9 +48,9 @@ export default function About() {
 
           <div className="space-y-5 text-base text-foreground/80 leading-relaxed mb-14">
             <p>
-              I'm a junior studying{" "}
-              <strong className="text-foreground font-medium">Computer Science and Art & Design</strong>
-              , combining programming, art, and storytelling to create games and interactive experiences.
+              I'm a junior at{" "}
+              <strong className="text-foreground font-medium">North Carolina State University</strong>
+              {" "}studying Computer Science and Art & Design, combining programming, art, and storytelling to create games and interactive experiences.
             </p>
             <p>
               My work lives at the intersection of technical craft and visual design. Whether I'm writing
@@ -58,15 +58,14 @@ export default function About() {
               shooter, I care equally about how something works and how it feels to experience.
             </p>
             <p>
-              I've shipped games on itch.io as both a solo developer and as part of a team — taking on roles
-              from lead programmer to texture artist depending on what the project needs. I'm drawn to
-              projects where the technical and artistic decisions are inseparable.
+              I've built skills throughout college in game design, 2D/3D art, software development, and
+              machine learning — taking on roles from lead artist to programmer depending on what the
+              project needs.
             </p>
             <p>
               Right now I'm building{" "}
               <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>Slimed: Rebirth</em>
-              {" "}— an escape room game mixing 2D and 3D art — and working on a personal side project
-              exploring machine learning applied to visual generation.
+              {" "}— an escape room game mixing 2D and 3D art — plus a personal side project.
             </p>
           </div>
 
@@ -96,13 +95,13 @@ export default function About() {
             <div className="pt-4 border-t border-border">
               <p className="text-xs tracking-widest uppercase text-muted-fg mb-4">Projects available on</p>
               <div className="flex gap-4">
-                <a href="https://itch.io" target="_blank" rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground hover:text-accent transition-colors duration-200">
-                  itch.io →
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://github.com/monicajin05" target="_blank" rel="noopener noreferrer"
                   className="text-sm font-medium text-foreground hover:text-accent transition-colors duration-200">
                   GitHub →
+                </a>
+                <a href="https://www.linkedin.com/in/monicajin/" target="_blank" rel="noopener noreferrer"
+                  className="text-sm font-medium text-foreground hover:text-accent transition-colors duration-200">
+                  LinkedIn →
                 </a>
               </div>
             </div>

@@ -150,21 +150,20 @@ export default function Gallery() {
           </div>
           <div className="flex flex-col justify-center gap-5 text-base text-foreground/75 leading-relaxed">
             <p>
-              I've been making art for as long as I've been writing code — and for me, the two were never separate things.
-              Drawing was how I first learned to observe: to notice how light wraps around a surface, how a character's
-              silhouette tells you who they are before they speak.
+              I've always loved art and enjoyed programming, so I combined the two — plus a love of storytelling —
+              to make games and research projects. This gallery is meant to hold the 2D/3D work that sits alongside
+              those projects: pixel art, environment art, textures, and design-doc images.
             </p>
             <p>
-              That way of looking carries directly into my programming work. When I design a game level, I'm thinking
-              about sight lines and emotional pacing the same way I'd think about a composition. When I paint a texture,
-              I'm asking what story the surface needs to tell.
+              Design-doc image titles I can name from the content reference (no files attached yet): Slimed: Rebirth
+              room/puzzle/sprite sheets; Slimed: Awakening layout, enemy/boss animation, promo; Slimed: Origins ending
+              cards and Twine flow; Crazy Old Man's Trip textures and map prototypes; Battle Zone 3D tank/spaceship
+              models and shaders; Catacombs dialogue and plot docs; Tapioca Tails environment and customer art; Encore!
+              environment iterations and level maps; ceramic glaze samples.
             </p>
             <p>
-              This gallery collects 2D illustration, character and concept work, and digital painting — most of it made
-              alongside or in service of the game projects you've seen elsewhere on this site.{" "}
-              <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>
-                Replace these placeholders with your real work!
-              </em>
+              Images below are still Unsplash placeholders. I need your re-exported files (and titles, medium, year
+              per piece) before this page can show real work.
             </p>
           </div>
         </div>

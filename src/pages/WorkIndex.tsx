@@ -76,12 +76,12 @@ export default function WorkIndex() {
           </h1>
           <div className="md:text-right md:pb-2 max-w-xs">
             <p className="text-base md:text-lg font-light text-foreground leading-snug">
-              Software that thinks{" "}
-              <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>visually</em>
-              {" "}— code and craft as one.
+              Games, graphics, and research where{" "}
+              <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>code and craft</em>
+              {" "}are one.
             </p>
             <p className="text-xs tracking-[0.14em] uppercase mt-3" style={{ color: "#4A7C64" }}>
-              CS + Art & Design · RISD '27
+              CS + Art & Design junior · NC State
             </p>
           </div>
         </div>

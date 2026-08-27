@@ -22,10 +22,10 @@ export default function Root() {
             <a href="mailto:monicajnc19@gmail.com" className="text-xs text-muted-fg hover:text-accent transition-colors duration-200">
               monicajnc19@gmail.com
             </a>
-            <a href="https://github.com/monicajnc19" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-fg hover:text-accent transition-colors duration-200">
+            <a href="https://github.com/monicajin05" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-fg hover:text-accent transition-colors duration-200">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/monicajin" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-fg hover:text-accent transition-colors duration-200">
+            <a href="https://www.linkedin.com/in/monicajin/" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-fg hover:text-accent transition-colors duration-200">
               LinkedIn
             </a>
           </div>

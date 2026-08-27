@@ -29,7 +29,7 @@ const variants = [
   {
     id: "B",
     name: "Bloom",
-    description: "Warm cream, rose + sage. RISD art-school tactility.",
+    description: "Warm cream, rose + sage. Art-school tactility.",
     accent: "#D4527A",
     bg: "#FBF8F2",
     fg: "#1A0D12",

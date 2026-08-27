@@ -10,37 +10,54 @@ interface ResumeEntry {
 // ── Fill these in with your real details ──────────────────────
 const experience: ResumeEntry[] = [
   {
-    org: "[ Your internship / job here ]",
-    role: "[ Role title ]",
-    period: "[ Date range ]",
+    org: "AI-Assisted Visualization of Ceramic Glaze Design",
+    role: "Lead, Simulation and Interface Development",
+    period: "In development",
     items: [
-      "Add your responsibilities and accomplishments here",
-      "Replace these placeholders with your real experience",
+      "Awarded the Arts + Data Science Interdisciplinary Mini-Grant ($5,000).",
+      "Exploring how AI can assist human decision-making in ceramic glaze design by narrowing material-composition and firing-parameter combinations.",
+      "Training the ML model on real-world ceramic samples and assisting physical fabrication of 3D-printed materials.",
+      "Built a proof-of-concept simulation demo using three.js.",
+    ],
+  },
+  {
+    org: "Adversarial Attacks: Weaknesses in Autonomous Vehicle Collision Detectors",
+    role: "Undergraduate researcher (solo)",
+    period: "Fall 2024",
+    items: [
+      "Awarded a Fall 2024 REU grant ($3,000).",
+      "Used adversarial attacks to study weaknesses in visual detectors via gradient-based models and physical systems.",
+      "Recreated prior work showing physical adversarial patterns (e.g. patterned t-shirts) achieve high attack success against person-detection algorithms, and studied why.",
+    ],
+  },
+  {
+    org: "Encore!",
+    role: "Environment artist",
+    period: "Through Summer 2025",
+    items: [
+      "Created 5 backgrounds for an environmental horror game on a 22-person student team.",
+      "Worked with game design to convey plot through environment art and helped onboard new artists.",
+      "Helped present the project at SGS, Summer 2025.",
     ],
   },
 ];
 
 const education = [
   {
-    org: "[ Your university ]",
-    degree: "B.S. Computer Science + Art & Design",
-    period: "[ Start year ] – [ Grad year ]",
-    note: "Replace with your school, GPA, and any honors. Courses in game development, computer graphics, HCI, and design.",
+    org: "North Carolina State University",
+    degree: "Computer Science and Art & Design (junior)",
+    period: "In progress",
+    note: "Start year, expected graduation, GPA, and honors are still unknown — add those if you want them on the resume.",
   },
 ];
 
 const courses = [
-  "Computer Graphics",
-  "Game Development",
-  "Human-Computer Interaction",
-  "Design Thinking",
-  "[ Add more courses ]",
+  "[ Add courses — not listed in the content reference ]",
 ];
 
 const contactLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com", display: "linkedin.com/in/monicajin" },
-  { label: "GitHub", href: "https://github.com", display: "github.com/monicajnc19" },
-  { label: "itch.io", href: "https://itch.io", display: "itch.io/monicajin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/monicajin/", display: "linkedin.com/in/monicajin" },
+  { label: "GitHub", href: "https://github.com/monicajin05", display: "github.com/monicajin05" },
 ];
 // ─────────────────────────────────────────────────────────────
 
@@ -132,10 +149,10 @@ export default function Resume() {
           <div><p className="text-muted-fg text-xs">Languages & tools</p></div>
           <div className="space-y-4">
             {[
-              { category: "Languages", items: "JavaScript, C#, Python, GLSL, HTML/CSS" },
-              { category: "Graphics & Game dev", items: "WebGL, Unity, Blender, Photoshop" },
-              { category: "Design", items: "Texture design, Level design, 2D illustration, UI/UX" },
-              { category: "Other", items: "Git, itch.io publishing, GitHub" },
+              { category: "Game engines", items: "Godot, Unity, Unreal" },
+              { category: "Art & 3D", items: "Aseprite, Blender, Blockbench, Procreate, Twine" },
+              { category: "Software", items: "VS Code, GitHub, three.js, WebGL / GLSL" },
+              { category: "Documented roles", items: "Programming, UI, level/lighting design, 2D/environment art, game design" },
             ].map(({ category, items }) => (
               <div key={category} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
                 <span className="text-xs font-medium text-muted-fg w-36 shrink-0">{category}</span>
@@ -149,7 +166,7 @@ export default function Resume() {
       <div className="mt-12 pt-8 border-t border-border text-center">
         <p className="text-xs text-muted-fg">
           Open to internships and collaborations ·{" "}
-          <a href="https://linkedin.com" className="hover:text-accent transition-colors duration-200">
+          <a href="https://www.linkedin.com/in/monicajin/" className="hover:text-accent transition-colors duration-200">
             linkedin.com/in/monicajin
           </a>
         </p>
