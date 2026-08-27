@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #FBF8F2;
+  --color-foreground: #1A0D12;
+  --color-card: #FFFFFF;
+  --color-card-fg: #1A0D12;
+  --color-accent: #D4527A;
+  --color-accent-fg: #FFFFFF;
+  --color-sage: #4A7C64;
+  --color-rose-panel: #E8C5D2;
+  --color-muted: #F5EEF2;
+  --color-muted-fg: #9A7A88;
+  --color-border: #EFE5EC;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Instrument Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+/* hide scrollbar until hover */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }

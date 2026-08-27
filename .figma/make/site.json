@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your skills as a junior Computer Science and Art & Design student with a clean, modern portfolio that highlights projects, case studies, and your artistic sensibility.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
