@@ -9,74 +9,224 @@ interface Artwork {
   aspect: "portrait" | "landscape" | "square";
 }
 
-// ── Swap these out with your real artwork images ──────────────
 const artworks: Artwork[] = [
   {
-    id: "1",
-    title: "Abstract Study I",
-    medium: "Digital painting",
+    id: "chess-final-1",
+    title: "Hepworth Chess Set — Final",
+    medium: "3D — Blender, Poliigon textures",
     year: "2024",
-    url: "https://images.unsplash.com/photo-1655834648155-f7a98ff3c49d?w=800&h=1200&fit=crop&auto=format",
-    aspect: "portrait",
-  },
-  {
-    id: "2",
-    title: "Color Field",
-    medium: "Digital",
-    year: "2024",
-    url: "https://images.unsplash.com/photo-1764345933704-2ba927b28ee9?w=1200&h=800&fit=crop&auto=format",
+    url: "/images/gallery/3d-art/final1.png",
     aspect: "landscape",
   },
   {
-    id: "3",
-    title: "Character Concept",
-    medium: "Illustration",
+    id: "apex-downtown",
+    title: "Apex Downtown",
+    medium: "Plein air painting",
     year: "2023",
-    url: "https://images.unsplash.com/photo-1783672104795-fd2980251576?w=800&h=1200&fit=crop&auto=format",
-    aspect: "portrait",
-  },
-  {
-    id: "4",
-    title: "Swirl Study",
-    medium: "Digital painting",
-    year: "2024",
-    url: "https://images.unsplash.com/photo-1763931504284-b1e9743b1abb?w=1200&h=800&fit=crop&auto=format",
+    url: "/images/gallery/2d-art/apex-downtown.jpg",
     aspect: "landscape",
   },
   {
-    id: "5",
+    id: "chess-final-2",
+    title: "Hepworth Chess Set — Final",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/final2.png",
+    aspect: "landscape",
+  },
+  {
+    id: "portrait",
+    title: "Portrait",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/portrait.png",
+    aspect: "portrait",
+  },
+  {
+    id: "chess-closeup-1",
+    title: "Hepworth Chess Set — Closeup",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/closeup1.png",
+    aspect: "square",
+  },
+  {
+    id: "figure-drawing",
+    title: "Figure Drawing",
+    medium: "Life drawing",
+    year: "2023",
+    url: "/images/gallery/2d-art/figure-drawing.jpg",
+    aspect: "portrait",
+  },
+  {
+    id: "congressional-art",
+    title: "Congressional Art Show",
+    medium: "Painting",
+    year: "2022",
+    url: "/images/gallery/2d-art/congressional-art.jpg",
+    aspect: "landscape",
+  },
+  {
+    id: "chess-closeup-2",
+    title: "Hepworth Chess Set — Closeup",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/closeup2.png",
+    aspect: "square",
+  },
+  {
+    id: "statue",
+    title: "Statue Study",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/statue.png",
+    aspect: "portrait",
+  },
+  {
+    id: "chess-design-1",
+    title: "Hepworth Chess Set — Design",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/design1.png",
+    aspect: "landscape",
+  },
+  {
+    id: "fuquay-varina-plein-air",
+    title: "Fuquay-Varina Plein Air",
+    medium: "Plein air painting",
+    year: "2022",
+    url: "/images/gallery/2d-art/fuquay-varina-plein-air.jpg",
+    aspect: "landscape",
+  },
+  {
+    id: "figure",
     title: "Figure Study",
     medium: "Illustration",
     year: "2023",
-    url: "https://images.unsplash.com/photo-1783672052110-9b753ab3ff77?w=800&h=1200&fit=crop&auto=format",
+    url: "/images/gallery/2d-art/figure.png",
     aspect: "portrait",
   },
   {
-    id: "6",
-    title: "Abstract II",
-    medium: "Digital",
+    id: "chess-design-2",
+    title: "Hepworth Chess Set — Design",
+    medium: "3D — Blender, Poliigon textures",
     year: "2024",
-    url: "https://images.unsplash.com/photo-1759260583429-9644b11e2808?w=800&h=1200&fit=crop&auto=format",
-    aspect: "portrait",
+    url: "/images/gallery/3d-art/design2.png",
+    aspect: "landscape",
   },
   {
-    id: "7",
-    title: "Guard Study",
-    medium: "Character design",
-    year: "2023",
-    url: "https://images.unsplash.com/photo-1783672087589-82e069ffa28d?w=800&h=1200&fit=crop&auto=format",
-    aspect: "portrait",
+    id: "vibrant-lake",
+    title: "Vibrant Lake",
+    medium: "Plein air painting",
+    year: "2022",
+    url: "/images/gallery/2d-art/vibrant-lake.jpg",
+    aspect: "landscape",
   },
   {
-    id: "8",
-    title: "Pigment Study",
+    id: "chess-final-3",
+    title: "Hepworth Chess Set — Final",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/final3.png",
+    aspect: "landscape",
+  },
+  {
+    id: "nature-arch",
+    title: "Nature Arch",
+    medium: "Plein air painting",
+    year: "2022",
+    url: "/images/gallery/2d-art/nature-arch.jpg",
+    aspect: "landscape",
+  },
+  {
+    id: "old-man",
+    title: "Old Man",
     medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/old-man.png",
+    aspect: "portrait",
+  },
+  {
+    id: "chess-analysis-1",
+    title: "Hepworth Chess Set — Analysis",
+    medium: "3D — Blender, Poliigon textures",
     year: "2024",
-    url: "https://images.unsplash.com/photo-1580566176138-daa588058b59?w=1200&h=800&fit=crop&auto=format",
+    url: "/images/gallery/3d-art/analysis1.png",
+    aspect: "landscape",
+  },
+  {
+    id: "hotpot",
+    title: "Hot Pot",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/hotpot.png",
+    aspect: "landscape",
+  },
+  {
+    id: "chess-analysis-2",
+    title: "Hepworth Chess Set — Analysis",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/analysis2.png",
+    aspect: "landscape",
+  },
+  {
+    id: "oranges",
+    title: "Oranges",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/oranges.png",
+    aspect: "square",
+  },
+  {
+    id: "chess-analysis-3",
+    title: "Hepworth Chess Set — Analysis",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/analysis3.png",
+    aspect: "landscape",
+  },
+  {
+    id: "egg",
+    title: "Egg Study",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/egg.png",
+    aspect: "square",
+  },
+  {
+    id: "chess-analysis-4",
+    title: "Hepworth Chess Set — Analysis",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/analysis4.png",
+    aspect: "landscape",
+  },
+  {
+    id: "unfinished",
+    title: "Unfinished Study",
+    medium: "Digital painting",
+    year: "2023",
+    url: "/images/gallery/2d-art/unfinished.jpeg",
+    aspect: "portrait",
+  },
+  {
+    id: "chess-analysis-5",
+    title: "Hepworth Chess Set — Analysis",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/analysis5.png",
+    aspect: "landscape",
+  },
+  {
+    id: "chess-altcolor",
+    title: "Hepworth Chess Set — Alt Colorway",
+    medium: "3D — Blender, Poliigon textures",
+    year: "2024",
+    url: "/images/gallery/3d-art/altcolor.png",
     aspect: "landscape",
   },
 ];
-// ─────────────────────────────────────────────────────────────
 
 function Lightbox({ art, onClose }: { art: Artwork; onClose: () => void }) {
   return (
@@ -151,19 +301,9 @@ export default function Gallery() {
           <div className="flex flex-col justify-center gap-5 text-base text-foreground/75 leading-relaxed">
             <p>
               I've always loved art and enjoyed programming, so I combined the two — plus a love of storytelling —
-              to make games and research projects. This gallery is meant to hold the 2D/3D work that sits alongside
-              those projects: pixel art, environment art, textures, and design-doc images.
-            </p>
-            <p>
-              Design-doc image titles I can name from the content reference (no files attached yet): Slimed: Rebirth
-              room/puzzle/sprite sheets; Slimed: Awakening layout, enemy/boss animation, promo; Slimed: Origins ending
-              cards and Twine flow; Crazy Old Man's Trip textures and map prototypes; Battle Zone 3D tank/spaceship
-              models and shaders; Catacombs dialogue and plot docs; Tapioca Tails environment and customer art; Encore!
-              environment iterations and level maps; ceramic glaze samples.
-            </p>
-            <p>
-              Images below are still Unsplash placeholders. I need your re-exported files (and titles, medium, year
-              per piece) before this page can show real work.
+              to make games and research projects. This gallery holds the traditional and 3D work that sits
+              alongside those projects: plein air and studio painting, figure drawing, and a Blender chess set
+              modeled in the style of sculptor Barbara Hepworth, textured with Poliigon materials.
             </p>
           </div>
         </div>
