@@ -1,16 +1,19 @@
+import { useEffect, useRef, useState } from "react";
 import { useParams, Link, Navigate } from "react-router";
 import { projects } from "../data/projects";
 import TagPill from "../components/TagPill";
 
 function CaseStudySection({
+  id,
   label,
   children,
 }: {
+  id: string;
   label: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="py-12 border-t border-border">
+    <section id={id} className="py-12 border-t border-border scroll-mt-28">
       <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8">
         <div>
           <span className="text-xs font-medium tracking-[0.15em] uppercase text-second">
@@ -23,14 +26,144 @@ function CaseStudySection({
   );
 }
 
+function SectionNav({ sections }: { sections: { id: string; label: string }[] }) {
+  const [active, setActive] = useState(sections[0]?.id);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+    for (const { id } of sections) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, [sections]);
+
+  return (
+    <div className="sticky top-14 z-30 bg-background/90 backdrop-blur-sm border-b border-border">
+      <nav className="max-w-4xl mx-auto px-6 md:px-12 flex items-center gap-1 overflow-x-auto no-scrollbar">
+        {sections.map(({ id, label }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className="shrink-0 px-3 py-3 text-xs font-medium tracking-wide transition-colors duration-200 relative"
+            style={{ color: active === id ? "var(--accent)" : "var(--muted-fg)" }}
+          >
+            {label}
+            {active === id && (
+              <span className="absolute left-3 right-3 -bottom-px h-0.5 bg-accent rounded-full" />
+            )}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function GalleryLightbox({
+  images,
+  index,
+  onIndexChange,
+  onClose,
+}: {
+  images: { src: string; caption: string }[];
+  index: number;
+  onIndexChange: (i: number) => void;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onIndexChange((index + 1) % images.length);
+      if (e.key === "ArrowLeft") onIndexChange((index - 1 + images.length) % images.length);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, images.length, onClose, onIndexChange]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 md:p-16"
+      style={{ background: "rgba(13,14,32,0.92)" }}
+      onClick={onClose}
+    >
+      <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+        <div className="relative">
+          <img
+            src={images[index].src}
+            alt={images[index].caption}
+            className="w-full max-h-[78vh] object-contain rounded-sm"
+          />
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={() => onIndexChange((index - 1 + images.length) % images.length)}
+                aria-label="Previous image"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => onIndexChange((index + 1) % images.length)}
+                aria-label="Next image"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200"
+              >
+                →
+              </button>
+            </>
+          )}
+        </div>
+        <div className="flex items-center justify-between mt-4">
+          <p className="text-white/70 text-sm leading-relaxed max-w-lg">{images[index].caption}</p>
+          <div className="flex items-center gap-4 shrink-0">
+            <span className="text-white/40 text-xs tracking-widest uppercase">
+              {index + 1} / {images.length}
+            </span>
+            <button
+              onClick={onClose}
+              className="text-white/40 hover:text-white transition-colors duration-200 text-xs tracking-widest uppercase"
+            >
+              Close ✕
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const scrollRef = useRef(slug);
+
+  useEffect(() => {
+    if (scrollRef.current !== slug) {
+      window.scrollTo(0, 0);
+      scrollRef.current = slug;
+    }
+  }, [slug]);
 
   if (!project) return <Navigate to="/" replace />;
 
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+
+  const sections = [
+    { id: "overview", label: "Overview" },
+    { id: "problem", label: "Problem" },
+    { id: "exploration", label: "Exploration" },
+    { id: "solution", label: "Solution" },
+    ...(project.galleryImages && project.galleryImages.length > 0 ? [{ id: "gallery", label: "Gallery" }] : []),
+    { id: "reflection", label: "Reflection" },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -105,6 +238,9 @@ export default function CaseStudy() {
         </div>
       </div>
 
+      {/* Section nav */}
+      <SectionNav sections={sections} />
+
       {/* Hero image */}
       <div className="max-w-5xl mx-auto px-6 md:px-12 -mt-1">
         <div className="overflow-hidden rounded-sm bg-muted">
@@ -119,7 +255,7 @@ export default function CaseStudy() {
       {/* Case study body */}
       <div className="max-w-4xl mx-auto px-6 md:px-12 pb-24">
 
-        <CaseStudySection label="Overview">
+        <CaseStudySection id="overview" label="Overview">
           <div className="space-y-4">
             <p className="text-foreground text-base md:text-lg leading-relaxed">
               {project.overview}
@@ -136,13 +272,13 @@ export default function CaseStudy() {
           </div>
         </CaseStudySection>
 
-        <CaseStudySection label="Problem">
+        <CaseStudySection id="problem" label="Problem">
           <p className="text-foreground text-base md:text-lg leading-relaxed">
             {project.problem}
           </p>
         </CaseStudySection>
 
-        <CaseStudySection label="Exploration">
+        <CaseStudySection id="exploration" label="Exploration">
           <p className="text-muted-fg text-sm mb-8">
             Three approaches considered before committing to a direction.
           </p>
@@ -196,7 +332,7 @@ export default function CaseStudy() {
           )}
         </CaseStudySection>
 
-        <CaseStudySection label="Solution">
+        <CaseStudySection id="solution" label="Solution">
           <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
             {project.solution}
           </p>
@@ -211,7 +347,35 @@ export default function CaseStudy() {
           </div>
         </CaseStudySection>
 
-        <CaseStudySection label="Reflection">
+        {project.galleryImages && project.galleryImages.length > 0 && (
+          <CaseStudySection id="gallery" label="Gallery">
+            <p className="text-muted-fg text-sm mb-8">
+              Process shots, design docs, and assets from along the way.
+            </p>
+            <div className="columns-1 sm:columns-2 gap-4">
+              {project.galleryImages.map((img, i) => (
+                <button
+                  key={img.src}
+                  onClick={() => setLightboxIndex(i)}
+                  className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-muted text-left cursor-pointer"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.caption}
+                    className="block w-full h-auto transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors duration-300 flex items-end p-4">
+                    <p className="text-white text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {img.caption}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </CaseStudySection>
+        )}
+
+        <CaseStudySection id="reflection" label="Reflection">
           <div className="space-y-6">
             {project.reflection.map((point, i) => (
               <div key={i} className="flex items-start gap-4">
@@ -249,6 +413,16 @@ export default function CaseStudy() {
           </span>
         </Link>
       </div>
+
+      {/* Gallery lightbox */}
+      {project.galleryImages && lightboxIndex !== null && (
+        <GalleryLightbox
+          images={project.galleryImages}
+          index={lightboxIndex}
+          onIndexChange={setLightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </div>
   );
 }

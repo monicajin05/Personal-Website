@@ -17,6 +17,7 @@ export interface Project {
   reflection: string[];
   imageUrl: string;
   solutionImageUrl: string;
+  galleryImages?: { src: string; caption: string }[];
   color: string;
   link?: string;
   itchLink?: string;
@@ -74,6 +75,13 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.png",
     solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png", caption: "Puzzle design — the hotel-room floor plan, mapping fuses, mech prototype, and the pterodactyl/turtle rooms" },
+      { src: "/images/projects/gallery/slimed-rebirth/level-design-2.png", caption: "Room 3 layout, blocked out in Godot" },
+      { src: "/images/projects/gallery/slimed-rebirth/mech-sprite-sheet.png", caption: "Mech enemy sprite sheet" },
+      { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle asset" },
+      { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Test-tube puzzle asset" },
+    ],
     color: "#0D1A15",
     status: "in-development",
     category: "game",
@@ -126,6 +134,13 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-awakening-cover.png",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/slimed-awakening/boss-fight-design.png", caption: "Boss design doc — Nano's armor phases, attack states, and dodge logic" },
+      { src: "/images/projects/gallery/slimed-awakening/boss-gameplay.png", caption: "Boss fight in progress" },
+      { src: "/images/projects/gallery/slimed-awakening/pterodactyl-sprite-sheet.png", caption: "Pterodactyl enemy sprite sheet" },
+      { src: "/images/projects/gallery/slimed-awakening/gameplay-1.png", caption: "Dungeon combat" },
+      { src: "/images/projects/gallery/slimed-awakening/promo-art.png", caption: "Promo art" },
+    ],
     color: "#0A0D1A",
     itchLink: "https://underduke.itch.io/slimed-awakening-beta",
     status: "complete",
@@ -179,6 +194,13 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-origins-cover.png",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/slimed-origins/design-doc.png", caption: "Design doc — setting, goals, key challenges, and audience" },
+      { src: "/images/projects/gallery/slimed-origins/programming-flow.png", caption: "Twine programming flow" },
+      { src: "/images/projects/gallery/slimed-origins/gameplay-2.png", caption: "In-game dialogue" },
+      { src: "/images/projects/gallery/slimed-origins/gameplay-3.png", caption: "Investigating a clue" },
+      { src: "/images/projects/gallery/slimed-origins/ending.png", caption: "One of the three endings" },
+    ],
     color: "#1A100A",
     status: "complete",
     category: "game",
@@ -231,6 +253,13 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/crazy-old-mans-trip/design-doc.png", caption: "Cutscene storyboard and menu sketch" },
+      { src: "/images/projects/gallery/crazy-old-mans-trip/environment.png", caption: "Mansion interior, blocked out in Unreal" },
+      { src: "/images/projects/gallery/crazy-old-mans-trip/character-portrait.gif", caption: "The veteran — character portrait" },
+      { src: "/images/projects/gallery/crazy-old-mans-trip/screenshot-2.png", caption: "In-engine screenshot" },
+      { src: "/images/projects/gallery/crazy-old-mans-trip/progress.png", caption: "Early level-building progress" },
+    ],
     color: "#1A0A0A",
     itchLink: "https://napoli2005.itch.io/old-mans-crazy-trip",
     status: "complete",
@@ -284,6 +313,12 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/battle-zone-3d-cover.png",
     solutionImageUrl: "/images/projects/battle-zone-3d-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/battle-zone-3d/vertex-shader.png", caption: "Custom vertex shader — MVP transform" },
+      { src: "/images/projects/gallery/battle-zone-3d/fragment-shader.png", caption: "Custom fragment shader — ambient/diffuse lighting" },
+      { src: "/images/projects/gallery/battle-zone-3d/spaceship-model.png", caption: "Spaceship model, built in Blockbench" },
+      { src: "/images/projects/gallery/battle-zone-3d/gameplay-2.png", caption: "Third-person gameplay" },
+    ],
     color: "#0D1A0F",
     link: "https://github.com/monicajin05/Battlezone",
     status: "complete",
@@ -337,6 +372,12 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/catacombs-cover.png",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/catacombs/design-doc.png", caption: "Early brainstorm — genre and gameplay-loop ideas" },
+      { src: "/images/projects/gallery/catacombs/implementation.png", caption: "Hotel room scene in the Godot editor" },
+      { src: "/images/projects/gallery/catacombs/gameplay-2.png", caption: "Accusing a suspect" },
+      { src: "/images/projects/gallery/catacombs/gameplay-3.png", caption: "Investigating the catacombs" },
+    ],
     color: "#1A1020",
     link: "https://github.com/monicajin05/Cat-Murder-Mystery.git",
     itchLink: "https://thebesttrazor.itch.io/catacombs",
@@ -391,6 +432,12 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/tapioca-tails-cover.png",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/tapioca-tails/side-view-background.png", caption: "Side-view restaurant environment art, painted in Procreate" },
+      { src: "/images/projects/gallery/tapioca-tails/gameplay-1.png", caption: "Order selection screen" },
+      { src: "/images/projects/gallery/tapioca-tails/gameplay-2.png", caption: "Serving a customer" },
+      { src: "/images/projects/gallery/tapioca-tails/bear-walk.gif", caption: "Customer walk cycle" },
+    ],
     color: "#1A1510",
     itchLink: "https://zenntavros.itch.io/tapiocatails",
     status: "complete",
@@ -444,6 +491,13 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/encore-cover.png",
     solutionImageUrl: "/images/projects/encore-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/encore/environment-0-final.png", caption: "Environment: the orchestra room" },
+      { src: "/images/projects/gallery/encore/environment-2-final.png", caption: "Environment: the vanity mirror" },
+      { src: "/images/projects/gallery/encore/game-design.png", caption: "Level flow — exploration areas and puzzles" },
+      { src: "/images/projects/gallery/encore/gameplay-1.png", caption: "In-game — the ballerina always in the distance" },
+      { src: "/images/projects/gallery/encore/title-screen.png", caption: "Title screen" },
+    ],
     color: "#101A1A",
     itchLink: "https://nyela.itch.io/encore",
     status: "complete",
@@ -497,6 +551,12 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
     solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/ai-glaze-visualization/simulation-model.png", caption: "Simulated glaze-and-form combinations from the three.js model" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/glaze-simulation.png", caption: "Glaze simulation interface" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-1.jpg", caption: "Physical ceramic sample, fired for comparison" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
+    ],
     color: "#0A1520",
     status: "in-development",
     category: "software",
@@ -549,6 +609,10 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/adversarial-attacks-cover.png",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",
+    galleryImages: [
+      { src: "/images/projects/gallery/adversarial-attacks/fgsm-attack.png", caption: "FGSM attack — single-step perturbation" },
+      { src: "/images/projects/gallery/adversarial-attacks/pgd-attack.png", caption: "PGD attack — iterative perturbation" },
+    ],
     color: "#0A0A1A",
     status: "complete",
     category: "software",
