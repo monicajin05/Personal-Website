@@ -55,37 +55,59 @@ export default function WorkIndex() {
   return (
     <div className="min-h-screen pb-32">
       {/* Banner */}
-      <div className="relative overflow-hidden pt-28 pb-16 px-6 md:px-12">
-        {/* Diagonal panel */}
-        <div
-          className="absolute inset-0 pointer-events-none bg-panel"
-          style={{ clipPath: "polygon(0 0, 52% 0, 38% 100%, 0 100%)" }}
-        />
-        <div className="relative max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <h1
-            className="text-[clamp(3rem,8vw,7rem)] font-display font-light leading-[0.92] tracking-tight text-foreground"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Monica Jin.
-          </h1>
-          <div className="md:text-right md:pb-2 max-w-xs">
-            <p className="text-base md:text-lg font-light text-foreground leading-snug">
-              Games, graphics, and research where{" "}
-              <em className="italic text-accent" style={{ fontFamily: "var(--font-display)" }}>code and craft</em>
-              {" "}are one.
-            </p>
-            <p className="text-xs tracking-[0.14em] uppercase mt-3 text-second">
-              CS + Art & Design junior · NC State
-            </p>
+      <div className="relative overflow-hidden pt-40 pb-20 px-6 md:px-12">
+        {/* Gradient blobs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-32 -left-20 w-[32rem] h-[32rem] rounded-full opacity-25 blur-3xl bg-accent" />
+          <div className="absolute top-8 left-1/3 w-[28rem] h-[28rem] rounded-full opacity-20 blur-3xl bg-panel" />
+          <div className="absolute -bottom-24 right-10 w-[30rem] h-[30rem] rounded-full opacity-20 blur-3xl bg-second" />
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-15 blur-3xl" style={{ background: "var(--sky)" }} />
+        </div>
+
+        <div className="relative max-w-[1400px] mx-auto">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-8">
+            {["#5457CF", "#81C9DF", "#F9B8A4", "#E39696"].map((c) => (
+              <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
+            ))}
+            <span className="ml-2 text-xs tracking-[0.18em] uppercase text-muted-fg font-medium">
+              Monica Jin · CS + Art & Design
+            </span>
           </div>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <h1
+              className="text-[clamp(3rem,8vw,7rem)] font-display font-light leading-[0.95] tracking-tight text-foreground"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              <span className="text-accent">Software</span> that
+              <br />
+              thinks <em className="italic text-second">visually.</em>
+            </h1>
+            <div className="md:text-right md:pb-2 max-w-xs md:ml-auto">
+              <p className="text-base md:text-lg text-muted-fg leading-relaxed">
+                Games, graphics, and tools — built where code meets craft.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Four-color stripe */}
+      <div className="px-6 md:px-12 max-w-[1400px] mx-auto">
+        <div className="flex h-0.5 rounded-full overflow-hidden mb-4">
+          <div className="flex-1" style={{ background: "#5457CF" }} />
+          <div className="flex-1" style={{ background: "#81C9DF" }} />
+          <div className="flex-1" style={{ background: "#F9B8A4" }} />
+          <div className="flex-1" style={{ background: "#E39696" }} />
         </div>
       </div>
 
       {/* Slim divider */}
       <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-12">
-        <div className="flex items-center justify-between border-t border-border pt-4">
-          <span className="text-xs tracking-[0.14em] uppercase text-second">Selected Work</span>
-          <span className="text-xs text-muted-fg">2024 – 2025</span>
+        <div className="flex items-center justify-between">
+          <span className="text-xs tracking-[0.14em] uppercase text-accent font-medium">Selected Work</span>
+          <span className="text-xs text-muted-fg">{projects.length} projects · 2023 – 2025</span>
         </div>
       </div>
 
