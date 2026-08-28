@@ -34,6 +34,10 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 
 `src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
 
+## Git workflow
+
+This is the user's own solo personal-website repo — there are no other collaborators and no review process. You are authorized to commit and `git push` directly to `main` without asking for confirmation first and without opening a pull request. This does not extend to destructive or history-rewriting operations (force-push, `reset --hard`, amending already-pushed commits, deleting branches) — still confirm before those.
+
 ## Code quality
 
 - Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
