@@ -59,6 +59,7 @@ const resumeProjects: { title: string; tools: string; link?: string; items: stri
   {
     title: "Ceramic AI",
     tools: "Python, Scikit-learn, React, Three.js, TypeScript",
+    link: "https://github.com/monicajin05/CeramicAI",
     items: [
       "Built a machine learning app that predicts how a glaze will look based on clay and firing conditions, working alongside architecture students who created physical models to validate the predictions.",
       "Developed a 3D interface that renders predicted glaze finishes on interactive ceramic models in real time.",

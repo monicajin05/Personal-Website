@@ -32,12 +32,12 @@ export default function Root() {
           </div>
           <div className="flex items-center gap-6">
             <a
-              href="mailto:monicajnc19@gmail.com"
+              href="mailto:monica.j.nc19@gmail.com"
               className="text-xs text-muted-fg transition-colors duration-200"
               onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#5457CF")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--muted-fg)")}
             >
-              monicajnc19@gmail.com
+              monica.j.nc19@gmail.com
             </a>
             <a
               href="https://github.com/monicajin05"

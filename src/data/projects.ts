@@ -558,6 +558,7 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
     ],
     color: "#0A1520",
+    link: "https://github.com/monicajin05/CeramicAI",
     status: "in-development",
     category: "software",
   },
