@@ -13,7 +13,7 @@ function CaseStudySection({
     <section className="py-12 border-t border-border">
       <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8">
         <div>
-          <span className="text-xs font-medium tracking-[0.15em] uppercase" style={{ color: "#4A7C64" }}>
+          <span className="text-xs font-medium tracking-[0.15em] uppercase text-second">
             {label}
           </span>
         </div>

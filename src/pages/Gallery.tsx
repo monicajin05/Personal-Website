@@ -230,16 +230,16 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen pb-32">
-      {/* Rose accent bar */}
-      <div className="h-0.5 w-full" style={{ background: "linear-gradient(90deg, #D4527A 0%, #E8C5D2 60%, transparent 100%)" }} />
+      {/* Accent bar */}
+      <div className="h-0.5 w-full" style={{ background: "linear-gradient(90deg, var(--accent) 0%, var(--panel) 60%, transparent 100%)" }} />
 
       {/* Header + blurb */}
       <div className="pt-20 pb-0 px-6 md:px-12 max-w-[1600px] mx-auto">
         <div className="flex items-baseline justify-between border-b border-border pb-5 mb-14">
-          <span className="font-display font-light text-lg" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>
+          <span className="font-display font-light text-lg text-accent" style={{ fontFamily: "var(--font-display)" }}>
             Art Gallery
           </span>
-          <span className="text-xs tracking-[0.14em] uppercase" style={{ color: "#4A7C64" }}>Monica Jin</span>
+          <span className="text-xs tracking-[0.14em] uppercase text-second">Monica Jin</span>
         </div>
 
         {/* Blurb */}
@@ -251,7 +251,7 @@ export default function Gallery() {
             >
               Art as a
               <br />
-              <em className="italic" style={{ color: "#D4527A" }}>way of thinking.</em>
+              <em className="italic text-accent">way of thinking.</em>
             </h1>
           </div>
           <div className="flex flex-col justify-center gap-5 text-base text-foreground/75 leading-relaxed">

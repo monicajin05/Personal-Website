@@ -14,7 +14,7 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
         {/* Status badge */}
         {project.status === "in-development" && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="px-2.5 py-1 rounded-sm text-xs font-medium tracking-wide" style={{ background: "#4A7C64", color: "#fff" }}>
+            <span className="px-2.5 py-1 rounded-sm text-xs font-medium tracking-wide bg-second text-second-fg">
               In Development
             </span>
           </div>
@@ -23,13 +23,10 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-300" />
         {/* Hover badge */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-          <span
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase text-white"
-            style={{ background: "#D4527A" }}
-          >
+          <span className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase bg-accent text-accent-fg">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="white" strokeWidth="1.2" />
-              <path d="M4.5 6h3M6 4.5v3" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
+              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M4.5 6h3M6 4.5v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
             View Case Study
           </span>
@@ -59,25 +56,25 @@ export default function WorkIndex() {
     <div className="min-h-screen pb-32">
       {/* Banner */}
       <div className="relative overflow-hidden pt-28 pb-16 px-6 md:px-12">
-        {/* Rose diagonal panel */}
+        {/* Diagonal panel */}
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "#E8C5D2", clipPath: "polygon(0 0, 52% 0, 38% 100%, 0 100%)" }}
+          className="absolute inset-0 pointer-events-none bg-panel"
+          style={{ clipPath: "polygon(0 0, 52% 0, 38% 100%, 0 100%)" }}
         />
         <div className="relative max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <h1
-            className="text-[clamp(3rem,8vw,7rem)] font-display font-light leading-[0.92] tracking-tight"
-            style={{ fontFamily: "var(--font-display)", color: "#1A0D12" }}
+            className="text-[clamp(3rem,8vw,7rem)] font-display font-light leading-[0.92] tracking-tight text-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Monica Jin.
           </h1>
           <div className="md:text-right md:pb-2 max-w-xs">
             <p className="text-base md:text-lg font-light text-foreground leading-snug">
               Games, graphics, and research where{" "}
-              <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>code and craft</em>
+              <em className="italic text-accent" style={{ fontFamily: "var(--font-display)" }}>code and craft</em>
               {" "}are one.
             </p>
-            <p className="text-xs tracking-[0.14em] uppercase mt-3" style={{ color: "#4A7C64" }}>
+            <p className="text-xs tracking-[0.14em] uppercase mt-3 text-second">
               CS + Art & Design junior · NC State
             </p>
           </div>
@@ -87,7 +84,7 @@ export default function WorkIndex() {
       {/* Slim divider */}
       <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-12">
         <div className="flex items-center justify-between border-t border-border pt-4">
-          <span className="text-xs tracking-[0.14em] uppercase" style={{ color: "#4A7C64" }}>Selected Work</span>
+          <span className="text-xs tracking-[0.14em] uppercase text-second">Selected Work</span>
           <span className="text-xs text-muted-fg">2024 – 2025</span>
         </div>
       </div>

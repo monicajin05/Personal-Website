@@ -64,14 +64,14 @@ export default function About() {
             </p>
             <p>
               Right now I'm building{" "}
-              <em className="italic" style={{ fontFamily: "var(--font-display)", color: "#D4527A" }}>Slimed: Rebirth</em>
+              <em className="italic text-accent" style={{ fontFamily: "var(--font-display)" }}>Slimed: Rebirth</em>
               {" "}— an escape room game mixing 2D and 3D art — plus a personal side project.
             </p>
           </div>
 
           <div className="space-y-10">
             <div>
-              <p className="text-xs font-medium tracking-[0.15em] uppercase mb-5" style={{ color: "#4A7C64" }}>
+              <p className="text-xs font-medium tracking-[0.15em] uppercase mb-5 text-second">
                 Technical interests
               </p>
               <div className="flex flex-wrap gap-2">
@@ -82,7 +82,7 @@ export default function About() {
             </div>
 
             <div>
-              <p className="text-xs font-medium tracking-[0.15em] uppercase mb-5" style={{ color: "#4A7C64" }}>
+              <p className="text-xs font-medium tracking-[0.15em] uppercase mb-5 text-second">
                 Artistic interests
               </p>
               <div className="flex flex-wrap gap-2">

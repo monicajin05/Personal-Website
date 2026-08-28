@@ -7,7 +7,7 @@ interface SectionHeaderProps {
 export default function SectionHeader({ label, title, className = "" }: SectionHeaderProps) {
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
-      <span className="text-xs font-medium tracking-[0.15em] uppercase" style={{ color: "#4A7C64" }}>
+      <span className="text-xs font-medium tracking-[0.15em] uppercase text-second">
         {label}
       </span>
       <h2

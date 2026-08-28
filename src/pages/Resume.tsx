@@ -114,7 +114,7 @@ export default function Resume() {
 
       {/* Education */}
       <section className="mb-4">
-        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2" style={{ color: "#4A7C64" }}>Education</p>
+        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2 text-second">Education</p>
         {education.map((ed) => (
           <div key={ed.org} className="py-8 border-t border-border grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-10">
             <div>
@@ -136,7 +136,7 @@ export default function Resume() {
 
       {/* Experience */}
       <section>
-        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2" style={{ color: "#4A7C64" }}>Experience</p>
+        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2 text-second">Experience</p>
         {experience.map((entry) => (
           <ResumeBlock key={entry.org} entry={entry} />
         ))}
@@ -144,7 +144,7 @@ export default function Resume() {
 
       {/* Skills */}
       <section className="mt-4">
-        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2" style={{ color: "#4A7C64" }}>Skills</p>
+        <p className="text-xs font-medium tracking-[0.15em] uppercase mb-2 text-second">Skills</p>
         <div className="py-8 border-t border-border grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-10">
           <div><p className="text-muted-fg text-xs">Languages & tools</p></div>
           <div className="space-y-4">

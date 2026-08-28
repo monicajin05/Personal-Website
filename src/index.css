@@ -3,20 +3,64 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-background: #FBF8F2;
-  --color-foreground: #1A0D12;
-  --color-card: #FFFFFF;
-  --color-card-fg: #1A0D12;
-  --color-accent: #D4527A;
-  --color-accent-fg: #FFFFFF;
-  --color-sage: #4A7C64;
-  --color-rose-panel: #E8C5D2;
-  --color-muted: #F5EEF2;
-  --color-muted-fg: #9A7A88;
-  --color-border: #EFE5EC;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-fg: var(--card-fg);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-second: var(--second);
+  --color-second-fg: var(--second-fg);
+  --color-panel: var(--panel);
+  --color-panel-fg: var(--panel-fg);
+  --color-muted: var(--muted);
+  --color-muted-fg: var(--muted-fg);
+  --color-border: var(--border);
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Instrument Sans', system-ui, sans-serif;
+}
+
+/* ── Palette constants ───────────────────────────────────── */
+:root {
+  --sky:    #81C9DF;
+  --indigo: #5457CF;
+  --peach:  #F9B8A4;
+  --rose:   #E39696;
+}
+
+/* ── Light mode ──────────────────────────────────────────── */
+:root {
+  --background: #FEFCFA;
+  --foreground: #1C1D4A;
+  --card:       #FFFFFF;
+  --card-fg:    #1C1D4A;
+  --accent:     #5457CF;
+  --accent-fg:  #FFFFFF;
+  --second:     #E39696;
+  --second-fg:  #FFFFFF;
+  --panel:      #F9B8A4;
+  --panel-fg:   #1C1D4A;
+  --muted:      #F0F4FF;
+  --muted-fg:   #6A6A9A;
+  --border:     #DDE0F8;
+}
+
+/* ── Dark mode ───────────────────────────────────────────── */
+.dark {
+  --background: #0D0E20;
+  --foreground: #F0EDF8;
+  --card:       #151630;
+  --card-fg:    #F0EDF8;
+  --accent:     #F9B8A4;
+  --accent-fg:  #1C1D4A;
+  --second:     #81C9DF;
+  --second-fg:  #0D0E20;
+  --panel:      #5457CF;
+  --panel-fg:   #FFFFFF;
+  --muted:      #1A1C38;
+  --muted-fg:   #8888B8;
+  --border:     #252750;
 }
 
 *, *::before, *::after {
@@ -33,6 +77,7 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   margin: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* hide scrollbar until hover */
