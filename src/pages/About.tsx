@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import TagPill from "../components/TagPill";
+import { experiences, type Experience } from "../data/experiences";
 
 const technicalInterests = [
   "Game development", "WebGL / real-time graphics", "Creative coding",
@@ -10,7 +12,119 @@ const artisticInterests = [
   "Storytelling through games", "Surreal / horror aesthetics", "Hand-painted art",
 ];
 
+function ExperienceLightbox({
+  experience,
+  index,
+  onIndexChange,
+  onClose,
+}: {
+  experience: Experience;
+  index: number;
+  onIndexChange: (i: number) => void;
+  onClose: () => void;
+}) {
+  const photos = experience.photos;
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onIndexChange((index + 1) % photos.length);
+      if (e.key === "ArrowLeft") onIndexChange((index - 1 + photos.length) % photos.length);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, photos.length, onClose, onIndexChange]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 md:p-16"
+      style={{ background: "rgba(13,14,32,0.92)" }}
+      onClick={onClose}
+    >
+      <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+        <div className="relative overflow-hidden rounded-sm bg-muted">
+          <img
+            src={photos[index].src}
+            alt={photos[index].caption}
+            className="w-full max-h-[78vh] object-contain"
+          />
+          {/* Half-transparent caption */}
+          <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-black/50 backdrop-blur-sm">
+            <p className="text-white text-sm leading-relaxed">{photos[index].caption}</p>
+          </div>
+          {photos.length > 1 && (
+            <>
+              <button
+                onClick={() => onIndexChange((index - 1 + photos.length) % photos.length)}
+                aria-label="Previous photo"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => onIndexChange((index + 1) % photos.length)}
+                aria-label="Next photo"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200"
+              >
+                →
+              </button>
+            </>
+          )}
+        </div>
+        <div className="flex items-center justify-between mt-4">
+          <p
+            className="text-white font-display font-light text-lg"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {experience.title}
+          </p>
+          <div className="flex items-center gap-4 shrink-0">
+            <span className="text-white/40 text-xs tracking-widest uppercase">
+              {index + 1} / {photos.length}
+            </span>
+            <button
+              onClick={onClose}
+              className="text-white/40 hover:text-white transition-colors duration-200 text-xs tracking-widest uppercase"
+            >
+              Close ✕
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExperienceCard({ experience, onOpen }: { experience: Experience; onOpen: () => void }) {
+  return (
+    <button
+      onClick={onOpen}
+      className="group relative block w-full overflow-hidden rounded-sm bg-muted text-left cursor-pointer"
+    >
+      <div className="relative overflow-hidden aspect-[4/5]">
+        <img
+          src={experience.cover}
+          alt={experience.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors duration-300" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          <span className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase bg-accent text-accent-fg">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M4.5 6h3M6 4.5v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+            {experience.title}
+          </span>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 export default function About() {
+  const [selected, setSelected] = useState<{ experience: Experience; index: number } | null>(null);
+
   return (
     <div className="min-h-screen pb-32">
 
@@ -190,6 +304,42 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* What have I been up to? */}
+      <div className="px-6 md:px-12 max-w-[1400px] mx-auto mt-24">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-2 h-2 rounded-full bg-accent" />
+          <span className="text-xs font-medium tracking-[0.16em] uppercase text-second">Beyond the portfolio</span>
+        </div>
+        <h2
+          className="text-[clamp(2rem,5vw,3.5rem)] font-display font-light leading-[0.95] tracking-tight mb-4"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          What have I been up to?
+        </h2>
+        <p className="text-muted-fg text-base max-w-xl leading-relaxed mb-10">
+          I look for experiences rather than accomplishments. Click a card for the full story behind it.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {experiences.map((experience) => (
+            <ExperienceCard
+              key={experience.id}
+              experience={experience}
+              onOpen={() => setSelected({ experience, index: 0 })}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Experience lightbox */}
+      {selected && (
+        <ExperienceLightbox
+          experience={selected.experience}
+          index={selected.index}
+          onIndexChange={(i) => setSelected({ experience: selected.experience, index: i })}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </div>
   );
 }
