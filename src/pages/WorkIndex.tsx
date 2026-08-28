@@ -1,18 +1,15 @@
 import { Link } from "react-router";
 import { projects } from "../data/projects";
 
-function ProjectItem({ project, aspectRatio = "4/3" }: { project: (typeof projects)[0]; aspectRatio?: string }) {
+function ProjectItem({ project }: { project: (typeof projects)[0] }) {
   return (
     <Link to={`/work/${project.slug}`} className="group block">
       {/* Image */}
-      <div
-        className="relative overflow-hidden bg-muted"
-        style={{ aspectRatio }}
-      >
+      <div className="relative overflow-hidden bg-muted">
         <img
           src={project.imageUrl}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
         {/* Status badge */}
         {project.status === "in-development" && (
@@ -101,13 +98,13 @@ export default function WorkIndex() {
           {/* Left column: even-indexed projects */}
           <div className="flex flex-col gap-14">
             {projects.filter((_, i) => i % 2 === 0).map((p) => (
-              <ProjectItem key={p.slug} project={p} aspectRatio="4/3" />
+              <ProjectItem key={p.slug} project={p} />
             ))}
           </div>
           {/* Right column: odd-indexed, offset down */}
           <div className="flex flex-col gap-14 md:pt-24">
             {projects.filter((_, i) => i % 2 === 1).map((p) => (
-              <ProjectItem key={p.slug} project={p} aspectRatio="5/4" />
+              <ProjectItem key={p.slug} project={p} />
             ))}
           </div>
         </div>

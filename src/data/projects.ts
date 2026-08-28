@@ -89,7 +89,7 @@ export const projects: Project[] = [
     timeline: "Complete",
     tools: ["Aseprite", "Godot"],
     overview:
-      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat. The map is procedurally generated. There are multiple enemy types, dodge/parry mechanics, and two bosses. You clear rooms of enemies to progress. Published on itch.io (exact URL not in the reference).",
+      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat. The map is procedurally generated. There are multiple enemy types, dodge/parry mechanics, and two bosses. You clear rooms of enemies to progress. Published on itch.io.",
     audience:
       "Players who want a hard 2D action game with a lot of original pixel art. 5-person team.",
     problem:
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     solution:
       "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. Built in Aseprite and Godot.",
     solutionDetail:
-      "Exact itch.io URL, year, and engine-level edge cases are not in the content reference.",
+      "Year and engine-level edge cases are not in the content reference.",
     reflection: [
       "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
       "I would want a note on what I would cut next time; that is not in the reference.",
@@ -127,6 +127,7 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/slimed-awakening-cover.png",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
     color: "#0A0D1A",
+    itchLink: "https://underduke.itch.io/slimed-awakening-beta",
     status: "complete",
     category: "game",
   },
@@ -193,7 +194,7 @@ export const projects: Project[] = [
     timeline: "3-week game jam, Fall 2025 (add-ons coming soon)",
     tools: ["Unreal", "Aseprite", "Blender", "GitHub"],
     overview:
-      "A first-person shooter: a veteran sees ghosts of his past and manages sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity; the game ends below zero. Made in a 3-week jam, Fall 2025. Complete, with add-ons coming soon. Listed on itch.io (exact URL not in the reference).",
+      "A first-person shooter: a veteran sees ghosts of his past and manages sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity; the game ends below zero. Made in a 3-week jam, Fall 2025. Complete, with add-ons coming soon. Listed on itch.io.",
     audience:
       "Players who want a short FPS with a sanity economy. 5-person jam team.",
     problem:
@@ -221,7 +222,7 @@ export const projects: Project[] = [
     ],
     edgeCases: [],
     solution:
-      "Complete jam build in Unreal with custom textures and level design. Add-ons coming soon. itch.io listing exists; exact URL not in the reference.",
+      "Complete jam build in Unreal with custom textures and level design. Add-ons coming soon.",
     solutionDetail:
       "The previous scaffold listed Unity, Photoshop, C#, and a github.com/monicajnc19 repo — that contradicts the reference (Unreal, Aseprite, Blender, GitHub). Those links were removed.",
     reflection: [
@@ -231,6 +232,7 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
     color: "#1A0A0A",
+    itchLink: "https://napoli2005.itch.io/old-mans-crazy-trip",
     status: "complete",
     category: "game",
   },
@@ -298,7 +300,7 @@ export const projects: Project[] = [
     timeline: "2-day jam",
     tools: ["Godot"],
     overview:
-      "An immersive RPG: find the culprit of a murder among three hotel guests by gathering evidence. Made for a 2-day jam, with a focus on lively dialogue per character and environmental storytelling. GitHub and itch.io links exist; exact URLs are not in the reference.",
+      "An immersive RPG: find the culprit of a murder among three hotel guests by gathering evidence. Made for a 2-day jam, with a focus on lively dialogue per character and environmental storytelling.",
     audience:
       "Players who want a short mystery with talky characters. 4-person jam team.",
     problem:
@@ -336,6 +338,8 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/catacombs-cover.png",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
     color: "#1A1020",
+    link: "https://github.com/monicajin05/Cat-Murder-Mystery.git",
+    itchLink: "https://thebesttrazor.itch.io/catacombs",
     status: "complete",
     category: "game",
   },
@@ -350,7 +354,7 @@ export const projects: Project[] = [
     timeline: "2-day jam",
     tools: ["Unity", "Procreate"],
     overview:
-      "A restaurant time-management game in the Papa's Freezeria vein: serve cute critter customers accurately and on time. Minigames include boba selection, catching ice from dispensers, and syrup timing. Made in a 2-day jam. itch.io listing exists; exact URL not in the reference.",
+      "A restaurant time-management game in the Papa's Freezeria vein: serve cute critter customers accurately and on time. Minigames include boba selection, catching ice from dispensers, and syrup timing. Made in a 2-day jam.",
     audience:
       "Players who like short cooking/serving games. 5-person jam team.",
     problem:
@@ -380,7 +384,7 @@ export const projects: Project[] = [
     solution:
       "Complete jam game in Unity with UI/asset implementation and Procreate environment plus main menu.",
     solutionDetail:
-      "Exact itch.io URL and which minigame code I personally wrote are not split out in the reference.",
+      "Which minigame code I personally wrote is not split out in the reference.",
     reflection: [
       "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build.",
       "I do not have a documented postmortem beyond that cut.",
@@ -388,6 +392,7 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/tapioca-tails-cover.png",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
     color: "#1A1510",
+    itchLink: "https://zenntavros.itch.io/tapiocatails",
     status: "complete",
     category: "game",
   },
@@ -402,7 +407,7 @@ export const projects: Project[] = [
     timeline: "First long-term student-team project · presented SGS Summer 2025",
     tools: ["Unity", "Procreate"],
     overview:
-      "Environmental horror: traverse the world solving puzzles while avoiding monsters and a shadowed ballerina always looming in the distance. First long-term project on a student team (22 people). itch.io listing exists; exact URL not in the reference.",
+      "Environmental horror: traverse the world solving puzzles while avoiding monsters and a shadowed ballerina always looming in the distance. First long-term project on a student team (22 people).",
     audience:
       "Players who want atmosphere-led horror. Large student team.",
     problem:
@@ -432,7 +437,7 @@ export const projects: Project[] = [
     solution:
       "Complete. Five environment backgrounds in Unity/Procreate, design-guide collaboration, SGS presentation Summer 2025.",
     solutionDetail:
-      "Exact itch.io URL and engine version are not in the content reference.",
+      "Engine version is not in the content reference.",
     reflection: [
       "First long-term, 22-person team: the job is as much onboarding and a shared design guide as it is painting a single hero shot.",
       "What I would change about that pipeline is not written down.",
@@ -440,6 +445,7 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/encore-cover.png",
     solutionImageUrl: "/images/projects/encore-solution.png",
     color: "#101A1A",
+    itchLink: "https://nyela.itch.io/encore",
     status: "complete",
     category: "game",
   },

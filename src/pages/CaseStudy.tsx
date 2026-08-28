@@ -107,11 +107,11 @@ export default function CaseStudy() {
 
       {/* Hero image */}
       <div className="max-w-5xl mx-auto px-6 md:px-12 -mt-1">
-        <div className="overflow-hidden rounded-sm aspect-[16/7] bg-muted">
+        <div className="overflow-hidden rounded-sm bg-muted">
           <img
             src={project.imageUrl}
             alt={`${project.title} preview`}
-            className="w-full h-full object-cover"
+            className="block w-full h-auto max-h-[70vh] object-contain"
           />
         </div>
       </div>
@@ -202,11 +202,11 @@ export default function CaseStudy() {
           </p>
           <p className="text-muted-fg text-base leading-relaxed">{project.solutionDetail}</p>
 
-          <div className="mt-8 overflow-hidden rounded-sm aspect-[16/7] bg-muted">
+          <div className="mt-8 overflow-hidden rounded-sm bg-muted">
             <img
               src={project.solutionImageUrl}
               alt={`${project.title} solution detail`}
-              className="w-full h-full object-cover"
+              className="block w-full h-auto max-h-[70vh] object-contain"
             />
           </div>
         </CaseStudySection>
