@@ -65,7 +65,7 @@ export default function About() {
                 />
                 <div className="relative overflow-hidden rounded-sm aspect-[3/4] bg-muted">
                   <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=800&fit=crop&auto=format"
+                    src="/images/about/monica-portrait.jpg"
                     alt="Portrait of Monica Jin"
                     className="w-full h-full object-cover"
                   />
