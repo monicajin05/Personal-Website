@@ -1,7 +1,11 @@
 {
-  "description": "Showcase your skills as a junior Computer Science and Art & Design student with a clean, modern portfolio that highlights projects, case studies, and your artistic sensibility.",
+  "title": "Monica Jin — Software Engineer & Artist",
+  "description": "Portfolio of Monica Jin, a senior studying Computer Science and Art & Design at NC State, showcasing game dev, graphics, and research projects.",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
