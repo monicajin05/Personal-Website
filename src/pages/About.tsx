@@ -3,13 +3,13 @@ import TagPill from "../components/TagPill";
 import { experiences, type Experience } from "../data/experiences";
 
 const technicalInterests = [
-  "Game development", "WebGL / real-time graphics", "Creative coding",
-  "UI programming", "Machine learning", "3D modeling",
+  "Game development/design", "Computer graphics", "Creative coding",
+  "Shaders & rendering", "Artificial intelligence", "Machine learning", "UI/UX design",
 ];
 
 const artisticInterests = [
-  "Texture & level design", "2D illustration", "Escape room design",
-  "Storytelling through games", "Surreal / horror aesthetics", "Hand-painted art",
+  "2D illustration", "3D modeling", 
+  "Storytelling", "Horror aesthetics", "Oil painting"
 ];
 
 function ExperienceLightbox({
@@ -149,7 +149,7 @@ export default function About() {
             <span className="text-accent">Monica</span> <em className="italic text-second">Jin.</em>
           </h1>
           <p className="mt-4 text-base text-muted-fg max-w-sm leading-relaxed">
-            CS + Art & Design junior · NC State
+            CS + Art & Design senior · NC State
           </p>
         </div>
       </div>
@@ -189,34 +189,7 @@ export default function About() {
               {/* Status card */}
               <div className="rounded-xl p-4 border border-border mb-4 bg-muted">
                 <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-2" style={{ color: "var(--sky)" }}>Currently</p>
-                <p className="text-sm text-foreground font-medium">Junior, CS + Art & Design</p>
-                <p className="text-sm text-muted-fg mt-0.5">
-                  Working on{" "}
-                  <em className="italic text-second" style={{ fontFamily: "var(--font-display)" }}>Slimed: Rebirth</em>
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <a
-                  href="https://www.linkedin.com/in/monicajin/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-fg transition-colors duration-200"
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#5457CF")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--muted-fg)")}
-                >
-                  LinkedIn →
-                </a>
-                <a
-                  href="https://github.com/monicajin05"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-fg transition-colors duration-200"
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--sky)")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--muted-fg)")}
-                >
-                  GitHub →
-                </a>
+                <p className="text-sm text-foreground font-medium">Senior, CS + Art & Design</p>
               </div>
             </div>
           </div>
@@ -225,25 +198,23 @@ export default function About() {
           <div>
             <div className="space-y-5 text-base text-foreground/80 leading-relaxed mb-14">
               <p>
-                I'm a junior at{" "}
+                I'm a senior at{" "}
                 <strong className="text-foreground font-medium">North Carolina State University</strong>
-                {" "}studying Computer Science and Art & Design, combining programming, art, and storytelling to create games and interactive experiences.
+                {" "}studying Computer Science and Art & Design, combining programming, art, and storytelling to create interactive experiences.
               </p>
               <p>
-                My work lives at the intersection of technical craft and visual design. Whether I'm writing
-                a custom WebGL graphics pipeline from scratch or painting hand-crafted textures for a surreal
-                shooter, I care equally about how something works and how it feels to experience.
+                My work lives at the intersection of technical craft and visual design. I've always loved art and enjoy programming 
+                (most of the time, when my work isn't exploding on itself), so the next step for me was to combine the two to create fun and immersive projects.
+                What can I say...I'm an entertainer at heart!
               </p>
               <p>
-                I've built skills throughout college in game design, 2D/3D art, software development, and
-                machine learning — taking on roles from lead artist to programmer depending on what the
-                project needs.
+                If you ever catch me in the wild, I'm probably:
               </p>
-              <p>
-                Right now I'm building{" "}
-                <em className="italic text-second" style={{ fontFamily: "var(--font-display)" }}>Slimed: Rebirth</em>
-                {" "}— an escape room game mixing 2D and 3D art — plus a personal side project.
-              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Drawing fanart</li>
+                <li>Performatively climbing (V0s, by the way)</li>
+                <li>Writing dialogue for games</li>
+              </ul>
             </div>
 
             <div className="space-y-10">
@@ -315,10 +286,10 @@ export default function About() {
           className="text-[clamp(2rem,5vw,3.5rem)] font-display font-light leading-[0.95] tracking-tight mb-4"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          What have I been up to?
+          Touching Grass
         </h2>
         <p className="text-muted-fg text-base max-w-xl leading-relaxed mb-10">
-          I look for experiences rather than accomplishments. Click a card for the full story behind it.
+          I love living life! Click a card to see what I've been up to.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {experiences.map((experience) => (
