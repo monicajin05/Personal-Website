@@ -256,10 +256,7 @@ export default function Gallery() {
           </div>
           <div className="flex flex-col justify-center gap-5 text-base text-foreground/75 leading-relaxed">
             <p>
-              I've always loved art and enjoyed programming, so I combined the two — plus a love of storytelling —
-              to make games and research projects. This gallery holds the traditional and 3D work that sits
-              alongside those projects: plein air and studio painting, figure drawing, and a Blender chess set
-              modeled in the style of sculptor Barbara Hepworth, textured with Poliigon materials.
+              This is how I express myself!
             </p>
           </div>
         </div>

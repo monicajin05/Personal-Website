@@ -13,7 +13,7 @@ export interface Project {
   explorationItems: { title: string; description: string; tradeoff: string }[];
   edgeCases: string[];
   solution: string;
-  solutionDetail: string;
+  solutionDetail?: string;
   reflection: string[];
   imageUrl: string;
   solutionImageUrl: string;
@@ -54,12 +54,12 @@ export const projects: Project[] = [
         description:
           "One person owns sprites; another owns Godot implementation, lighting, and UI.",
         tradeoff:
-          "Cleaner ownership, but the reference role is explicitly both: primary 2D artist and programmer for lighting, levels, assets, and UI.",
+          "Cleaner ownership, but my role is both: primary 2D artist and programmer for lighting, levels, assets, and UI.",
       },
       {
         title: "Asymmetric abilities, with art and implementation on the same person (what we are building)",
         description:
-          "Two unique ability sets, rooms that need both, plus lighting, level layout, UI, and 2D assets from one role — working from Room 1 / Room 3 / puzzle-layout / enemy sprite-sheet docs.",
+          "Two unique ability sets, rooms that need both, plus lighting, level layout, UI, and 2D assets from one role, backed by design docs for Room 1, Room 3, the puzzle layout, and an enemy sprite sheet.",
         tradeoff:
           "The rooms can actually use both characters, but art and implementation compete for the same hours.",
       },
@@ -67,11 +67,8 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "In development: Room 1 and Room 3 design, puzzle layout, and an enemy sprite sheet exist as design docs. Implementation is in Godot with Aseprite, Blender, and GitHub.",
-    solutionDetail:
-      "Shipped features, playable builds, and itch/GitHub URLs are not listed in the content reference yet.",
     reflection: [
       "Holding programmer, lighting, level design, UI, 2D art, and puzzle input on one person makes the docs (rooms, puzzle layout, sprites) load-bearing — without them, the overlap would be guesswork.",
-      "What I would change about pipeline or playtesting is not written down in the reference; I am not filling that in.",
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.png",
     solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
@@ -81,6 +78,7 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/slimed-rebirth/mech-sprite-sheet.png", caption: "Mech enemy sprite sheet" },
       { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle asset" },
       { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Test-tube puzzle asset" },
+      { src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "An in-world journal log — worldbuilding detail found while exploring" },
     ],
     color: "#0D1A15",
     status: "in-development",
@@ -101,13 +99,13 @@ export const projects: Project[] = [
     audience:
       "Players who want a hard 2D action game with a lot of original pixel art. 5-person team.",
     problem:
-      "This was an asset-heavy project: one lead artist owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses. Volume and consistency were the constraint, not a documented engine bug.",
+      "This was an asset-heavy project: one lead artist owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses. Volume and consistency were the real constraint.",
     explorationItems: [
       {
         title: "Limit original art to the player and reuse stock enemies",
         description: "Spend the art budget on the player; fill the dungeon with simpler or reused foes.",
         tradeoff:
-          "Faster, but the project is described as multiple enemy types plus two bosses with attack animation — that needs a full sprite pipeline.",
+          "Faster, but the shipped game has multiple enemy types plus two bosses with attack animation — that needs a full sprite pipeline.",
       },
       {
         title: "Hand-author every room instead of feeding a generator",
@@ -118,7 +116,7 @@ export const projects: Project[] = [
       {
         title: "Full original pixel suite for a procedural dungeon (what shipped)",
         description:
-          "All 2D pixel art: player/enemy idle and attack, environment, assets, ending cards, plus layout, pterodactyl animation, enemy sheet, boss design/attack, and promo art in the docs.",
+          "All 2D pixel art: player/enemy idle and attack, environment, assets, ending cards, plus level layout, pterodactyl animation, an enemy sheet, boss design and attack states, and promo art.",
         tradeoff:
           "Cohesive look across generated rooms; the cost is an asset-heavy schedule on one lead artist.",
       },
@@ -126,17 +124,15 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. Built in Aseprite and Godot.",
-    solutionDetail:
-      "Year and engine-level edge cases are not in the content reference.",
     reflection: [
       "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
-      "I would want a note on what I would cut next time; that is not in the reference.",
     ],
     imageUrl: "/images/projects/slimed-awakening-cover.png",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
     galleryImages: [
       { src: "/images/projects/gallery/slimed-awakening/boss-fight-design.png", caption: "Boss design doc — Nano's armor phases, attack states, and dodge logic" },
       { src: "/images/projects/gallery/slimed-awakening/boss-gameplay.png", caption: "Boss fight in progress" },
+      { src: "/images/projects/gallery/slimed-awakening/dungeon-progress.png", caption: "Dungeon combat mid-fight" },
       { src: "/images/projects/gallery/slimed-awakening/pterodactyl-sprite-sheet.png", caption: "Pterodactyl enemy sprite sheet" },
       { src: "/images/projects/gallery/slimed-awakening/gameplay-1.png", caption: "Dungeon combat" },
       { src: "/images/projects/gallery/slimed-awakening/promo-art.png", caption: "Promo art" },
@@ -173,12 +169,12 @@ export const projects: Project[] = [
         title: "Text-only, skip original art",
         description: "Let Twine carry the story with little or no illustration.",
         tradeoff:
-          "Faster writing, but the documented role is all pixel art: environment, characters, ending cards.",
+          "Faster writing, but my role was all pixel art: environment, characters, ending cards.",
       },
       {
         title: "Twine narrative + full pixel art, including ending cards (what shipped)",
         description:
-          "Aseprite art for environments, characters, and endings; Twine for flow. Docs include ending card art, Twine flow, brainstorming, design doc, promo, and a gameplay demo.",
+          "Aseprite art for environments, characters, and endings; Twine for flow. The branches split early on 'warpath' vs. 'peace' — warpath routes through resource management into a dungeon crawl with a secret boss fight, peace skips straight to a T-rex boss escape room, and both converge before the ending cards.",
         tradeoff:
           "The series gets a visual identity and three endings; art has to cover every branch you actually ship.",
       },
@@ -186,15 +182,13 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete interactive narrative in Twine with original pixel art for environments, characters, and ending cards.",
-    solutionDetail:
-      "Exact year, hosting URL, and Twine-format implementation notes are not in the content reference.",
     reflection: [
       "Helping set narrative and flow for the whole Slimed series meant Origins had to work as a story and as a visual template later games could follow.",
-      "Engine or CSS details for Twine portraits are not documented here, so I am not inventing them.",
     ],
     imageUrl: "/images/projects/slimed-origins-cover.png",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
     galleryImages: [
+      { src: "/images/projects/gallery/slimed-origins/brainstorming.jpg", caption: "Whiteboard — mapping the warpath/peace branch structure" },
       { src: "/images/projects/gallery/slimed-origins/design-doc.png", caption: "Design doc — setting, goals, key challenges, and audience" },
       { src: "/images/projects/gallery/slimed-origins/programming-flow.png", caption: "Twine programming flow" },
       { src: "/images/projects/gallery/slimed-origins/gameplay-2.png", caption: "In-game dialogue" },
@@ -226,18 +220,18 @@ export const projects: Project[] = [
         title: "Ship without custom textures; block out levels only",
         description: "Engine defaults and graybox volumes so combat can be tuned first.",
         tradeoff:
-          "Faster jam combat, but the documented work is custom Aseprite textures, Unreal texture nodes, and level modeling.",
+          "Faster jam combat, but the shipped work includes custom Aseprite textures, Unreal texture nodes, and level modeling.",
       },
       {
         title: "Drop sanity as a map-and-upgrade currency",
         description: "Treat it as flavor or a simple health bar.",
         tradeoff:
-          "Simpler FPS, but then kills would not unlock weapons and areas the way the design describes.",
+          "Simpler FPS, but then kills would not unlock weapons and areas the way the sanity system is built to.",
       },
       {
         title: "Sanity as progression, with authored textures and levels (what shipped)",
         description:
-          "Unreal levels plus Aseprite textures (tile texture, texture-node work, level modeling, two map prototypes, brainstorming docs).",
+          "Unreal levels plus custom Aseprite textures — a tile texture, texture-node work in-engine, and level modeling across two map prototypes, starting from early brainstorming docs.",
         tradeoff:
           "The economy is readable in the world; a 3-week jam leaves little time to iterate both art and layout.",
       },
@@ -245,11 +239,8 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete jam build in Unreal with custom textures and level design. Add-ons coming soon.",
-    solutionDetail:
-      "The previous scaffold listed Unity, Photoshop, C#, and a github.com/monicajnc19 repo — that contradicts the reference (Unreal, Aseprite, Blender, GitHub). Those links were removed.",
     reflection: [
       "Porting Aseprite textures through Unreal nodes in three weeks is a pipeline problem as much as a look problem.",
-      "What broke in-engine is not written down; I am not inventing lighting-seam or shader bugs.",
     ],
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
@@ -259,6 +250,7 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/crazy-old-mans-trip/character-portrait.gif", caption: "The veteran — character portrait" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/screenshot-2.png", caption: "In-engine screenshot" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/progress.png", caption: "Early level-building progress" },
+      { src: "/images/projects/gallery/crazy-old-mans-trip/progress-2.png", caption: "Hallway lighting pass" },
     ],
     color: "#1A0A0A",
     itchLink: "https://napoli2005.itch.io/old-mans-crazy-trip",
@@ -286,18 +278,18 @@ export const projects: Project[] = [
         title: "Use an engine or a high-level 3D library",
         description: "Unity, Godot, or a scene-graph library so gameplay ships without writing shaders.",
         tradeoff:
-          "Faster game; you would not own MVP math, GLSL, or the second viewport the way this project is described.",
+          "Faster game; you would not own MVP math, GLSL, or the second viewport the way this project is built.",
       },
       {
         title: "Skip the mini-map and extra viewport",
         description: "One camera, one render pass; HUD as HTML or a simple overlay.",
         tradeoff:
-          "Less GPU and camera bookkeeping, but the documented mini-map is a separate top-down viewport render.",
+          "Less GPU and camera bookkeeping, but the mini-map here is a separate top-down viewport render.",
       },
       {
         title: "Raw WebGL: custom shaders, Blockbench OBJs, dual viewport (what shipped)",
         description:
-          "Vertex/fragment shaders, MVP, OBJ assets, third-person mouse aim/shoot, mini-map viewport. Docs: tank model, spaceship model, vertex shader, fragment shader.",
+          "Vertex/fragment shaders, MVP, OBJ assets, third-person mouse aim/shoot, mini-map viewport — a tank model and a spaceship model, both modeled in Blockbench.",
         tradeoff:
           "Full control of the pipeline; every system (load, shade, aim, map) is yours to debug.",
       },
@@ -305,11 +297,8 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete solo WebGL game: custom shaders, Blockbench OBJs, third-person shooting, mini-map viewport.",
-    solutionDetail:
-      "Repo listed in the content reference: github.com/monicajin05/Battlezone.git",
     reflection: [
       "Doing programming, modeling, and graphics processing solo makes the shader pair and the two models the whole visual system — there is no engine art pipeline to hide behind.",
-      "Browser/GLSL precision issues are not documented in the reference, so they are not listed as edge cases.",
     ],
     imageUrl: "/images/projects/battle-zone-3d-cover.png",
     solutionImageUrl: "/images/projects/battle-zone-3d-solution.png",
@@ -335,7 +324,7 @@ export const projects: Project[] = [
     timeline: "2-day jam",
     tools: ["Godot"],
     overview:
-      "An immersive RPG: find the culprit of a murder among three hotel guests by gathering evidence. Made for a 2-day jam, with a focus on lively dialogue per character and environmental storytelling.",
+      "An immersive RPG: you play Kit Pawson, an ex-detective turned hotel manager, investigating a guest's disappearance among three suspects — a washed-up musician crane looking for inspiration, a fish who claims to work in 'waste management,' and a boxer frog nursing a grudge after a bad match. Made for a 2-day jam, with a focus on lively per-character dialogue and environmental storytelling.",
     audience:
       "Players who want a short mystery with talky characters. 4-person jam team.",
     problem:
@@ -351,32 +340,34 @@ export const projects: Project[] = [
         title: "Program only one system (UI or inventory, not both)",
         description: "Narrow the code so design and writing can move faster.",
         tradeoff:
-          "Safer jam, but the documented programming includes asset implementation, inventory, UI, and assisted save-state.",
+          "Safer jam, but the shipped programming includes asset implementation, inventory, UI, and assisted save-state.",
       },
       {
         title: "Mystery loop + manager role across systems (what shipped)",
         description:
-          "Lead game manager in Godot: assets, inventory, UI, assisted saves; design docs for dialogue manager, brainstorming levels, characters, and plot.",
+          "Lead game manager in Godot: assets, inventory, UI, assisted saves; each suspect got their own motive and alibi (the fish had beef with the victim over a stolen bite of food, the frog blamed him for booing at a match, the crane just found him insufferable) worked out in the plot doc before any dialogue was written.",
         tradeoff:
           "The investigation can actually run; two days means every extra system is a risk.",
       },
     ],
     edgeCases: [],
     solution:
-      "Complete 2-day jam RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character/plot design docs.",
-    solutionDetail:
-      "The previous scaffold listed Unity, C#, UI Toolkit, and github.com/monicajnc19/catacombs. The reference says Godot. Those Unity-specific claims and that GitHub URL were removed.",
+      "Complete 2-day jam RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character and plot design docs worked out ahead of implementation.",
     reflection: [
       "Lead game manager on a 2-day jam is mostly integration: dialogue and rooms only work if inventory, UI, and saves do not eat the whole clock.",
-      "Merge-conflict or input-device edge cases are not in the reference.",
     ],
     imageUrl: "/images/projects/catacombs-cover.png",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
     galleryImages: [
+      { src: "/images/projects/gallery/catacombs/brainstorming.jpg", caption: "Early brainstorm sketch — the accusation UI and timer" },
+      { src: "/images/projects/gallery/catacombs/character-bios.png", caption: "Character bios and motives for each suspect" },
+      { src: "/images/projects/gallery/catacombs/plot-doc.png", caption: "Plot doc — the opening scene and suspects' relationships" },
       { src: "/images/projects/gallery/catacombs/design-doc.png", caption: "Early brainstorm — genre and gameplay-loop ideas" },
       { src: "/images/projects/gallery/catacombs/implementation.png", caption: "Hotel room scene in the Godot editor" },
+      { src: "/images/projects/gallery/catacombs/implementation-2.png", caption: "The sewer scene, with the accusation timer wired up" },
       { src: "/images/projects/gallery/catacombs/gameplay-2.png", caption: "Accusing a suspect" },
       { src: "/images/projects/gallery/catacombs/gameplay-3.png", caption: "Investigating the catacombs" },
+      { src: "/images/projects/gallery/catacombs/end-screen.png", caption: "The end screen — \"Murder Strikes Again\"" },
     ],
     color: "#1A1020",
     link: "https://github.com/monicajin05/Cat-Murder-Mystery.git",
@@ -405,7 +396,7 @@ export const projects: Project[] = [
         title: "One serving action, no minigames",
         description: "Tap to complete an order; skip boba / ice / syrup timing.",
         tradeoff:
-          "Easier to finish, but the documented fantasy is those three timed minigames.",
+          "Easier to finish, but the fantasy here is those three timed minigames.",
       },
       {
         title: "Prioritize Unity animation over menu and environment art",
@@ -416,7 +407,7 @@ export const projects: Project[] = [
       {
         title: "UI + asset wiring + Procreate environment/menu (what shipped)",
         description:
-          "Unity implementation and UI; Procreate environment and main menu. Docs: side view, design doc, customer. Animation work stayed out of the build.",
+          "Unity implementation and UI; Procreate environment art, main menu, and customer designs. Animation work stayed out of the build.",
         tradeoff:
           "The restaurant is playable and branded; unused animation is sunk jam time.",
       },
@@ -424,11 +415,8 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete jam game in Unity with UI/asset implementation and Procreate environment plus main menu.",
-    solutionDetail:
-      "Which minigame code I personally wrote is not split out in the reference.",
     reflection: [
       "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build.",
-      "I do not have a documented postmortem beyond that cut.",
     ],
     imageUrl: "/images/projects/tapioca-tails-cover.png",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
@@ -436,6 +424,7 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/tapioca-tails/side-view-background.png", caption: "Side-view restaurant environment art, painted in Procreate" },
       { src: "/images/projects/gallery/tapioca-tails/gameplay-1.png", caption: "Order selection screen" },
       { src: "/images/projects/gallery/tapioca-tails/gameplay-2.png", caption: "Serving a customer" },
+      { src: "/images/projects/gallery/tapioca-tails/gameplay-3.png", caption: "The ice-catching minigame" },
       { src: "/images/projects/gallery/tapioca-tails/bear-walk.gif", caption: "Customer walk cycle" },
     ],
     color: "#1A1510",
@@ -458,24 +447,24 @@ export const projects: Project[] = [
     audience:
       "Players who want atmosphere-led horror. Large student team.",
     problem:
-      "Plot has to read through spaces, not cutscenes alone, on a 22-person team where new artists also needed onboarding. I made 5 backgrounds and worked with game design on how those spaces carry story — including environment 6 as a concept for a cut scene.",
+      "Plot has to read through spaces, not cutscenes alone, on a 22-person team where new artists also needed onboarding. I made 5 backgrounds and worked with game design on how those spaces carry story — including a cut-scene concept environment.",
     explorationItems: [
       {
         title: "Generic horror kits, less authored story in the frame",
         description: "Reuse stock halls so designers can place puzzles faster.",
         tradeoff:
-          "Faster production; weaker environmental storytelling, which is the documented focus.",
+          "Faster production; weaker environmental storytelling, which was the whole point of this game.",
       },
       {
         title: "One hero environment, skip onboarding others",
         description: "Spend the whole schedule on a single finished space.",
         tradeoff:
-          "Higher peak quality; the role also includes five backgrounds, a team of 22, and helping new artists.",
+          "Higher peak quality; my role also included five backgrounds, a team of 22, and helping new artists ramp up.",
       },
       {
         title: "Five authored backgrounds + design collaboration (what shipped)",
         description:
-          "Five backgrounds, iteration on environment 1, environment 3, environment 6 cut-scene concept, map/level 1 design, and a design guide with game design. Presented at SGS, Summer 2025.",
+          "Five backgrounds, including a cut-scene concept environment and a hand-drawn trap mechanism — a rope-and-pulley rig where cutting the right power cord kills the lights — worked out with game design in a shared design guide. Presented at SGS, Summer 2025.",
         tradeoff:
           "Story is in the world and the team can share a guide; individual pieces get less solo polish.",
       },
@@ -483,19 +472,20 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete. Five environment backgrounds in Unity/Procreate, design-guide collaboration, SGS presentation Summer 2025.",
-    solutionDetail:
-      "Engine version is not in the content reference.",
     reflection: [
       "First long-term, 22-person team: the job is as much onboarding and a shared design guide as it is painting a single hero shot.",
-      "What I would change about that pipeline is not written down.",
     ],
     imageUrl: "/images/projects/encore-cover.png",
     solutionImageUrl: "/images/projects/encore-solution.png",
     galleryImages: [
       { src: "/images/projects/gallery/encore/environment-0-final.png", caption: "Environment: the orchestra room" },
+      { src: "/images/projects/gallery/encore/environment-1-iteration.png", caption: "Environment 1, an early iteration" },
       { src: "/images/projects/gallery/encore/environment-2-final.png", caption: "Environment: the vanity mirror" },
       { src: "/images/projects/gallery/encore/game-design.png", caption: "Level flow — exploration areas and puzzles" },
+      { src: "/images/projects/gallery/encore/trap-design.png", caption: "Trap design — the power-cord puzzle" },
+      { src: "/images/projects/gallery/encore/trap-mechanism.png", caption: "Trap mechanism sketch" },
       { src: "/images/projects/gallery/encore/gameplay-1.png", caption: "In-game — the ballerina always in the distance" },
+      { src: "/images/projects/gallery/encore/gameplay-2.png", caption: "In-game — the throw tutorial" },
       { src: "/images/projects/gallery/encore/title-screen.png", caption: "Title screen" },
     ],
     color: "#101A1A",
@@ -518,7 +508,7 @@ export const projects: Project[] = [
     audience:
       "Ceramicists and researchers who need to search a huge glaze-parameter space. Still in development.",
     problem:
-      "Glaze outcomes depend on composition and firing. Searching that space by kiln alone is slow. The simulation/interface lead has to turn real samples into something a model can train on, and show a result people can judge — including assisting physical 3D-printed fabrication — not just a chart.",
+      "Glaze outcomes depend on composition and firing. Searching that space by kiln alone is slow. As the simulation/interface lead, I have to turn real samples into something a model can train on, and show a result people can judge — including assisting physical 3D-printed fabrication — not just a chart.",
     explorationItems: [
       {
         title: "Optimization only, no visual or physical loop",
@@ -535,7 +525,7 @@ export const projects: Project[] = [
       {
         title: "ML on real samples + three.js sim + fabrication support (in progress)",
         description:
-          "Lead simulation and interface: train on real ceramic samples, assist 3D-printed fabrication, three.js demo. Docs: project plan, UI/glaze-model code, physical samples, proposed display, sample images.",
+          "Leading simulation and interface: training on real ceramic samples, assisting 3D-printed fabrication, and a three.js demo that renders glaze finishes — gloss and color — on a live 3D model.",
         tradeoff:
           "Human-in-the-loop design; more moving parts while the project is still in development.",
       },
@@ -543,17 +533,15 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "In development. Proof-of-concept simulation demo in three.js exists. Grant awarded ($5,000).",
-    solutionDetail:
-      "ML framework name, metrics, and a public demo URL are not in the content reference. Status in the old scaffold said complete; the reference says in development.",
     reflection: [
       "Leading simulation and interface means the model, the three.js view, and the physical samples have to stay aligned — otherwise the AI is not actually assisting a maker.",
-      "I do not have documented failure modes of the model to list yet.",
     ],
     imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
     solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
     galleryImages: [
       { src: "/images/projects/gallery/ai-glaze-visualization/simulation-model.png", caption: "Simulated glaze-and-form combinations from the three.js model" },
       { src: "/images/projects/gallery/ai-glaze-visualization/glaze-simulation.png", caption: "Glaze simulation interface" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/glaze-model-code.png", caption: "The GlazeModel component — gloss and color drive the material in real time" },
       { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-1.jpg", caption: "Physical ceramic sample, fired for comparison" },
       { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
     ],
@@ -583,18 +571,18 @@ export const projects: Project[] = [
         title: "Digital-only attacks (image-space)",
         description: "Perturb pixels; skip physical garments or printed patterns.",
         tradeoff:
-          "Easier experiments; misses the documented physical-system question (t-shirts, real detectors).",
+          "Easier experiments; misses the physical-system question entirely (t-shirts, real detectors).",
       },
       {
         title: "New attack method without recreating prior physical results",
         description: "Propose an original algorithm first.",
         tradeoff:
-          "More novelty on paper; the documented path is recreate prior physical patterns, then study why they succeed.",
+          "More novelty on paper; the approach I took was to recreate prior physical patterns first, then study why they succeed.",
       },
       {
         title: "Recreate physical patterns, then analyze (what was done)",
         description:
-          "Gradient-based and physical systems; docs include proposal, robust-attention analysis, protransformers analysis, and simulation code for patch generation/training, PGD, and FGSM.",
+          "Gradient-based and physical systems, backed by a research proposal, an analysis of robust attention, an analysis of protransformers, and simulation code for patch generation, patch training, PGD, and FGSM.",
         tradeoff:
           "Grounded in prior success rates; less room to claim a brand-new attack in this writeup.",
       },
@@ -602,11 +590,8 @@ export const projects: Project[] = [
     edgeCases: [],
     solution:
       "Complete REU project ($3,000): recreated physical adversarial patterns against person detection and analyzed why they work, with PGD/FGSM/patch training code.",
-    solutionDetail:
-      "Python is likely but not named in the reference (tools listed: VS Code). Metrics, datasets, and a public repo URL are not listed.",
     reflection: [
       "Recreating a known physical attack is the way to trust the 'why' — otherwise the analysis is about a different system than the t-shirt result.",
-      "I am not adding unpublished accuracy numbers or model names that are not in the reference.",
     ],
     imageUrl: "/images/projects/adversarial-attacks-cover.png",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",

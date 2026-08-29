@@ -336,7 +336,9 @@ export default function CaseStudy() {
           <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
             {project.solution}
           </p>
-          <p className="text-muted-fg text-base leading-relaxed">{project.solutionDetail}</p>
+          {project.solutionDetail && (
+            <p className="text-muted-fg text-base leading-relaxed">{project.solutionDetail}</p>
+          )}
 
           <div className="mt-8 overflow-hidden rounded-sm bg-muted">
             <img
