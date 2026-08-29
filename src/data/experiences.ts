@@ -44,9 +44,9 @@ export const experiences: Experience[] = [
     cover: `${base}/rwanda/5.jpg`,
     photos: [
       { src: `${base}/rwanda/4.jpg`, caption: "Teaching at a local elementary school" },
-      { src: `${base}/rwanda/2.jpg`, caption: "Team photo" },
+      { src: `${base}/rwanda/2.jpg`, caption: "Learning to cook from Kigali locals" },
       { src: `${base}/rwanda/3.jpg`, caption: "1st time cave diving" },
-      { src: `${base}/rwanda/1.jpg`, caption: "Learning to cook from Kigali locals" },
+      { src: `${base}/rwanda/1.jpg`, caption: "Team photo" },
       { src: `${base}/rwanda/5.jpg`, caption: "She was really cool" },
     ],
   },
