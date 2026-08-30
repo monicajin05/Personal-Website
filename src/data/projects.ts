@@ -18,6 +18,7 @@ export interface Project {
   imageUrl: string;
   solutionImageUrl: string;
   galleryImages?: { src: string; caption: string }[];
+  docLinks?: { label: string; href: string }[];
   color: string;
   link?: string;
   itchLink?: string;
@@ -30,7 +31,7 @@ export const projects: Project[] = [
     slug: "slimed-rebirth",
     title: "Slimed: Rebirth",
     hook: "A top-down escape room where you team up with your archnemesis to break out of a mad scientist's lab.",
-    tags: ["Team · 5", "Godot", "2D art", "Complete"],
+    tags: ["Team · 4", "Godot", "2D art", "Complete"],
     year: "Complete",
     role: "Programmer — lighting & level design, asset implementation, UI; primary 2D asset artist; puzzle/game design with the team",
     timeline: "Complete",
@@ -38,7 +39,7 @@ export const projects: Project[] = [
     overview:
       "Slimed: Rebirth is a top-down escape room game. Players team up with their archnemesis to break out of a mad scientist's lab. Puzzles unlock new areas as you progress, and two playable characters with unique abilities have to be used strategically to uncover clues. The project mixes 2D and 3D art.",
     audience:
-      "Players who like co-op puzzle games and character-driven worlds. Built with a 5-person team.",
+      "Players who like co-op puzzle games and character-driven worlds. Built with a 4-person team.",
     problem:
       "The rooms had to work as puzzles and as spaces you can actually move through — and the first pass got that wrong. Early rooms were scaled way bigger than the player and every other asset, so playtesters spent most of their time just walking between the actual puzzle beats. As lead environment artist, resizing the whole map fell to me — including every collision box by hand, since Godot doesn't rescale those for you. It also meant untangling a world tree where every room was still named 'rect1,' 'rect2,' 'rect2,' which nobody, including me, could keep straight once the scope grew past a two-person sketch. On top of the resize, I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
     explorationItems: [
@@ -103,7 +104,7 @@ export const projects: Project[] = [
     timeline: "Complete",
     tools: ["Aseprite", "Godot"],
     overview:
-      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat. The map is procedurally generated. There are multiple enemy types, dodge/parry mechanics, and two bosses. You clear rooms of enemies to progress. Published on itch.io.",
+      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat. The map is procedurally generated. There are multiple enemy types, dodge/parry mechanics, and two bosses. You clear rooms of enemies to progress. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Published on itch.io.",
     audience:
       "Players who want a hard 2D action game with a lot of original pixel art. 5-person team.",
     problem:
@@ -119,7 +120,7 @@ export const projects: Project[] = [
         title: "Hand-author every room instead of feeding a generator",
         description: "Unique layouts and art per room, no procedural map.",
         tradeoff:
-          "More control per screen, but the shipped design is a procedurally generated map — art has to tile and repeat.",
+          "More control per screen, but the shipped design is a procedurally generated map — art has to tile and repeat, and every run lays out differently on purpose, for replayability.",
       },
       {
         title: "Full original pixel suite for a procedural dungeon (what shipped)",
@@ -129,11 +130,15 @@ export const projects: Project[] = [
           "Cohesive look across generated rooms; the cost is an asset-heavy schedule on one lead artist.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "An early version of the final boss, Nano, was going to have breakable bone armor that regenerated if he rolled around in mud — a fully drawn Aseprite concept that got cut once it started eating the schedule.",
+      "The boss's dodge needed real thought to avoid looking dumb: it raycasts outward to find an open direction to dodge into, and charges straight out if every direction comes back blocked (i.e. it's cornered).",
+    ],
     solution:
-      "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. Built in Aseprite and Godot.",
+      "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. The final boss reuses an earlier boss's state machine as its base, with a parry built as its own state machine and a pterodactyl enemy added to vary room-to-room traversal. Built in Aseprite and Godot.",
     reflection: [
       "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
+      "Cutting the bone-armor idea was the right call, but it's the one I still think about — it's a good reminder that a fun idea and a fundable idea aren't always the same thing on a fixed timeline.",
     ],
     imageUrl: "/images/projects/slimed-awakening-cover.png",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
@@ -144,6 +149,9 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/slimed-awakening/pterodactyl-sprite-sheet.png", caption: "Pterodactyl enemy sprite sheet" },
       { src: "/images/projects/gallery/slimed-awakening/gameplay-1.png", caption: "Dungeon combat" },
       { src: "/images/projects/gallery/slimed-awakening/promo-art.png", caption: "Promo art" },
+    ],
+    docLinks: [
+      { label: "Nano boss fight design doc", href: "https://docs.google.com/document/d/1Z4awgx4DBe7KPM3CNtxoM09Yh1rIt5_IR9P0TyU3FKk/edit?tab=t.0" },
     ],
     color: "#0A0D1A",
     itchLink: "https://underduke.itch.io/slimed-awakening-beta",

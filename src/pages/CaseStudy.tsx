@@ -330,6 +330,23 @@ export default function CaseStudy() {
               </ul>
             </div>
           )}
+
+          {project.docLinks && project.docLinks.length > 0 && (
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+              <span className="text-xs font-medium tracking-widest uppercase text-muted-fg">Design docs</span>
+              {project.docLinks.map((doc) => (
+                <a
+                  key={doc.href}
+                  href={doc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-accent hover:text-foreground underline underline-offset-4 decoration-border transition-colors duration-200"
+                >
+                  {doc.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
         </CaseStudySection>
 
         <CaseStudySection id="solution" label="Solution">
