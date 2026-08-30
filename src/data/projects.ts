@@ -30,17 +30,17 @@ export const projects: Project[] = [
     slug: "slimed-rebirth",
     title: "Slimed: Rebirth",
     hook: "A top-down escape room where you team up with your archnemesis to break out of a mad scientist's lab.",
-    tags: ["Team · 5", "Godot", "2D art", "In development"],
-    year: "In development",
+    tags: ["Team · 5", "Godot", "2D art", "Complete"],
+    year: "Complete",
     role: "Programmer — lighting & level design, asset implementation, UI; primary 2D asset artist; puzzle/game design with the team",
-    timeline: "In development",
+    timeline: "Complete",
     tools: ["Godot", "Aseprite", "Blender", "GitHub"],
     overview:
       "Slimed: Rebirth is a top-down escape room game. Players team up with their archnemesis to break out of a mad scientist's lab. Puzzles unlock new areas as you progress, and two playable characters with unique abilities have to be used strategically to uncover clues. The project mixes 2D and 3D art.",
     audience:
-      "Players who like co-op puzzle games and character-driven worlds. Built with a 5-person team. Still in development.",
+      "Players who like co-op puzzle games and character-driven worlds. Built with a 5-person team.",
     problem:
-      "The rooms have to work as puzzles and as spaces you can actually move through. Two characters with unique abilities means a clue or lock that only one character can handle leaves the other stuck — and I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
+      "The rooms had to work as puzzles and as spaces you can actually move through — and the first pass got that wrong. Early rooms were scaled way bigger than the player and every other asset, so playtesters spent most of their time just walking between the actual puzzle beats. As lead environment artist, resizing the whole map fell to me — including every collision box by hand, since Godot doesn't rescale those for you. It also meant untangling a world tree where every room was still named 'rect1,' 'rect2,' 'rect2,' which nobody, including me, could keep straight once the scope grew past a two-person sketch. On top of the resize, I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
     explorationItems: [
       {
         title: "Treat the two characters as interchangeable",
@@ -54,21 +54,29 @@ export const projects: Project[] = [
         description:
           "One person owns sprites; another owns Godot implementation, lighting, and UI.",
         tradeoff:
-          "Cleaner ownership, but my role is both: primary 2D artist and programmer for lighting, levels, assets, and UI.",
+          "Cleaner ownership, but my role was both: primary 2D artist and programmer for lighting, levels, assets, and UI. In practice the two reinforced each other more than they competed — I'd design a clue in 2D art (like scar patterns on preserved dinosaurs that only make sense once you line them up) and then build the exact UI needed to sell it, same afternoon.",
       },
       {
-        title: "Asymmetric abilities, with art and implementation on the same person (what we are building)",
+        title: "Asymmetric abilities, with art and implementation on the same person (what we built)",
         description:
           "Two unique ability sets, rooms that need both, plus lighting, level layout, UI, and 2D assets from one role, backed by design docs for Room 1, Room 3, the puzzle layout, and an enemy sprite sheet.",
         tradeoff:
           "The rooms can actually use both characters, but art and implementation compete for the same hours.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "Early rooms were scaled far larger than the player, so a big chunk of every playtest was just walking — the whole map got resized and reorganized room by room, collision boxes included.",
+      "The puzzle where the mech's own laser melts the ice around the last item wasn't obvious to players — a clue only works if it leaves a trail, not just a possibility, and this one asked for too big a logical leap.",
+      "The Room 3 monitor puzzle needed its shader stripped of emission — with it on, the evidence image on screen blew out to the point you couldn't read it.",
+    ],
     solution:
-      "In development: Room 1 and Room 3 design, puzzle layout, and an enemy sprite sheet exist as design docs. Implementation is in Godot with Aseprite, Blender, and GitHub.",
+      "Slimed: Rebirth shipped as a full top-down escape room in Godot. Puzzles include a number-code padlock where the code comes from wound shapes on preserved dinosaur specimens color-matched to test tubes modeled in Blender, a monitor 'evidence' puzzle built around a definitive dinosaur power ranking, and a final puzzle where the mech enemy's own laser has to be used to melt the ice around the last item. Room 3's engravings, its closet fuse room, and the per-fuse lighting logic were mine end to end, on top of the shared programming, lighting, and UI work.",
+    solutionDetail:
+      "The dinosaur power-ranking video almost didn't make it in — an early version played back at something like 2 frames per second once it hit Godot. Rather than fight it, we kept it: the choppy playback reads like a deliberate part of the pixel-art aesthetic instead of a bug, which is either good design instinct or a very lucky accident. Possibly both.",
     reflection: [
-      "Holding programmer, lighting, level design, UI, 2D art, and puzzle input on one person makes the docs (rooms, puzzle layout, sprites) load-bearing — without them, the overlap would be guesswork.",
+      "Environmental storytelling only works if the leap from clue to solution is small enough to actually make. The ice-and-laser puzzle taught me that a clue nobody notices isn't a clue — it's a secret, and secrets don't move a puzzle forward.",
+      "The 'rect1, rect2, rect2' naming disaster was a bigger lesson than the resize itself: once a team's scope outgrows what one person can hold in their head, sloppy internal organization stops being a personal quirk and starts taxing everyone else.",
+      "Being the lead artist and a programmer on the same puzzle meant I could design a clue and build the UI to sell it in the same sitting — that pairing is probably the thing I'm proudest of on this project, 2fps evidence video included.",
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.png",
     solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
@@ -76,12 +84,12 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png", caption: "Puzzle design — the hotel-room floor plan, mapping fuses, mech prototype, and the pterodactyl/turtle rooms" },
       { src: "/images/projects/gallery/slimed-rebirth/level-design-2.png", caption: "Room 3 layout, blocked out in Godot" },
       { src: "/images/projects/gallery/slimed-rebirth/mech-sprite-sheet.png", caption: "Mech enemy sprite sheet" },
-      { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle asset" },
-      { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Test-tube puzzle asset" },
-      { src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "An in-world journal log — worldbuilding detail found while exploring" },
+      { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle — the code (726) comes from wound shapes on the dinosaur specimens" },
+      { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Dinosaur specimens in Blender-modeled test tubes — each wound doubles as a digit in the padlock code" },
+      { src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "The 'definitive ranking of dinosaurs' — the evidence puzzle on the Room 3 monitor" },
     ],
     color: "#0D1A15",
-    status: "in-development",
+    status: "complete",
     category: "game",
   },
 
