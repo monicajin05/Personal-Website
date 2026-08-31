@@ -195,7 +195,7 @@ export default function CaseStudy() {
           </p>
 
           {/* Links */}
-          {(project.link || project.itchLink) && (
+          {(project.link || project.itchLink || project.liveLink) && (
             <div className="flex flex-wrap gap-3 mt-8">
               {project.link && (
                 <a
@@ -221,6 +221,20 @@ export default function CaseStudy() {
                     <path d="M31.99 7.02C21.17 13.3 0 39.92 0 46.4v12.15c0 15.35 13.4 28.8 25.46 28.8 14.57 0 26.7-12.25 26.7-26.82 0 14.57 11.73 26.82 26.3 26.82s25.9-12.25 25.9-26.82c0 14.57 12.4 26.82 26.97 26.82h.22c14.57 0 26.97-12.25 26.97-26.82 0 14.57 11.32 26.82 25.9 26.82s26.3-12.25 26.3-26.82c0 14.57 12.13 26.82 26.7 26.82C222.6 87.35 236 73.9 236 58.55V46.4c0-6.48-21.17-33.1-31.99-39.38C194.97 1.48 50.03 1.48 31.99 7.02zm6.87 105.1c-15.17 1.97-26.12 15.44-26.12 30.73v76.6c0 10.39 23.07 18.81 51.55 18.81h151.7c28.47 0 51.55-8.42 51.55-18.81v-76.6c0-15.47-11.15-28.93-26.47-30.84-2.44 10.63-12.12 21.93-30.08 21.93-16.57 0-27.5-12.25-27.5-26.82 0 14.57-11.73 26.82-26.3 26.82h-.22c-14.57 0-26.97-12.25-26.97-26.82 0 14.57-12.4 26.82-26.97 26.82S77.6 121.69 77.6 107.12c0 14.39-10.6 26.6-26.87 26.82-5.13-.13-8.78-.79-11.86-1.82zm64.49 34.51h61.5l-5.26 34.05h-16.43l-.01 24.37H118.3v-24.37H101.6l-4.84-34.05h6.59z"/>
                   </svg>
                   Play on itch.io
+                </a>
+              )}
+              {project.liveLink && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-xs font-medium tracking-wide border border-white/20 text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+                >
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                    <circle cx="6.5" cy="6.5" r="6" stroke="currentColor" strokeWidth="1" />
+                    <path d="M0.7 6.5h11.6M6.5 0.7c1.6 1.7 2.5 3.7 2.5 5.8s-.9 4.1-2.5 5.8c-1.6-1.7-2.5-3.7-2.5-5.8s.9-4.1 2.5-5.8Z" stroke="currentColor" strokeWidth="1" />
+                  </svg>
+                  Live demo
                 </a>
               )}
             </div>

@@ -22,6 +22,7 @@ export interface Project {
   color: string;
   link?: string;
   itchLink?: string;
+  liveLink?: string;
   status?: "complete" | "in-development";
   category?: "game" | "software";
 }
@@ -352,11 +353,11 @@ export const projects: Project[] = [
     timeline: "2-day jam",
     tools: ["Godot"],
     overview:
-      "An immersive RPG: you play Kit Pawson, an ex-detective turned hotel manager, investigating a guest's disappearance among three suspects — a washed-up musician crane looking for inspiration, a fish who claims to work in 'waste management,' and a boxer frog nursing a grudge after a bad match. Made for a 2-day jam, with a focus on lively per-character dialogue and environmental storytelling.",
+      "An immersive RPG: you play Kit Pawson, an ex-detective turned hotel manager, investigating a guest's disappearance among three suspects — a washed-up musician crane looking for inspiration, a fish who claims to work in 'waste management,' and a boxer frog nursing a grudge after a bad match. You've got a task list to work through over a few in-game days, and the murders don't stop just because you're taking your time. Made for a 2-day jam, with a focus on lively per-character dialogue and environmental storytelling.",
     audience:
       "Players who want a short mystery with talky characters. 4-person jam team.",
     problem:
-      "Two days to ship a three-suspect murder mystery that lives on dialogue and environment, while also being lead game manager and the person wiring assets, inventory, UI, and (with help) save-state.",
+      "Two days to ship a three-suspect murder mystery that lives on dialogue and environment, while also being lead game manager and the person wiring assets, inventory, UI, and (with help) save-state. As the manager, that mostly meant calling frequent little huddles mid-session just to whiteboard what we could actually still pull off.",
     explorationItems: [
       {
         title: "Combat RPG, mystery as flavor",
@@ -373,16 +374,19 @@ export const projects: Project[] = [
       {
         title: "Mystery loop + manager role across systems (what shipped)",
         description:
-          "Lead game manager in Godot: assets, inventory, UI, assisted saves; each suspect got their own motive and alibi (the fish had beef with the victim over a stolen bite of food, the frog blamed him for booing at a match, the crane just found him insufferable) worked out in the plot doc before any dialogue was written.",
+          "Lead game manager in Godot: assets, inventory, UI, assisted saves; each suspect got their own motive and alibi (the fish had beef with the victim over a stolen bite of food, the frog blamed him for booing at a match, the crane just found him insufferable) worked out in the plot doc before any dialogue was written. We'd originally wanted evidence specific enough to individually incriminate each resident and really make you work for it, but caught early that two days wasn't going to cover that — so it ended up fairly linear, leaning on the writing itself to keep you second-guessing instead of a full deduction system.",
         tradeoff:
           "The investigation can actually run; two days means every extra system is a risk.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "Genuinely thought we'd made the culprit a little too obvious. Turns out most playtesters didn't guess it — the red herrings worked, maybe a bit too well. A few of the more seasoned players nailed it first try, but most didn't.",
+    ],
     solution:
-      "Complete 2-day jam RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character and plot design docs worked out ahead of implementation.",
+      "Complete 2-day jam RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character and plot design docs worked out ahead of implementation. If I'd had more time, the feature I really wanted was letting players pick up evidence and examine specific parts of it for more clues, instead of just collecting it.",
     reflection: [
       "Lead game manager on a 2-day jam is mostly integration: dialogue and rooms only work if inventory, UI, and saves do not eat the whole clock.",
+      "Biggest lesson from playtesting: catering to your actual demographic matters more than how clever your mystery is. The room was packed and people were bouncing between a dozen games at once — a game that wants you to slow down and actually read clues just doesn't shine in that setting the way a tight, addictive game loop does.",
     ],
     imageUrl: "/images/projects/catacombs-cover.png",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
@@ -396,6 +400,9 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/catacombs/gameplay-2.png", caption: "Accusing a suspect" },
       { src: "/images/projects/gallery/catacombs/gameplay-3.png", caption: "Investigating the catacombs" },
       { src: "/images/projects/gallery/catacombs/end-screen.png", caption: "The end screen — \"Murder Strikes Again\"" },
+    ],
+    docLinks: [
+      { label: "Brainstorming doc", href: "https://docs.google.com/document/d/1FNX9Y5OzW4zxZTqWdGfMSbatrUZSEYVh6-1y5Iih9kg/edit?tab=t.0" },
     ],
     color: "#1A1020",
     link: "https://github.com/monicajin05/Cat-Murder-Mystery.git",
@@ -444,7 +451,8 @@ export const projects: Project[] = [
     solution:
       "Complete jam game in Unity with UI/asset implementation and Procreate environment plus main menu.",
     reflection: [
-      "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build.",
+      "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build. We just had more artists than programmers on the team, which happens on a jam sometimes — it doesn't matter how good something looks in isolation if it doesn't make the build.",
+      "Playtesters gravitated hard toward the topping-assembly minigame — stacking syrups and toppings onto the drink — and I'd bet that's mostly the art talking. Artists make a game memorable, but programmers, who handle the actual function, are what make a game... you know. Exist.",
     ],
     imageUrl: "/images/projects/tapioca-tails-cover.png",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
@@ -464,18 +472,18 @@ export const projects: Project[] = [
   {
     slug: "encore",
     title: "Encore!",
-    hook: "Environmental horror: solve puzzles while avoiding monsters and a shadowed ballerina always in the distance.",
+    hook: "2D environmental horror platformer: a stage magician defies a maestro obsessed with a 'perfect' show — starting with a ballerina who never stops dancing.",
     tags: ["Team · 22", "Unity", "Environment art", "Complete"],
     year: "Summer 2025",
     role: "Environment artist — 5 backgrounds; plot through art with game design; onboarded new artists; helped present at SGS, Summer 2025",
     timeline: "First long-term student-team project · presented SGS Summer 2025",
     tools: ["Unity", "Procreate"],
     overview:
-      "Environmental horror: traverse the world solving puzzles while avoiding monsters and a shadowed ballerina always looming in the distance. First long-term project on a student team (22 people).",
+      "Encore! is a 2D environmental horror puzzle-platformer set backstage at a theater. You play a small stage magician just trying to do his act; the Maestro, a conductor obsessed with keeping the show 'perfect,' will stop at nothing to prevent that. You fight through performers turned into monsters — starting with a ballerina who's always dancing somewhere in the distance — using cards thrown from your hat to cut things down and clear a path. Inspired by Little Nightmares, Omori, Inside, and Limbo. First long-term project on a student team (22 people).",
     audience:
       "Players who want atmosphere-led horror. Large student team.",
     problem:
-      "Plot has to read through spaces, not cutscenes alone, on a 22-person team where new artists also needed onboarding. I made 5 backgrounds and worked with game design on how those spaces carry story — including a cut-scene concept environment.",
+      "Plot has to read through spaces, not cutscenes alone, on a 22-person team working entirely virtually — which made even small creative disagreements harder to untangle than they should've been. As an environment artist, I worked closely with our lead narrative designer, and there were times my read on a space didn't match how she wanted the story to come through it. I made 5 backgrounds and helped onboard new artists mid-project on top of that.",
     explorationItems: [
       {
         title: "Generic horror kits, less authored story in the frame",
@@ -492,7 +500,7 @@ export const projects: Project[] = [
       {
         title: "Five authored backgrounds + design collaboration (what shipped)",
         description:
-          "Five backgrounds, including a cut-scene concept environment and a hand-drawn trap mechanism — a rope-and-pulley rig where cutting the right power cord kills the lights — worked out with game design in a shared design guide. Presented at SGS, Summer 2025.",
+          "Five backgrounds — including the ballerina's shoe room, where you cut down her pointe shoes with thrown cards to reach a key, and a piano-drop trap where cutting the right rope swings open a new platform — worked out with game design in a shared level-design guide, plus a cut-scene concept environment. Presented at SGS, Summer 2025.",
         tradeoff:
           "Story is in the world and the team can share a guide; individual pieces get less solo polish.",
       },
@@ -502,6 +510,11 @@ export const projects: Project[] = [
       "Complete. Five environment backgrounds in Unity/Procreate, design-guide collaboration, SGS presentation Summer 2025.",
     reflection: [
       "First long-term, 22-person team: the job is as much onboarding and a shared design guide as it is painting a single hero shot.",
+      "Working fully virtual made creative disagreements harder than they needed to be. The fix wasn't some clever process — just more iteration, staying flexible, and actually taking feedback instead of getting attached to a first pass.",
+    ],
+    docLinks: [
+      { label: "Game design doc", href: "https://docs.google.com/document/d/112Bh7UdHYZ9SufLIvyEaXYXoNVlwG5ILHBE_1vy-aco/edit?tab=t.0" },
+      { label: "Level design guide", href: "https://docs.google.com/document/d/1l2ZV5OM-WDdUgM92Hpf7emUzCQFadrTzQ6PP2PSnHiQ/edit?tab=t.0#heading=h.frod1xfwvdq" },
     ],
     imageUrl: "/images/projects/encore-cover.png",
     solutionImageUrl: "/images/projects/encore-solution.png",
@@ -525,18 +538,18 @@ export const projects: Project[] = [
   {
     slug: "ai-glaze-visualization",
     title: "AI-Assisted Visualization of Ceramic Glaze Design",
-    hook: "Using AI to narrow ceramic glaze parameters instead of pure kiln trial-and-error.",
-    tags: ["Team · 5", "three.js", "ML", "In development"],
-    year: "In development",
+    hook: "A working glaze-prediction tool: pick a clay body and glaze, get back a rendered prediction instead of a kiln gamble.",
+    tags: ["Team · 5", "three.js", "ML", "Complete"],
+    year: "Complete",
     role: "Lead of Simulation and Interface Development — train ML on real samples; assist 3D-printed material fabrication",
-    timeline: "In development",
+    timeline: "Complete",
     tools: ["VS Code", "GitHub", "three.js"],
     overview:
-      "The project explores how AI can assist human decision-making in complex material design (ceramic glaze): narrowing parameter combinations (material composition, firing temperature/technique) instead of pure trial and error. Awarded the Arts + Data Science Interdisciplinary Mini-Grant, $5,000. Team of 5.",
+      "Ceramic AI explores how AI can assist human decision-making in complex material design, using ceramic glaze as the case study — normally a trial-and-error process across composition, firing temperature, and a dozen other variables. Advised by Dr. Cheryl Xu (Engineering) and Dr. Deborah Littlejohn (Design), on a team of five pairing ceramics/fabrication, information graphics, and me on simulation and interface. Awarded the Arts + Data Science Interdisciplinary Mini-Grant, $5,000.",
     audience:
-      "Ceramicists and researchers who need to search a huge glaze-parameter space. Still in development.",
+      "Ceramicists and researchers who need to search a huge glaze-parameter space.",
     problem:
-      "Glaze outcomes depend on composition and firing. Searching that space by kiln alone is slow. As the simulation/interface lead, I have to turn real samples into something a model can train on, and show a result people can judge — including assisting physical 3D-printed fabrication — not just a chart.",
+      "Glaze outcomes depend on composition and firing, and searching that space by kiln alone is slow. As the simulation/interface lead, I had to turn real fired samples into something a model could actually train on, and show a result people could judge against the real thing — not just a chart of numbers.",
     explorationItems: [
       {
         title: "Optimization only, no visual or physical loop",
@@ -551,18 +564,21 @@ export const projects: Project[] = [
           "Grounded in real glaze, but you lose the three.js proof-of-concept demo the project already built.",
       },
       {
-        title: "ML on real samples + three.js sim + fabrication support (in progress)",
+        title: "XGBoost model + three.js render, trained on real samples (what shipped)",
         description:
-          "Leading simulation and interface: training on real ceramic samples, assisting 3D-printed fabrication, and a three.js demo that renders glaze finishes — gloss and color — on a live 3D model.",
+          "Users pick a clay body and glaze and get a predicted result rendered live on a 3D model in three.js. Underneath, an XGBoost model does the prediction — picked for how cheap it is to train and run compared to heavier options, and because the public Glazy ceramics dataset (used to round out training data) tests similar parameters to ours.",
         tradeoff:
-          "Human-in-the-loop design; more moving parts while the project is still in development.",
+          "Human-in-the-loop design that actually shows you the material, not just a number.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "Glazy's public dataset didn't have colors close enough to our own clay (real North Carolina ceramics) to rely on, so the model had to train on our own color data instead. There wasn't nearly enough of it collected in our timeframe, so the model ended up overfit to a small sample. It still works well as a proof of concept — more data from our own clay is the obvious next step.",
+    ],
     solution:
-      "In development. Proof-of-concept simulation demo in three.js exists. Grant awarded ($5,000).",
+      "Complete. Ceramic AI is a working glaze-prediction tool: pick a clay body and glaze, and an XGBoost model trained on real fired samples (supplemented by the Glazy dataset) predicts the outcome, rendered live in three.js.",
     reflection: [
       "Leading simulation and interface means the model, the three.js view, and the physical samples have to stay aligned — otherwise the AI is not actually assisting a maker.",
+      "Biggest lesson from this one: good data is everything. No amount of clever modeling fixes a dataset that doesn't actually look like your material.",
     ],
     imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
     solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
@@ -573,9 +589,13 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-1.jpg", caption: "Physical ceramic sample, fired for comparison" },
       { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
     ],
+    docLinks: [
+      { label: "Project plan", href: "https://docs.google.com/document/d/1Pg_ZdsjxeiYKgU6v215eWJ7gSH4V4Cxr/edit?usp=sharing&ouid=114105664643759049425&rtpof=true&sd=true" },
+    ],
     color: "#0A1520",
     link: "https://github.com/monicajin05/CeramicAI",
-    status: "in-development",
+    liveLink: "https://ceramic-ml-glaze.vercel.app/",
+    status: "complete",
     category: "software",
   },
 
@@ -610,7 +630,7 @@ export const projects: Project[] = [
       {
         title: "Recreate physical patterns, then analyze (what was done)",
         description:
-          "Gradient-based and physical systems, backed by a research proposal, an analysis of robust attention, an analysis of protransformers, and simulation code for patch generation, patch training, PGD, and FGSM.",
+          "Gradient-based and physical systems, backed by a research proposal, an analysis of robust attention, an analysis of protransformers, and simulation code for patch generation, patch training, PGD, and FGSM. This built on an earlier case study I did comparing FGSM (single-step) against PGD (multi-step, iterative) — PGD was consistently the more effective of the two at fooling image classifiers, which set up the real question here: why do physical patterns transfer this well, and what does 'robust' actually cost a model?",
         tradeoff:
           "Grounded in prior success rates; less room to claim a brand-new attack in this writeup.",
       },
@@ -620,6 +640,7 @@ export const projects: Project[] = [
       "Complete REU project ($3,000): recreated physical adversarial patterns against person detection and analyzed why they work, with PGD/FGSM/patch training code.",
     reflection: [
       "Recreating a known physical attack is the way to trust the 'why' — otherwise the analysis is about a different system than the t-shirt result.",
+      "The most surprising finding: the more robust a model is against adversarial attacks, the less accurate it tends to be on clean data. Didn't make sense to me at first — if a model is more robust, isn't that just better? Turns out an adversarially-trained model needs a wide buffer zone around its decision boundary so predictions stay stable even when an input gets perturbed, and that buffer costs it some precision fitting the clean data. Good reminder that there's no universally 'better' model, just different tradeoffs depending on what you're optimizing for.",
     ],
     imageUrl: "/images/projects/adversarial-attacks-cover.png",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",
