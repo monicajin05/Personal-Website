@@ -104,7 +104,7 @@ export const projects: Project[] = [
     timeline: "Complete",
     tools: ["Aseprite", "Godot"],
     overview:
-      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat, and a direct continuation of the warpath branch of Slimed: Origins. A meteor hits just as Tina goes to settle things with Nano, and she has to fight through procedurally generated forest floors to find him while rescuing dinosaur kids stranded ahead of the spreading fire — save them all for the best ending, lose them all for the worst one. There are multiple enemy types, dodge/parry mechanics, and two bosses. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Made for a class project themed 'Dueling Dinosaurs' by a museum sponsor. Published on itch.io.",
+      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat, picking up right where Slimed: Origins' solo-confrontation ending leaves off. A meteor hits just as Tina settles things with Nano, and she has to fight through procedurally generated forest floors to find him again while rescuing dinosaur kids stranded ahead of the spreading fire — save them all for the best ending, lose them all for the worst one. There are multiple enemy types, dodge/parry mechanics, and two bosses. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Made for a class project themed 'Dueling Dinosaurs' by a museum sponsor. Published on itch.io.",
     audience:
       "Players who want a hard 2D action game with a lot of original pixel art. 4-person team: Jymon Ross, Jacob King, Louis Ton, and me.",
     problem:
@@ -164,24 +164,24 @@ export const projects: Project[] = [
   {
     slug: "slimed-origins",
     title: "Slimed: Origins",
-    hook: "Interactive narrative: Tina, a triceratops, investigates her brother's murder — confront, rally for war, or seek peace.",
+    hook: "Interactive narrative: Tina, a triceratops, investigates her brother Tony's murder — confront his killer, rally her tribe for war, or walk away.",
     tags: ["Team · 4", "Lead artist", "Twine", "Complete"],
     year: "Complete",
     role: "Lead artist — all pixel art (environment, characters, ending cards); helped brainstorm narrative and series flow",
     timeline: "Complete",
     tools: ["Aseprite", "Twine"],
     overview:
-      "Slimed: Origins is an interactive narrative. You play Tina, a triceratops investigating her brother's murder. Paths include confronting the killer, rallying for war, or seeking peace. I was lead artist for all pixel art and helped design the initial narrative and flow for the Slimed series.",
+      "Slimed: Origins is an interactive narrative built in Twine — the first game in the Slimed series, meant to set its tone, so the team leaned hard into narrative and even built quick-time events (a timed dodge during training, a parry-and-counter fight) directly into the passage graph rather than cutting them for a simpler build. You play Tina, investigating the murder of her brother Tony, the tribe's chosen fighter for an annual duel that decides which of two food-scarce dinosaur tribes controls the region's resources. The trail leads to Nano, the rival tribe's own champion, who eventually breaks down and admits his tribe forced him to make sure Tony couldn't fight. From there, paths split: confront Nano's tribe alone, or return and try to rally your own tribe to war.",
     audience:
       "Players who want a choice-driven story with original pixel art. 4-person team.",
     problem:
-      "A branching murder mystery needs art that still reads across confront / war / peace endings, plus a Twine flow that can carry the series' first narrative — without a full game engine.",
+      "A branching murder mystery needs art that still reads across every ending, plus a Twine flow that could carry real weight as the series opener — without a full game engine. Twine isn't built for anything beyond a passage graph, so interactive combat (a timed dodge, a parry-and-counter QTE) had to be hand-rolled as linked passages instead of real code.",
     explorationItems: [
       {
         title: "Build it in a game engine instead of Twine",
         description: "Godot or similar, with real-time scenes instead of a passage graph.",
         tradeoff:
-          "More control over motion and UI; Twine is what we used, which fits a branchy investigation better than a combat loop.",
+          "More control over motion and UI, but the team wanted heavy narrative input for a series opener, and Twine's passage graph fit a branchy investigation better than a combat loop.",
       },
       {
         title: "Text-only, skip original art",
@@ -190,11 +190,11 @@ export const projects: Project[] = [
           "Faster writing, but my role was all pixel art: environment, characters, ending cards.",
       },
       {
-        title: "Twine narrative + full pixel art, including ending cards (what shipped)",
+        title: "Twine narrative + full pixel art, with hand-rolled QTEs (what shipped)",
         description:
-          "Aseprite art for environments, characters, and endings; Twine for flow. The branches split early on 'warpath' vs. 'peace' — warpath routes through resource management into a dungeon crawl with a secret boss fight, peace skips straight to a T-rex boss escape room, and both converge before the ending cards.",
+          "Aseprite art for environments, characters, and endings; Twine for flow, plus quick-time events built as passage chains — a timed dodge during training, a three-hit parry-and-counter against Nano's brother, Nando. After the murder is uncovered, the story splits: go alone to confront Nano's tribe (ending in a personal duel with Nano just as a meteor appears on the horizon — the connective tissue into Slimed: Awakening), or return to rally your own tribe into open war.",
         tradeoff:
-          "The series gets a visual identity and three endings; art has to cover every branch you actually ship.",
+          "The series gets a visual identity and multiple endings; art has to cover every branch you actually ship.",
       },
     ],
     edgeCases: [],
@@ -202,16 +202,21 @@ export const projects: Project[] = [
       "Complete interactive narrative in Twine with original pixel art for environments, characters, and ending cards.",
     reflection: [
       "Helping set narrative and flow for the whole Slimed series meant Origins had to work as a story and as a visual template later games could follow.",
+      "Players gravitated toward the war ending more than the others in testing — though that's probably as much about how the story frames the choice as any real appetite for war.",
     ],
     imageUrl: "/images/projects/slimed-origins-cover.png",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
     galleryImages: [
-      { src: "/images/projects/gallery/slimed-origins/brainstorming.jpg", caption: "Whiteboard — mapping the warpath/peace branch structure" },
+      { src: "/images/projects/gallery/slimed-origins/brainstorming.jpg", caption: "Whiteboard — sketching how Origins' branches connect into the rest of the Slimed series" },
       { src: "/images/projects/gallery/slimed-origins/design-doc.png", caption: "Design doc — setting, goals, key challenges, and audience" },
       { src: "/images/projects/gallery/slimed-origins/programming-flow.png", caption: "Twine programming flow" },
       { src: "/images/projects/gallery/slimed-origins/gameplay-2.png", caption: "In-game dialogue" },
       { src: "/images/projects/gallery/slimed-origins/gameplay-3.png", caption: "Investigating a clue" },
       { src: "/images/projects/gallery/slimed-origins/ending.png", caption: "One of the three endings" },
+    ],
+    docLinks: [
+      { label: "Full script", href: "https://docs.google.com/document/d/1p-WLCxlV6QFF4VZUkX-jKUVo1JeWvtf-RGQ8HNC2Z5s/edit?usp=sharing" },
+      { label: "Story outline", href: "https://docs.google.com/document/d/1B6XD8KnWsVlZWPPuDWgdts8_wQaHS8jcOctw06WvjmA/edit?usp=sharing" },
     ],
     color: "#1A100A",
     status: "complete",
@@ -228,7 +233,7 @@ export const projects: Project[] = [
     timeline: "3-week game jam, Fall 2025 (add-ons coming soon)",
     tools: ["Unreal", "Aseprite", "Blender", "GitHub"],
     overview:
-      "A first-person shooter: a veteran sees ghosts of his past and manages sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity; the game ends below zero. Made in a 3-week jam, Fall 2025. Complete, with add-ons coming soon. Listed on itch.io.",
+      "A first-person shooter built for a game jam themed 'Illusion.' The team wanted to try a horror game and took the psychological route: a veteran haunted by demons from his own past, who manages his sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity; the lower it gets, the harder the demons hit; the game ends below zero. Made in a 3-week jam, Fall 2025. Complete, with add-ons coming soon. Listed on itch.io.",
     audience:
       "Players who want a short FPS with a sanity economy. 5-person jam team.",
     problem:
@@ -254,11 +259,14 @@ export const projects: Project[] = [
           "The economy is readable in the world; a 3-week jam leaves little time to iterate both art and layout.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "Textures ported over from Aseprite came in stretched across surfaces of different sizes in Unreal. The fix was a material graph that scales the UVs by the object's own X and Y scale before sampling the texture, so it stays proportional no matter the size of the mesh it's on.",
+    ],
     solution:
       "Complete jam build in Unreal with custom textures and level design. Add-ons coming soon.",
     reflection: [
       "Porting Aseprite textures through Unreal nodes in three weeks is a pipeline problem as much as a look problem.",
+      "Scaling UVs by the object's own dimensions before sampling is one of those small material-graph tricks I now just reach for by default.",
     ],
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
@@ -286,11 +294,11 @@ export const projects: Project[] = [
     timeline: "Complete",
     tools: ["VS Code", "Blockbench", "GitHub"],
     overview:
-      "A real-time WebGL rendition of the classic Battle Zone game, in 3D. Custom vertex and fragment shaders use Model-View-Projection transforms. Assets load from OBJ files modeled in Blockbench. Third-person camera with mouse aiming/shooting. Mini-map via a separate top-down viewport render.",
+      "A real-time WebGL rendition of the classic Battle Zone game, in 3D — a deliberate twist, since the 1980 original didn't use any 3D models at all, just vectors drawn directly in space. Custom vertex and fragment shaders use Model-View-Projection transforms. Assets load from OBJ files I modeled myself in Blockbench, tanks included (albeit badly). Third-person camera with mouse aiming/shooting. Mini-map via a separate top-down viewport render.",
     audience:
       "A graphics-programming project that also has to play as a tank game in the browser. Solo.",
     problem:
-      "The whole 3D path — MVP transforms, custom vertex/fragment shaders, OBJ loading, third-person mouse aim, and a second top-down viewport for a mini-map — had to be authored without a game engine, including the tank and spaceship meshes.",
+      "The whole 3D path — MVP transforms, custom vertex/fragment shaders, OBJ loading, third-person mouse aim, and a second top-down viewport for a mini-map — had to be authored without a game engine, including the tank and spaceship meshes. I picked Battle Zone specifically because I wanted a real-time 3D graphics challenge with gameplay simple enough that the graphics could stay the actual focus.",
     explorationItems: [
       {
         title: "Use an engine or a high-level 3D library",
@@ -312,7 +320,9 @@ export const projects: Project[] = [
           "Full control of the pipeline; every system (load, shade, aim, map) is yours to debug.",
       },
     ],
-    edgeCases: [],
+    edgeCases: [
+      "The mini-map was the hardest part to get right — it's rendered as a genuine second WebGL viewport inside drawRadar(), not a separate canvas or an HTML overlay. The lesson that would've saved the most time: clear the depth buffer before moving the camera to the new view, or the second pass reads stale depth from the first.",
+    ],
     solution:
       "Complete solo WebGL game: custom shaders, Blockbench OBJs, third-person shooting, mini-map viewport.",
     reflection: [
