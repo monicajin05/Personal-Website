@@ -263,11 +263,33 @@ export default function CaseStudy() {
       {/* Hero image */}
       <div className="max-w-5xl mx-auto px-6 md:px-12 -mt-1">
         <div className="overflow-hidden rounded-sm bg-muted">
-          <img
-            src={project.imageUrl}
-            alt={`${project.title} preview`}
-            className="block w-full h-auto max-h-[70vh] object-contain"
-          />
+          {project.videoUrl ? (
+            <video
+              src={project.videoUrl}
+              poster={project.imageUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="block w-full h-auto max-h-[70vh] object-contain"
+            />
+          ) : project.vimeoBackgroundId ? (
+            <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+              <iframe
+                src={`https://player.vimeo.com/video/${project.vimeoBackgroundId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                frameBorder="0"
+                allow="autoplay; fullscreen"
+                title={project.title}
+              />
+            </div>
+          ) : (
+            <img
+              src={project.imageUrl}
+              alt={`${project.title} preview`}
+              className="block w-full h-auto max-h-[70vh] object-contain"
+            />
+          )}
         </div>
       </div>
 
@@ -410,6 +432,28 @@ export default function CaseStudy() {
                 </button>
               ))}
             </div>
+
+            {project.galleryVideos && project.galleryVideos.length > 0 && (
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {project.galleryVideos.map((vid) => (
+                  <div key={vid.vimeoId}>
+                    <div className="overflow-hidden rounded-sm bg-muted relative w-full" style={{ aspectRatio: "16/9" }}>
+                      <iframe
+                        src={`https://player.vimeo.com/video/${vid.vimeoId}`}
+                        className="absolute inset-0 w-full h-full"
+                        frameBorder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowFullScreen
+                        title={vid.caption || project.title}
+                      />
+                    </div>
+                    {vid.caption && (
+                      <p className="mt-2 text-xs text-muted-fg leading-relaxed">{vid.caption}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </CaseStudySection>
         )}
 

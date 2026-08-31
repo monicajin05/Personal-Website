@@ -4,13 +4,38 @@ import { projects } from "../data/projects";
 function ProjectItem({ project }: { project: (typeof projects)[0] }) {
   return (
     <Link to={`/work/${project.slug}`} className="group block">
-      {/* Image */}
+      {/* Image / video */}
       <div className="relative overflow-hidden bg-muted">
-        <img
-          src={project.imageUrl}
-          alt={project.title}
-          className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-        />
+        {project.videoUrl ? (
+          <video
+            src={project.videoUrl}
+            poster={project.imageUrl}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        ) : project.vimeoBackgroundId ? (
+          <div
+            className="relative w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            style={{ aspectRatio: "16/9" }}
+          >
+            <iframe
+              src={`https://player.vimeo.com/video/${project.vimeoBackgroundId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              title={project.title}
+            />
+          </div>
+        ) : (
+          <img
+            src={project.imageUrl}
+            alt={project.title}
+            className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        )}
         {/* Status badge */}
         {project.status === "in-development" && (
           <div className="absolute top-3 left-3 z-10">

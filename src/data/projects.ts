@@ -17,7 +17,10 @@ export interface Project {
   reflection: string[];
   imageUrl: string;
   solutionImageUrl: string;
+  videoUrl?: string;
+  vimeoBackgroundId?: string;
   galleryImages?: { src: string; caption: string }[];
+  galleryVideos?: { vimeoId: string; caption: string }[];
   docLinks?: { label: string; href: string }[];
   color: string;
   link?: string;
@@ -89,6 +92,10 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle — the code (726) comes from wound shapes on the dinosaur specimens" },
       { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Dinosaur specimens in Blender-modeled test tubes — each wound doubles as a digit in the padlock code" },
       { src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "The 'definitive ranking of dinosaurs' — the evidence puzzle on the Room 3 monitor" },
+    ],
+    galleryVideos: [
+      { vimeoId: "1180146346", caption: "The test-tubes puzzle, in action" },
+      { vimeoId: "1180149020", caption: "Solving the padlock puzzle" },
     ],
     color: "#0D1A15",
     status: "complete",
@@ -271,6 +278,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
+    videoUrl: "/videos/crazy-old-mans-trip-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/crazy-old-mans-trip/design-doc.png", caption: "Cutscene storyboard and menu sketch" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/environment.png", caption: "Mansion interior, blocked out in Unreal" },
@@ -331,6 +339,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/battle-zone-3d-cover.png",
     solutionImageUrl: "/images/projects/battle-zone-3d-solution.png",
+    vimeoBackgroundId: "1180000932",
     galleryImages: [
       { src: "/images/projects/gallery/battle-zone-3d/vertex-shader.png", caption: "Custom vertex shader — MVP transform" },
       { src: "/images/projects/gallery/battle-zone-3d/fragment-shader.png", caption: "Custom fragment shader — ambient/diffuse lighting" },
@@ -647,6 +656,11 @@ export const projects: Project[] = [
     galleryImages: [
       { src: "/images/projects/gallery/adversarial-attacks/fgsm-attack.png", caption: "FGSM attack — single-step perturbation" },
       { src: "/images/projects/gallery/adversarial-attacks/pgd-attack.png", caption: "PGD attack — iterative perturbation" },
+    ],
+    docLinks: [
+      { label: "REU research proposal", href: "https://docs.google.com/document/d/1u1j2eTiOSsLu97ch3YP8TU4xKlx7bYXQnqVBlrB-qAg/edit?tab=t.0" },
+      { label: "Robust attention analysis", href: "https://docs.google.com/presentation/d/14JKQ-HDFEOG7anAx-F5ANpHHyHF7FQXUvqyVCx8QT0U/edit" },
+      { label: "Protransformer analysis", href: "https://docs.google.com/presentation/d/1KA0EZrWSNUHQllLWbhEz2l-0rYROk8iyuj9Bfoz-FZE/edit" },
     ],
     color: "#0A0A1A",
     status: "complete",
