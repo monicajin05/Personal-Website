@@ -97,18 +97,18 @@ export const projects: Project[] = [
   {
     slug: "slimed-awakening",
     title: "Slimed: Awakening",
-    hook: "A souls-like 2D dungeon crawler: procedurally generated map, multiple enemy types, dodge/parry, two bosses.",
-    tags: ["Team · 5", "Lead artist", "Godot", "Complete"],
+    hook: "A souls-like 2D dungeon crawler: Tina fights through a meteor-torn forest to rescue stranded dino kids before the spreading fire — or Nano — gets to them first.",
+    tags: ["Team · 4", "Lead artist", "Godot", "Complete"],
     year: "Complete",
     role: "Lead artist — all 2D pixel art (player/enemy idle & attack, environment, assets, ending cards)",
     timeline: "Complete",
     tools: ["Aseprite", "Godot"],
     overview:
-      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat. The map is procedurally generated. There are multiple enemy types, dodge/parry mechanics, and two bosses. You clear rooms of enemies to progress. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Published on itch.io.",
+      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat, and a direct continuation of the warpath branch of Slimed: Origins. A meteor hits just as Tina goes to settle things with Nano, and she has to fight through procedurally generated forest floors to find him while rescuing dinosaur kids stranded ahead of the spreading fire — save them all for the best ending, lose them all for the worst one. There are multiple enemy types, dodge/parry mechanics, and two bosses. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Made for a class project themed 'Dueling Dinosaurs' by a museum sponsor. Published on itch.io.",
     audience:
-      "Players who want a hard 2D action game with a lot of original pixel art. 5-person team.",
+      "Players who want a hard 2D action game with a lot of original pixel art. 4-person team: Jymon Ross, Jacob King, Louis Ton, and me.",
     problem:
-      "This was an asset-heavy project: one lead artist owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses. Volume and consistency were the real constraint.",
+      "This was an asset-heavy project: I owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses, while Jacob built the floor generation and tile implementation and Louis handled enemy AI. Volume and consistency were the real constraint.",
     explorationItems: [
       {
         title: "Limit original art to the player and reuse stock enemies",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
       {
         title: "Full original pixel suite for a procedural dungeon (what shipped)",
         description:
-          "All 2D pixel art: player/enemy idle and attack, environment, assets, ending cards, plus level layout, pterodactyl animation, an enemy sheet, boss design and attack states, and promo art.",
+          "All 2D pixel art: player/enemy idle and attack, environment, assets, ending cards, plus level layout, pterodactyl animation, an enemy sheet, boss design and attack states, and promo art. We also weighed a slightly-angled art style against a strict top-down one, and picked top-down for more flexible movement and a simpler tile pipeline.",
         tradeoff:
           "Cohesive look across generated rooms; the cost is an asset-heavy schedule on one lead artist.",
       },
@@ -135,7 +135,7 @@ export const projects: Project[] = [
       "The boss's dodge needed real thought to avoid looking dumb: it raycasts outward to find an open direction to dodge into, and charges straight out if every direction comes back blocked (i.e. it's cornered).",
     ],
     solution:
-      "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. The final boss reuses an earlier boss's state machine as its base, with a parry built as its own state machine and a pterodactyl enemy added to vary room-to-room traversal. Built in Aseprite and Godot.",
+      "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. Rescuing stranded kids doubles as an extra-life mechanic, and how many you save determines which ending you get. The final boss reuses an earlier boss's state machine as its base, with a parry built as its own state machine and a pterodactyl enemy added to vary room-to-room traversal. Built in Aseprite and Godot.",
     reflection: [
       "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
       "Cutting the bone-armor idea was the right call, but it's the one I still think about — it's a good reminder that a fun idea and a fundable idea aren't always the same thing on a fixed timeline.",
@@ -151,7 +151,9 @@ export const projects: Project[] = [
       { src: "/images/projects/gallery/slimed-awakening/promo-art.png", caption: "Promo art" },
     ],
     docLinks: [
-      { label: "Nano boss fight design doc", href: "https://docs.google.com/document/d/1Z4awgx4DBe7KPM3CNtxoM09Yh1rIt5_IR9P0TyU3FKk/edit?tab=t.0" },
+      { label: "Nano boss fight design doc", href: "https://docs.google.com/document/d/1Z4awgx4DBe7KPM3CNtxoM09Yh1rIt5_IR9P0TyU3FKk/edit?usp=sharing" },
+      { label: "Project overview & brainstorm", href: "https://docs.google.com/document/d/101P2PRV292vtx0xF7dBs-FUBj826TApb70Wtgmly1VM/edit?usp=sharing" },
+      { label: "Pitch doc & task tracker", href: "https://docs.google.com/document/d/1mTkSzyyP_baqCHDl4AQEsm1h0MAqjPB9YU9bKjRcgx8/edit?usp=sharing" },
     ],
     color: "#0A0D1A",
     itchLink: "https://underduke.itch.io/slimed-awakening-beta",

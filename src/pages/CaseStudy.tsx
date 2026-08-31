@@ -3,6 +3,11 @@ import { useParams, Link, Navigate } from "react-router";
 import { projects } from "../data/projects";
 import TagPill from "../components/TagPill";
 
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six"];
+function countWord(n: number): string {
+  return COUNT_WORDS[n] ?? String(n);
+}
+
 function CaseStudySection({
   id,
   label,
@@ -280,7 +285,7 @@ export default function CaseStudy() {
 
         <CaseStudySection id="exploration" label="Exploration">
           <p className="text-muted-fg text-sm mb-8">
-            Three approaches considered before committing to a direction.
+            {countWord(project.explorationItems.length).replace(/^./, (c) => c.toUpperCase())} approaches considered before committing to a direction.
           </p>
           <div className="space-y-8">
             {project.explorationItems.map((item, i) => (
