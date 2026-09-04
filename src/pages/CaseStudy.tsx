@@ -436,16 +436,25 @@ export default function CaseStudy() {
             {project.galleryVideos && project.galleryVideos.length > 0 && (
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {project.galleryVideos.map((vid) => (
-                  <div key={vid.vimeoId}>
+                  <div key={vid.src || vid.vimeoId}>
                     <div className="overflow-hidden rounded-sm bg-muted relative w-full" style={{ aspectRatio: "16/9" }}>
-                      <iframe
-                        src={`https://player.vimeo.com/video/${vid.vimeoId}`}
-                        className="absolute inset-0 w-full h-full"
-                        frameBorder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        allowFullScreen
-                        title={vid.caption || project.title}
-                      />
+                      {vid.src ? (
+                        <video
+                          src={vid.src}
+                          controls
+                          playsInline
+                          className="absolute inset-0 w-full h-full object-contain"
+                        />
+                      ) : (
+                        <iframe
+                          src={`https://player.vimeo.com/video/${vid.vimeoId}`}
+                          className="absolute inset-0 w-full h-full"
+                          frameBorder="0"
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title={vid.caption || project.title}
+                        />
+                      )}
                     </div>
                     {vid.caption && (
                       <p className="mt-2 text-xs text-muted-fg leading-relaxed">{vid.caption}</p>

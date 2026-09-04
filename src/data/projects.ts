@@ -20,7 +20,7 @@ export interface Project {
   videoUrl?: string;
   vimeoBackgroundId?: string;
   galleryImages?: { src: string; caption: string }[];
-  galleryVideos?: { vimeoId: string; caption: string }[];
+  galleryVideos?: { vimeoId?: string; src?: string; caption: string }[];
   docLinks?: { label: string; href: string }[];
   color: string;
   link?: string;
@@ -97,6 +97,8 @@ export const projects: Project[] = [
     galleryVideos: [
       { vimeoId: "1180146346", caption: "The test-tubes puzzle, in action" },
       { vimeoId: "1180149020", caption: "Solving the padlock puzzle" },
+      { src: "/videos/slimed-rebirth-gallery-2.mp4", caption: "More gameplay footage" },
+      { src: "/videos/slimed-rebirth-gallery-3.mp4", caption: "More gameplay footage" },
     ],
     color: "#0D1A15",
     status: "complete",
