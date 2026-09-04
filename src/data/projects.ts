@@ -34,18 +34,18 @@ export const projects: Project[] = [
   {
     slug: "slimed-rebirth",
     title: "Slimed: Rebirth",
-    hook: "A top-down escape room where you team up with your archnemesis to break out of a mad scientist's lab.",
-    tags: ["Team · 4", "Godot", "2D art", "Complete"],
+    hook: "An escape room game where you solve problems to break out of a mad scientist's lab.",
+    tags: ["Team · 4", "Godot", "2D/3D art", "Complete"],
     year: "Complete",
-    role: "Programmer — lighting & level design, asset implementation, UI; primary 2D asset artist; puzzle/game design with the team",
+    role: "Programmer (lighting & level design, asset implementation, UI); Lead 2D artist",
     timeline: "Complete",
     tools: ["Godot", "Aseprite", "Blender", "GitHub"],
     overview:
-      "Slimed: Rebirth is a top-down escape room game. Players team up with their archnemesis to break out of a mad scientist's lab. Puzzles unlock new areas as you progress, and two playable characters with unique abilities have to be used strategically to uncover clues. The project mixes 2D and 3D art.",
+      "Slimed: Rebirth is a top-down escape room game featuring dialogue and interactive puzzles. Players team up with their enemy to break out of a mad scientist's lab. Puzzles unlock new areas as you progress, and two playable characters with unique abilities have to be used strategically to uncover clues. The project mixes 2D and 3D art.",
     audience:
-      "Players who like co-op puzzle games and character-driven worlds. Built with a 4-person team.",
+      "Players who like puzzle games and character-driven worlds.",
     problem:
-      "The rooms had to work as puzzles and as spaces you can actually move through — and the first pass got that wrong. Early rooms were scaled way bigger than the player and every other asset, so playtesters spent most of their time just walking between the actual puzzle beats. As lead environment artist, resizing the whole map fell to me — including every collision box by hand, since Godot doesn't rescale those for you. It also meant untangling a world tree where every room was still named 'rect1,' 'rect2,' 'rect2,' which nobody, including me, could keep straight once the scope grew past a two-person sketch. On top of the resize, I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
+      "The rooms had to work as puzzles and as spaces players can move through. Early rooms were scaled way bigger than the player and every other asset, so playtesters spent most of their time just walking between the actual puzzle beats. As lead environment artist, resizing the whole map fell to me — including every collision box by hand, since Godot doesn't rescale those for you. It also meant untangling a world tree where every room was still named 'rect1,' 'rect2,' 'rect2,' which nobody, including me, could keep straight once the scope grew past a two-person sketch. On top of the resize, I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
     explorationItems: [
       {
         title: "Treat the two characters as interchangeable",
@@ -85,6 +85,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.png",
     solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
+    videoUrl: "/videos/slimed-rebirth-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png", caption: "Puzzle design — the hotel-room floor plan, mapping fuses, mech prototype, and the pterodactyl/turtle rooms" },
       { src: "/images/projects/gallery/slimed-rebirth/level-design-2.png", caption: "Room 3 layout, blocked out in Godot" },
@@ -150,6 +151,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-awakening-cover.png",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
+    videoUrl: "/videos/slimed-awakening-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/slimed-awakening/boss-fight-design.png", caption: "Boss design doc — Nano's armor phases, attack states, and dodge logic" },
       { src: "/images/projects/gallery/slimed-awakening/boss-gameplay.png", caption: "Boss fight in progress" },
@@ -214,6 +216,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/slimed-origins-cover.png",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
+    videoUrl: "/videos/slimed-origins-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/slimed-origins/brainstorming.jpg", caption: "Whiteboard — sketching how Origins' branches connect into the rest of the Slimed series" },
       { src: "/images/projects/gallery/slimed-origins/design-doc.png", caption: "Design doc — setting, goals, key challenges, and audience" },
@@ -399,6 +402,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/catacombs-cover.png",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
+    videoUrl: "/videos/catacombs-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/catacombs/brainstorming.jpg", caption: "Early brainstorm sketch — the accusation UI and timer" },
       { src: "/images/projects/gallery/catacombs/character-bios.png", caption: "Character bios and motives for each suspect" },
@@ -465,6 +469,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/tapioca-tails-cover.png",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
+    videoUrl: "/videos/tapioca-tails-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/tapioca-tails/side-view-background.png", caption: "Side-view restaurant environment art, painted in Procreate" },
       { src: "/images/projects/gallery/tapioca-tails/gameplay-1.png", caption: "Order selection screen" },
@@ -525,7 +530,7 @@ export const projects: Project[] = [
       { label: "Game design doc", href: "https://docs.google.com/document/d/112Bh7UdHYZ9SufLIvyEaXYXoNVlwG5ILHBE_1vy-aco/edit?tab=t.0" },
       { label: "Level design guide", href: "https://docs.google.com/document/d/1l2ZV5OM-WDdUgM92Hpf7emUzCQFadrTzQ6PP2PSnHiQ/edit?tab=t.0#heading=h.frod1xfwvdq" },
     ],
-    imageUrl: "/images/projects/encore-cover.png",
+    imageUrl: "/images/projects/encore-cover.gif",
     solutionImageUrl: "/images/projects/encore-solution.png",
     galleryImages: [
       { src: "/images/projects/gallery/encore/environment-0-final.png", caption: "Environment: the orchestra room" },
@@ -591,6 +596,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
     solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
+    videoUrl: "/videos/ai-glaze-visualization-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/ai-glaze-visualization/simulation-model.png", caption: "Simulated glaze-and-form combinations from the three.js model" },
       { src: "/images/projects/gallery/ai-glaze-visualization/glaze-simulation.png", caption: "Glaze simulation interface" },
