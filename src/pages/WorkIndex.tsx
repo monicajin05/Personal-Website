@@ -1,34 +1,76 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { projects } from "../data/projects";
 
+function useInView<T extends HTMLElement>(rootMargin = "300px") {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [rootMargin]);
+
+  return { ref, inView };
+}
+
 function ProjectItem({ project }: { project: (typeof projects)[0] }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
     <Link to={`/work/${project.slug}`} className="group block">
       {/* Image / video */}
-      <div className="relative overflow-hidden bg-muted">
+      <div ref={ref} className="relative overflow-hidden bg-muted">
         {project.videoUrl ? (
-          <video
-            src={project.videoUrl}
-            poster={project.imageUrl}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          />
-        ) : project.vimeoBackgroundId ? (
-          <div
-            className="relative w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            style={{ aspectRatio: "16/9" }}
-          >
-            <iframe
-              src={`https://player.vimeo.com/video/${project.vimeoBackgroundId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              frameBorder="0"
-              allow="autoplay; fullscreen"
-              title={project.title}
+          inView ? (
+            <video
+              src={project.videoUrl}
+              poster={project.imageUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
-          </div>
+          ) : (
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+          )
+        ) : project.vimeoBackgroundId ? (
+          inView ? (
+            <div
+              className="relative w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              style={{ aspectRatio: "16/9" }}
+            >
+              <iframe
+                src={`https://player.vimeo.com/video/${project.vimeoBackgroundId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                frameBorder="0"
+                allow="autoplay; fullscreen"
+                title={project.title}
+              />
+            </div>
+          ) : (
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+          )
         ) : (
           <img
             src={project.imageUrl}
