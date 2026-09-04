@@ -661,6 +661,7 @@ export const projects: Project[] = [
     ],
     imageUrl: "/images/projects/adversarial-attacks-cover.png",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",
+    videoUrl: "/videos/adversarial-attacks-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/adversarial-attacks/fgsm-attack.png", caption: "FGSM attack — single-step perturbation" },
       { src: "/images/projects/gallery/adversarial-attacks/pgd-attack.png", caption: "PGD attack — iterative perturbation" },
