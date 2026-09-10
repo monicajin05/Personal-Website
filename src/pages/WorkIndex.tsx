@@ -31,7 +31,14 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
 
   useEffect(() => {
     if (!inView) return;
-    videoRef.current?.play().catch(() => {});
+    const el = videoRef.current;
+    if (!el) return;
+    // React sets `muted` as a JS property, not an HTML attribute — Safari's
+    // autoplay-eligibility check can miss that at insertion time, so force
+    // the attribute explicitly too.
+    el.setAttribute("muted", "");
+    el.muted = true;
+    el.play().catch(() => {});
   }, [inView]);
 
   return (
@@ -47,6 +54,7 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
               autoPlay
               loop
               muted
+              defaultMuted
               playsInline
               onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
               className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
