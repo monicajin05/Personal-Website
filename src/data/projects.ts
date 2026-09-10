@@ -83,7 +83,7 @@ export const projects: Project[] = [
       "The 'rect1, rect2, rect2' naming disaster was a bigger lesson than the resize itself: once a team's scope outgrows what one person can hold in their head, sloppy internal organization stops being a personal quirk and starts taxing everyone else.",
       "Being the lead artist and a programmer on the same puzzle meant I could design a clue and build the UI to sell it in the same sitting — that pairing is probably the thing I'm proudest of on this project, 2fps evidence video included.",
     ],
-    imageUrl: "/images/projects/slimed-rebirth-cover.png",
+    imageUrl: "/images/projects/slimed-rebirth-cover.jpg",
     solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
     videoUrl: "/videos/slimed-rebirth-thumbnail.mp4",
     galleryImages: [
@@ -151,7 +151,7 @@ export const projects: Project[] = [
       "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
       "Cutting the bone-armor idea was the right call, but it's the one I still think about — it's a good reminder that a fun idea and a fundable idea aren't always the same thing on a fixed timeline.",
     ],
-    imageUrl: "/images/projects/slimed-awakening-cover.png",
+    imageUrl: "/images/projects/slimed-awakening-cover.jpg",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
     videoUrl: "/videos/slimed-awakening-thumbnail.mp4",
     galleryImages: [
@@ -216,7 +216,7 @@ export const projects: Project[] = [
       "Helping set narrative and flow for the whole Slimed series meant Origins had to work as a story and as a visual template later games could follow.",
       "Players gravitated toward the war ending more than the others in testing — though that's probably as much about how the story frames the choice as any real appetite for war.",
     ],
-    imageUrl: "/images/projects/slimed-origins-cover.png",
+    imageUrl: "/images/projects/slimed-origins-cover.jpg",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
     videoUrl: "/videos/slimed-origins-thumbnail.mp4",
     galleryImages: [
@@ -281,7 +281,7 @@ export const projects: Project[] = [
       "Porting Aseprite textures through Unreal nodes in three weeks is a pipeline problem as much as a look problem.",
       "Scaling UVs by the object's own dimensions before sampling is one of those small material-graph tricks I now just reach for by default.",
     ],
-    imageUrl: "/images/projects/crazy-old-mans-trip-cover.png",
+    imageUrl: "/images/projects/crazy-old-mans-trip-cover.jpg",
     solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
     videoUrl: "/videos/crazy-old-mans-trip-thumbnail.mp4",
     galleryImages: [
@@ -342,7 +342,7 @@ export const projects: Project[] = [
     reflection: [
       "Doing programming, modeling, and graphics processing solo makes the shader pair and the two models the whole visual system — there is no engine art pipeline to hide behind.",
     ],
-    imageUrl: "/images/projects/battle-zone-3d-cover.png",
+    imageUrl: "/images/projects/battle-zone-3d-cover.jpg",
     solutionImageUrl: "/images/projects/battle-zone-3d-solution.png",
     vimeoBackgroundId: "1180000932",
     galleryImages: [
@@ -402,7 +402,7 @@ export const projects: Project[] = [
       "Lead game manager on a 2-day jam is mostly integration: dialogue and rooms only work if inventory, UI, and saves do not eat the whole clock.",
       "Biggest lesson from playtesting: catering to your actual demographic matters more than how clever your mystery is. The room was packed and people were bouncing between a dozen games at once — a game that wants you to slow down and actually read clues just doesn't shine in that setting the way a tight, addictive game loop does.",
     ],
-    imageUrl: "/images/projects/catacombs-cover.png",
+    imageUrl: "/images/projects/catacombs-cover.jpg",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
     videoUrl: "/videos/catacombs-thumbnail.mp4",
     galleryImages: [
@@ -469,7 +469,7 @@ export const projects: Project[] = [
       "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build. We just had more artists than programmers on the team, which happens on a jam sometimes — it doesn't matter how good something looks in isolation if it doesn't make the build.",
       "Playtesters gravitated hard toward the topping-assembly minigame — stacking syrups and toppings onto the drink — and I'd bet that's mostly the art talking. Artists make a game memorable, but programmers, who handle the actual function, are what make a game... you know. Exist.",
     ],
-    imageUrl: "/images/projects/tapioca-tails-cover.png",
+    imageUrl: "/images/projects/tapioca-tails-cover.jpg",
     solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
     videoUrl: "/videos/tapioca-tails-thumbnail.mp4",
     galleryImages: [

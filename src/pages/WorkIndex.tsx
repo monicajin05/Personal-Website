@@ -47,6 +47,8 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
             <img
               src={project.imageUrl}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
           )
@@ -68,6 +70,8 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
             <img
               src={project.imageUrl}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
           )
