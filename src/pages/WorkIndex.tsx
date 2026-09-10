@@ -2,22 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { projects } from "../data/projects";
 
-function useInView<T extends HTMLElement>(rootMargin = "300px") {
+function useInView<T extends HTMLElement>(rootMargin = "200px") {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin },
-    );
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin });
     observer.observe(el);
     return () => observer.disconnect();
   }, [rootMargin]);
@@ -28,46 +20,49 @@ function useInView<T extends HTMLElement>(rootMargin = "300px") {
 function ProjectItem({ project }: { project: (typeof projects)[0] }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
     const el = videoRef.current;
-    if (!el) return;
-    // React sets `muted` as a JS property, not an HTML attribute — Safari's
-    // autoplay-eligibility check can miss that at insertion time, so force
-    // the attribute explicitly too.
-    el.setAttribute("muted", "");
-    el.muted = true;
-    el.play().catch(() => {});
-  }, [inView]);
+    if (!el || !project.videoUrl) return;
+
+    if (inView) {
+      // React sets `muted` as a JS property, not an HTML attribute — Safari's
+      // autoplay-eligibility check can miss that at insertion time, so force
+      // the attribute explicitly too, and keep the element mounted from
+      // first paint rather than swapping it in later (Safari is stricter
+      // about autoplaying video inserted well after page load).
+      el.setAttribute("muted", "");
+      el.muted = true;
+      if (!hasLoadedRef.current) {
+        hasLoadedRef.current = true;
+        el.src = project.videoUrl;
+        el.load();
+      }
+      el.play().catch(() => {});
+    } else if (hasLoadedRef.current) {
+      // Pause once scrolled out of view so only on-screen cards are ever
+      // decoding at once — otherwise every card you've scrolled past keeps
+      // playing in the background and everything gets choppy.
+      el.pause();
+    }
+  }, [inView, project.videoUrl]);
 
   return (
     <Link to={`/work/${project.slug}`} className="group block">
       {/* Image / video */}
       <div ref={ref} className="relative overflow-hidden bg-muted">
         {project.videoUrl ? (
-          inView ? (
-            <video
-              ref={videoRef}
-              src={project.videoUrl}
-              poster={project.imageUrl}
-              autoPlay
-              loop
-              muted
-              defaultMuted
-              playsInline
-              onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
-              className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            />
-          ) : (
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              loading="lazy"
-              decoding="async"
-              className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            />
-          )
+          <video
+            ref={videoRef}
+            poster={project.imageUrl}
+            preload="none"
+            loop
+            muted
+            defaultMuted
+            playsInline
+            className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
         ) : project.vimeoBackgroundId ? (
           inView ? (
             <div
