@@ -27,6 +27,12 @@ function useInView<T extends HTMLElement>(rootMargin = "300px") {
 
 function ProjectItem({ project }: { project: (typeof projects)[0] }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!inView) return;
+    videoRef.current?.play().catch(() => {});
+  }, [inView]);
 
   return (
     <Link to={`/work/${project.slug}`} className="group block">
@@ -35,12 +41,14 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
         {project.videoUrl ? (
           inView ? (
             <video
+              ref={videoRef}
               src={project.videoUrl}
               poster={project.imageUrl}
               autoPlay
               loop
               muted
               playsInline
+              onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
               className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
           ) : (
