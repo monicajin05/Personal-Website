@@ -60,6 +60,15 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasLoadedRef = useRef(false);
+  // Sticky version of inView: once true, stays true. The Vimeo iframe can't
+  // be paused/resumed the way our native <video> elements can, so unlike
+  // those, it should only ever mount once — remounting it every time the
+  // card crosses the viewport boundary reloads Vimeo's whole player from
+  // scratch, which is what was causing it to stall instead of loop cleanly.
+  const [hasEnteredView, setHasEnteredView] = useState(false);
+  useEffect(() => {
+    if (inView) setHasEnteredView(true);
+  }, [inView]);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -109,7 +118,7 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
             className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />
         ) : project.vimeoBackgroundId ? (
-          inView ? (
+          hasEnteredView ? (
             <div
               className="relative w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               style={{ aspectRatio: "16/9" }}
