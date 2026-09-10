@@ -150,3 +150,10 @@
 # blobs since most static-site builds/previews don't run `git lfs pull`.
 # ---------------------------------------------------------------------------
 public/** -filter -diff -merge -text
+
+# ---------------------------------------------------------------------------
+# Original (pre-compression) video backups — not deployed, but kept as
+# plain blobs too since git-lfs isn't guaranteed to be installed wherever
+# this repo gets cloned/pulled.
+# ---------------------------------------------------------------------------
+video-backups/** -filter -diff -merge -text
