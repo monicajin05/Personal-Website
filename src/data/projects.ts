@@ -659,7 +659,7 @@ export const projects: Project[] = [
       "Recreating a known physical attack is the way to trust the 'why' — otherwise the analysis is about a different system than the t-shirt result.",
       "The most surprising finding: the more robust a model is against adversarial attacks, the less accurate it tends to be on clean data. Didn't make sense to me at first — if a model is more robust, isn't that just better? Turns out an adversarially-trained model needs a wide buffer zone around its decision boundary so predictions stay stable even when an input gets perturbed, and that buffer costs it some precision fitting the clean data. Good reminder that there's no universally 'better' model, just different tradeoffs depending on what you're optimizing for.",
     ],
-    imageUrl: "/images/projects/adversarial-attacks-cover.png",
+    imageUrl: "/images/projects/adversarial-attacks-cover.jpg",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",
     videoUrl: "/videos/adversarial-attacks-thumbnail.mp4",
     galleryImages: [
