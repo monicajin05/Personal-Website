@@ -45,6 +45,11 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
       el.muted = true;
       if (!hasLoadedRef.current) {
         hasLoadedRef.current = true;
+        // poster is set here too, not as a static JSX attribute — it has no
+        // lazy-loading equivalent, so leaving it in the markup meant every
+        // card's poster image fetched immediately on page load regardless
+        // of scroll position.
+        el.poster = project.imageUrl;
         el.src = project.videoUrl;
         el.load();
       }
@@ -64,12 +69,12 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
         {project.videoUrl ? (
           <video
             ref={videoRef}
-            poster={project.imageUrl}
             preload="none"
             loop
             muted
             defaultMuted
             playsInline
+            style={{ aspectRatio: "16/9" }}
             className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />
         ) : project.vimeoBackgroundId ? (
