@@ -2,45 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { projects } from "../data/projects";
 
-// Safari has a much lower limit on concurrent hardware video-decode sessions
-// than Chrome — letting every near-viewport thumbnail start loading at once
-// forces Safari to queue most of them, which reads as "stuck on the still
-// photo for ages." Cap how many can be active at a time, tighter in Safari.
-function isSafariBrowser() {
-  if (typeof navigator === "undefined") return false;
-  const ua = navigator.userAgent;
-  return /^((?!chrome|crios|android).)*safari/i.test(ua);
-}
-const MAX_CONCURRENT_VIDEOS = isSafariBrowser() ? 2 : 6;
-const activeVideos = new Set<HTMLVideoElement>();
-const videoWaiters: { el: HTMLVideoElement; run: () => void }[] = [];
-
-function acquireVideoSlot(el: HTMLVideoElement, run: () => void) {
-  if (activeVideos.has(el)) {
-    run();
-    return;
-  }
-  if (activeVideos.size < MAX_CONCURRENT_VIDEOS) {
-    activeVideos.add(el);
-    run();
-  } else if (!videoWaiters.some((w) => w.el === el)) {
-    videoWaiters.push({ el, run });
-  }
-}
-
-function releaseVideoSlot(el: HTMLVideoElement) {
-  const wasActive = activeVideos.delete(el);
-  const waitingIdx = videoWaiters.findIndex((w) => w.el === el);
-  if (waitingIdx !== -1) videoWaiters.splice(waitingIdx, 1);
-  if (wasActive) {
-    const next = videoWaiters.shift();
-    if (next) {
-      activeVideos.add(next.el);
-      next.run();
-    }
-  }
-}
-
 function useInView<T extends HTMLElement>(rootMargin = "200px") {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -82,24 +43,18 @@ function ProjectItem({ project }: { project: (typeof projects)[0] }) {
       // about autoplaying video inserted well after page load).
       el.setAttribute("muted", "");
       el.muted = true;
-      acquireVideoSlot(el, () => {
-        if (!hasLoadedRef.current) {
-          hasLoadedRef.current = true;
-          el.src = project.videoUrl!;
-          el.load();
-        }
-        el.play().catch(() => {});
-      });
-    } else {
-      // Pause (and give up the decode slot) once scrolled out of view so
-      // only on-screen cards are ever decoding at once — otherwise every
-      // card you've scrolled past keeps playing in the background and
-      // everything gets choppy.
-      releaseVideoSlot(el);
-      if (hasLoadedRef.current) el.pause();
+      if (!hasLoadedRef.current) {
+        hasLoadedRef.current = true;
+        el.src = project.videoUrl;
+        el.load();
+      }
+      el.play().catch(() => {});
+    } else if (hasLoadedRef.current) {
+      // Pause once scrolled out of view so only on-screen cards are ever
+      // decoding at once — otherwise every card you've scrolled past keeps
+      // playing in the background and everything gets choppy.
+      el.pause();
     }
-
-    return () => releaseVideoSlot(el);
   }, [inView, project.videoUrl]);
 
   return (
