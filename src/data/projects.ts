@@ -49,7 +49,7 @@ export const projects: Project[] = [
     title: "Slimed: Rebirth",
     hook: "An escape room game where you solve problems to break out of a mad scientist's lab.",
     tags: ["Team · 4", "Godot", "2D/3D art", "Complete"],
-    year: "Complete",
+    year: "March 2026",
     role: "Programmer, 2D artist, environment artist",
     timeline: "Complete",
     tools: ["Godot", "GDScript", "Aseprite", "Blender", "GitHub"],
@@ -66,32 +66,33 @@ export const projects: Project[] = [
         {
           type: "image",
           src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png",
-          caption: "Photo of said slop",
+          caption: "photo of said slop",
         },
         {
           type: "text",
           text: "Making this gave me more respect for actual escape room designers. Through brainstorming, my team and I had a lot of moments where we had to ask ourselves “uh….so what next?” It was difficult to make the map feel balanced, especially when we would have more ideas for one room compared to others. Reading the diagram we made is like Challenge: Try to Decipher The Hieroglyphics.",
         },
+        { type: "text", text: "TLDR:" },
         {
           type: "text",
-          text: "TLDR: following the narrative from our earlier games — where a nanotyrannus and triceratops fight each other to the death and then get obliterated by a giant meteor (I realize this makes no sense; read the previous two entries for more context) — this game is about them getting reborn in a lab. Now stuck in an unfamiliar environment, they have to work together to escape before the mad scientist experiments on them.",
+          text: "Following the narrative from our earlier games, where a nanotyrannus and triceratops fight each other to the death and then get obliterated by a giant meteor (I realize this makes no sense. Read the prev. two entries for more context), this game is about them getting reborn in a lab. Now stuck in an unfamiliar environment, they have to work together to escape before the mad scientist experiments on them.",
         },
         {
           type: "text",
-          text: "The best part about this game is that you can switch between the T-Rex and Triceratops! I thought this was really cool because they both have different capabilities. While the Triceratops can equip a “language” hat (a.k.a. a tinfoil hat) that helps her read human language, the T-Rex can press buttons and keypads because… he has hands. Albeit small ones. Don’t think about it too hard.",
+          text: "The best part about this game is that you can switch in between the t-rex and triceratops! I thought this was really cool because they both have different capabilities. While the triceratops can equip a “language” hat (a.k.a. a tinfoil hat) that can help her read human language, the t-rex can press buttons and keypads because…he has hands. Albeit small ones. Don’t think about it too hard.",
         },
         {
           type: "image",
           src: "/images/projects/gallery/slimed-rebirth/slimeurself.png",
-          caption: "I’m not sure why this was made",
+          caption: "i’m not sure why this was made",
         },
         {
           type: "text",
-          text: "This added a layer of complexity to our game by balancing puzzle-solving with character switching. To make this more apparent to the player, we also added a brief cutscene at the beginning and notes scattered throughout the map in journals and on computers.",
+          text: "This added a layer of complexity for our game by balancing the puzzle solving with character switching. To make this more apparent for the user, we also added a brief cutscene in the beginning and notes scattered throughout the map in journals/on computers.",
         },
       ],
       sectionsHeading: "Some of the puzzles I designed!",
-      sectionsNote: "Look away if you wanna play the game! An escape room isn’t fun if you already know the answer.",
+      sectionsNote: "Look away if you wanna play the game! An escape room isn’t fun if you already know the answer!",
       sections: [
         {
           title: "Test Tube Puzzle",
@@ -100,11 +101,11 @@ export const projects: Project[] = [
             { type: "video", vimeoId: "1180149020", caption: "Solving the padlock puzzle" },
             {
               type: "text",
-              text: "This puzzle requires the player to be observant. After viewing the dinosaurs on the test tubes, the player should understand that the mutilations on them actually spell out numbers (2, 6, 7…wait…6 7?! Sorry, couldn’t help myself). Afterwards, they align the numbers with the lock on the door, where each space is outlined with one of the colors of the dinosaurs. It’s a pretty easy formula, but it primes the player to pay attention to their surroundings — which they’ll need later!",
+              text: "This puzzle requires the player to be observant. After viewing the dinosaurs on the test tubes, the player should understand that the mutilations on them actually spell out numbers (2, 6, 7…wait…6 7?! Sorry, couldn’t help myself). Afterwards, they align the numbers with the lock on the door, where each space is outlined with one of the colors of the dinosaurs. It’s a pretty easy formula, but it primes the player to pay attention to their surroundings, which they’ll need later!",
             },
             {
               type: "text",
-              text: "I pitched this idea to the team because we were looking for an extra puzzle to block Door 1, and created the 2D assets as a proof-of-concept. I also programmed the UI for the padlock puzzle. This wasn’t too bad — Godot has a good system with signals, so all I needed to make were the padlock’s circular arrays!",
+              text: "I pitched this idea to the team because we were looking for an extra puzzle to block door 1, and created the 2D assets as a proof-of-concept. I also programmed the UI for the padlock puzzle. This wasn’t too bad – godot has a good system with signals, so all I needed to make was the padlock’s circular arrays!",
             },
           ],
         },
@@ -115,15 +116,15 @@ export const projects: Project[] = [
             { type: "video", src: "/videos/slimed-rebirth-gallery-3.mp4", caption: "Watching our own ranking play back in-game" },
             {
               type: "text",
-              text: "This was my FAVORITE puzzle to design. IT WAS SO FUNNY. Basically, I got my team to roleplay as the scientists and rank all the dinosaurs. Each of us got a dinosaur to defend, then we assigned them to S tier, A tier, B tier, or C tier. I think I got to defend the pterodactyl? Unfortunately, I didn’t get S tier, but at least I was above average.",
+              text: "This was my FAVORITE puzzle to design. IT WAS SO FUNNY. Basically, I got me and my team to roleplay as the scientists and rank all the dinosaurs. Each one got a dinosaur to defend, and then we would assign them to either S tier, A tier, B tier, or C tier. I think I got to defend the pterodactyl? Unfortunately, I didn’t get S tier, but at least I was above average.",
             },
             {
               type: "text",
-              text: "You may ask what this ranking even has to do with solving puzzles. WELL — if the player was paying attention, they would have noticed that each room contains a giant mural on the floor with a dinosaur and the room number next to it. Using that plus our ranking, the player can figure out one of the codes.",
+              text: "You may ask what this ranking even has to do with solving puzzles. WELL, if the player was paying attention, they would have noticed that each room contains a giant mural on the floor with a dinosaur and the room number next to it. Using that plus our ranking, the player can figure out one of the codes.",
             },
             {
               type: "text",
-              text: "If you watched the video, you may have noticed that it turned out super choppy. Unfortunately, Godot has its limitations, and we couldn’t figure out a better way to do video embedding, so we just had to deal with 2 frames per second. I was telling everyone it lowkeyyyy fits the scene, because all the 2D assets are pixelated, and so is our video. You think so too, right? Right?",
+              text: "If you watched the video, you may have noticed that our video turned out super choppy. Unfortunately, Godot does have its limitations, and we couldn’t figure out a better way to do video embeddings, so we just had to deal with 2 frames per second. I was telling everyone that it lowkeyyyy fits the scene, because all the 2D assets are pixelated, and so is our video. You think so too, right? Right?",
             },
             {
               type: "text",
@@ -137,11 +138,11 @@ export const projects: Project[] = [
             { type: "video", src: "/videos/slimed-rebirth-gallery-2.mp4", caption: "Moving batteries between slots to reroute power" },
             {
               type: "text",
-              text: "This last one was the brainchild of my teammate, but it was so cool I had to include it. This puzzle involves finding batteries for a fusebox to open doors, since everything in the lab runs on shared power. In the beginning, before you’ve found all the batteries, you have to frequently move them around to unlock certain doors to rooms you still need to visit. It felt very horror-game-esque — I think I remember watching playthroughs of indie mascot horror games using this technique? It might also be in Resident Evil?",
+              text: "This last one was the brainchild of my team member, but it was so cool I had to include it. This puzzle involved having to find batteries for a fusebox to be able to open doors, as everything in the lab is powered by energy. However, in the beginning when you haven’t found all the batteries yet, you have to frequently move them around to unlock certain doors to rooms that you need to visit. It felt very horror-game-esque, I think I remember watching some playthroughs of indie mascot horror games employing this technique – it might also be in Resident Evil?",
             },
             {
               type: "text",
-              text: "This puzzle gave me a really good opportunity to add to the atmosphere of the game — the main lights switch off once the fusebox is moved to power a different room. Looking back on it now, I should’ve also made it so the computers in unpowered rooms couldn’t open either… that’s probably something I’d change in a later version!",
+              text: "This puzzle gave me a really good opportunity to add to the atmosphere of the game by having the main lights switch off once the fusebox is moved to power a different room. Now that I’m thinking back on it, I should’ve also made it so the computers in unpowered rooms couldn’t open either… that’s probably something I would change in a later version!",
             },
           ],
         },
@@ -151,28 +152,28 @@ export const projects: Project[] = [
       "It wouldn’t be video game development if there weren’t problems. There were two in particular I focused on:",
     problemBullets: [
       {
-        text: "The rooms had to work as puzzles and as spaces players can move through. In the beginning, I noticed our rooms were way too big and contained a lot of empty space — playtests mostly ended up being walking, with players wishing they could sprint to the next destination.",
+        text: "The rooms had to work as puzzles and as spaces players can move through. In the beginning, I noticed our rooms were WAYY too big and contained a lot of empty space. Playtests mostly ended up being walking with irritation, wishing I could sprint to my next destination.",
         subpoints: [
-          "I had to resize every room in the map, which was pretty annoying since Godot doesn’t rescale collision boxes alongside actual assets — I essentially had to resize everything twice.",
+          "I had to resize each room in the map, which was pretty annoying since Godot doesn’t rescale collision boxes alongside actual assets, so I had to essentially resize everything twice.",
         ],
       },
       {
         text: "Because puzzle games naturally have more assets, our world tree was a complete mess.",
         subpoints: [
-          "Every wall, floor, desk, etc. was called ‘rect1,’ ‘rect2,’ and so on. When I was resizing everything, I realized how horrible this was.",
-          "I refactored everything quickly, and immediately things got so much better. That’s when I really understood the importance of keeping your workflow and code clean — it makes a genuine difference.",
+          "Every wall, floor, desk, etc was called ‘rect1,’ ‘rect2,’ etc. When I was resizing everything, I realized this was horrible!",
+          "I refactored everything quickly and immediately everything became so much better. That was when I realized the importance of keeping your workflow and code clean…it really does make a difference.",
         ],
       },
     ],
     playtests: [
       "Players enjoyed our game, but honestly, the later parts were kind of confusing.",
-      "There’s a part where the mad scientist’s mech is released and chases the player, who then has to redirect the mech’s laser beam to hit the glass encasing the player’s goal, Element Zero. Honestly, if I wasn’t a developer, I’d be confused too.",
+      "There was this one part where the mad scientist’s mech is released and chases after the player, but then the player needs to find a way to redirect the mech’s deadly lazer beam to aim for the glass that encases the player’s goal, Element Zero. Honestly, if I wasn’t a developer, I’d also be so confused.",
     ],
     reflection: [
-      "Have you ever gone to an escape room where one of the solutions came completely out of the blue — something you wouldn’t have guessed even with eyes in the back of your head? I’ve had that happen, and I absolutely hate it. In my opinion, a puzzle that’s impossible to guess isn’t fulfilling at all — solving it becomes a matter of brute force rather than something you actually discovered.",
-      "Video games are the exact same way. Puzzles need to straddle a fine line between being child’s play and being completely unrealistic. A developer needs to craft an experience that builds — one that lets a player first adjust to the game’s mechanics, then combines those mechanics to deliver something they can walk away from feeling both challenged and fulfilled.",
-      "It’s the same thing with building products in real life. Your goal as a developer isn’t to impress yourself with your own technical prowess — it’s to make your users’ lives easier with something intuitive and fulfilling.",
-      "Did we hit that mark with this game? Honestly, both yes and no. I think with more time we could’ve delivered a more well-rounded experience, but I’m proud of what we pulled off with the time we had. We definitely had a lot of fun making it.",
+      "Question: have you ever gone to an escape room and one of the solutions was something that came COMPLETELY out of the blue? Like, you would not have seen it coming even if you had eyes in the back of your head? Well, I’ve had it happen, and I absolutely hate it. In my opinion, a puzzle that is impossible to guess isn’t fulfilling at all - solving it becomes a matter of brute force rather than something I discovered.",
+      "Video games are the exact same way. Puzzles need to straddle a fine line between being child’s play and becoming absolutely unrealistic. A developer needs to craft an experience that builds - that allows a player to first adjust to the game’s mechanics, and then combines those mechanics to deliver an experience that they can walk away from, challenged and fulfilled.",
+      "It’s the same thing with developing products in real life. Your main goal isn’t to make you, the developer, impressed with your own technical prowess, but instead to make your users’ lives easier with an intuitive and fulfilling experience!",
+      "Did we achieve those metrics in this game? In my opinion, both yes and no. I fully believe that if we had more time, we could’ve delivered a more well rounded experience, but I do think we achieved a lot with the time we were given. We certainly had a lot of fun making it!",
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.jpg",
     videoUrl: "/videos/slimed-rebirth-thumbnail.mp4",
