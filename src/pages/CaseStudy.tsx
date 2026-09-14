@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, Link, Navigate } from "react-router";
-import { projects } from "../data/projects";
+import { projects, type ProcessBlock } from "../data/projects";
 import TagPill from "../components/TagPill";
 
 const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six"];
@@ -143,6 +143,41 @@ function GalleryLightbox({
   );
 }
 
+function ProcessBlockView({ block }: { block: ProcessBlock }) {
+  if (block.type === "text") {
+    return <p className="text-foreground/90 text-base leading-relaxed">{block.text}</p>;
+  }
+  if (block.type === "image") {
+    return (
+      <div>
+        <div className="overflow-hidden rounded-sm bg-muted">
+          <img src={block.src} alt={block.caption || ""} className="block w-full h-auto" />
+        </div>
+        {block.caption && <p className="mt-2 text-xs text-muted-fg leading-relaxed">{block.caption}</p>}
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="overflow-hidden rounded-sm bg-muted relative w-full" style={{ aspectRatio: "16/9" }}>
+        {block.src ? (
+          <video src={block.src} controls playsInline className="absolute inset-0 w-full h-full object-contain" />
+        ) : (
+          <iframe
+            src={`https://player.vimeo.com/video/${block.vimeoId}`}
+            className="absolute inset-0 w-full h-full"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title={block.caption || ""}
+          />
+        )}
+      </div>
+      {block.caption && <p className="mt-2 text-xs text-muted-fg leading-relaxed">{block.caption}</p>}
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
@@ -163,9 +198,11 @@ export default function CaseStudy() {
 
   const sections = [
     { id: "overview", label: "Overview" },
+    ...(project.process ? [{ id: "process", label: "Process" }] : []),
     { id: "problem", label: "Problem" },
-    { id: "exploration", label: "Exploration" },
-    { id: "solution", label: "Solution" },
+    ...(project.playtests && project.playtests.length > 0 ? [{ id: "playtests", label: "Playtests" }] : []),
+    ...(project.explorationItems && project.explorationItems.length > 0 ? [{ id: "exploration", label: "Exploration" }] : []),
+    ...(project.solution ? [{ id: "solution", label: "Solution" }] : []),
     ...(project.galleryImages && project.galleryImages.length > 0 ? [{ id: "gallery", label: "Gallery" }] : []),
     { id: "reflection", label: "Reflection" },
   ];
@@ -313,99 +350,183 @@ export default function CaseStudy() {
           </div>
         </CaseStudySection>
 
+        {project.process && (
+          <CaseStudySection id="process" label="Process">
+            <div className="space-y-6">
+              {project.process.intro.map((block, i) => (
+                <ProcessBlockView key={i} block={block} />
+              ))}
+            </div>
+
+            {project.process.sections.length > 0 && (
+              <div className="mt-12">
+                {project.process.sectionsHeading && (
+                  <h3
+                    className="font-display font-medium text-foreground text-xl mb-2"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {project.process.sectionsHeading}
+                  </h3>
+                )}
+                {project.process.sectionsNote && (
+                  <p className="text-muted-fg text-sm italic mb-8">{project.process.sectionsNote}</p>
+                )}
+                <div className="space-y-12">
+                  {project.process.sections.map((sec, i) => (
+                    <div key={i}>
+                      <h4
+                        className="font-display font-medium text-foreground text-lg mb-4"
+                        style={{ fontFamily: "var(--font-display)" }}
+                      >
+                        {sec.title}
+                      </h4>
+                      <div className="space-y-5">
+                        {sec.body.map((block, j) => (
+                          <ProcessBlockView key={j} block={block} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </CaseStudySection>
+        )}
+
         <CaseStudySection id="problem" label="Problem">
           <p className="text-foreground text-base md:text-lg leading-relaxed">
             {project.problem}
           </p>
+          {project.problemBullets && project.problemBullets.length > 0 && (
+            <ul className="mt-5 space-y-4">
+              {project.problemBullets.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="text-accent mt-1.5 shrink-0">·</span>
+                  <div>
+                    <p className="text-foreground/90 text-base leading-relaxed">{point.text}</p>
+                    {point.subpoints && point.subpoints.length > 0 && (
+                      <ul className="mt-2 space-y-2 ml-1">
+                        {point.subpoints.map((sub, j) => (
+                          <li key={j} className="flex items-start gap-3">
+                            <span className="text-muted-fg mt-1.5 shrink-0 text-xs">○</span>
+                            <p className="text-muted-fg text-sm leading-relaxed">{sub}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </CaseStudySection>
 
-        <CaseStudySection id="exploration" label="Exploration">
-          <p className="text-muted-fg text-sm mb-8">
-            {countWord(project.explorationItems.length).replace(/^./, (c) => c.toUpperCase())} approaches considered before committing to a direction.
-          </p>
-          <div className="space-y-8">
-            {project.explorationItems.map((item, i) => (
-              <div key={i} className="relative pl-6 border-l-2 border-border">
-                {i === project.explorationItems.length - 1 && (
-                  <div className="absolute -left-[1px] top-0 bottom-0 border-l-2 border-accent" />
-                )}
-                <div className="flex items-start gap-3 mb-2">
-                  <span className="text-xs font-medium tracking-widest text-muted-fg mt-1">
-                    {String.fromCharCode(65 + i)}
-                  </span>
-                  <h4
-                    className="font-display font-medium text-foreground text-lg flex items-center gap-2 flex-wrap"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {item.title}
-                    {i === project.explorationItems.length - 1 && (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-xs font-medium bg-accent text-accent-fg">
-                        Chosen
-                      </span>
-                    )}
-                  </h4>
-                </div>
-                <p className="text-foreground/80 text-sm leading-relaxed mb-3 ml-5">
-                  {item.description}
-                </p>
-                <div className="ml-5 flex items-start gap-2">
-                  <span className="text-xs font-medium text-muted-fg shrink-0 mt-0.5">Tradeoff —</span>
-                  <p className="text-muted-fg text-sm leading-relaxed">{item.tradeoff}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {project.playtests && project.playtests.length > 0 && (
+          <CaseStudySection id="playtests" label="Playtests">
+            <ul className="space-y-4">
+              {project.playtests.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="text-accent mt-1.5 shrink-0">·</span>
+                  <p className="text-foreground/90 text-base leading-relaxed">{point}</p>
+                </li>
+              ))}
+            </ul>
+          </CaseStudySection>
+        )}
 
-          {project.edgeCases.length > 0 && (
-            <div className="mt-10 p-6 bg-muted rounded-sm border border-border">
-              <p className="text-xs font-medium tracking-widest uppercase text-muted-fg mb-4">
-                Edge cases discovered along the way
-              </p>
-              <ul className="space-y-3">
-                {project.edgeCases.map((ec, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
-                    <span className="text-accent mt-1 shrink-0">·</span>
-                    {ec}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {project.docLinks && project.docLinks.length > 0 && (
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
-              <span className="text-xs font-medium tracking-widest uppercase text-muted-fg">Design docs</span>
-              {project.docLinks.map((doc) => (
-                <a
-                  key={doc.href}
-                  href={doc.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-accent hover:text-foreground underline underline-offset-4 decoration-border transition-colors duration-200"
-                >
-                  {doc.label} ↗
-                </a>
+        {project.explorationItems && project.explorationItems.length > 0 && (
+          <CaseStudySection id="exploration" label="Exploration">
+            <p className="text-muted-fg text-sm mb-8">
+              {countWord(project.explorationItems.length).replace(/^./, (c) => c.toUpperCase())} approaches considered before committing to a direction.
+            </p>
+            <div className="space-y-8">
+              {project.explorationItems.map((item, i) => (
+                <div key={i} className="relative pl-6 border-l-2 border-border">
+                  {i === project.explorationItems!.length - 1 && (
+                    <div className="absolute -left-[1px] top-0 bottom-0 border-l-2 border-accent" />
+                  )}
+                  <div className="flex items-start gap-3 mb-2">
+                    <span className="text-xs font-medium tracking-widest text-muted-fg mt-1">
+                      {String.fromCharCode(65 + i)}
+                    </span>
+                    <h4
+                      className="font-display font-medium text-foreground text-lg flex items-center gap-2 flex-wrap"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {item.title}
+                      {i === project.explorationItems!.length - 1 && (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-xs font-medium bg-accent text-accent-fg">
+                          Chosen
+                        </span>
+                      )}
+                    </h4>
+                  </div>
+                  <p className="text-foreground/80 text-sm leading-relaxed mb-3 ml-5">
+                    {item.description}
+                  </p>
+                  <div className="ml-5 flex items-start gap-2">
+                    <span className="text-xs font-medium text-muted-fg shrink-0 mt-0.5">Tradeoff —</span>
+                    <p className="text-muted-fg text-sm leading-relaxed">{item.tradeoff}</p>
+                  </div>
+                </div>
               ))}
             </div>
-          )}
-        </CaseStudySection>
 
-        <CaseStudySection id="solution" label="Solution">
-          <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
-            {project.solution}
-          </p>
-          {project.solutionDetail && (
-            <p className="text-muted-fg text-base leading-relaxed">{project.solutionDetail}</p>
-          )}
+            {project.edgeCases && project.edgeCases.length > 0 && (
+              <div className="mt-10 p-6 bg-muted rounded-sm border border-border">
+                <p className="text-xs font-medium tracking-widest uppercase text-muted-fg mb-4">
+                  Edge cases discovered along the way
+                </p>
+                <ul className="space-y-3">
+                  {project.edgeCases.map((ec, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
+                      <span className="text-accent mt-1 shrink-0">·</span>
+                      {ec}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-          <div className="mt-8 overflow-hidden rounded-sm bg-muted">
-            <img
-              src={project.solutionImageUrl}
-              alt={`${project.title} solution detail`}
-              className="block w-full h-auto max-h-[70vh] object-contain"
-            />
-          </div>
-        </CaseStudySection>
+            {project.docLinks && project.docLinks.length > 0 && (
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+                <span className="text-xs font-medium tracking-widest uppercase text-muted-fg">Design docs</span>
+                {project.docLinks.map((doc) => (
+                  <a
+                    key={doc.href}
+                    href={doc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-accent hover:text-foreground underline underline-offset-4 decoration-border transition-colors duration-200"
+                  >
+                    {doc.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
+          </CaseStudySection>
+        )}
+
+        {project.solution && (
+          <CaseStudySection id="solution" label="Solution">
+            <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
+              {project.solution}
+            </p>
+            {project.solutionDetail && (
+              <p className="text-muted-fg text-base leading-relaxed">{project.solutionDetail}</p>
+            )}
+
+            {project.solutionImageUrl && (
+              <div className="mt-8 overflow-hidden rounded-sm bg-muted">
+                <img
+                  src={project.solutionImageUrl}
+                  alt={`${project.title} solution detail`}
+                  className="block w-full h-auto max-h-[70vh] object-contain"
+                />
+              </div>
+            )}
+          </CaseStudySection>
+        )}
 
         {project.galleryImages && project.galleryImages.length > 0 && (
           <CaseStudySection id="gallery" label="Gallery">

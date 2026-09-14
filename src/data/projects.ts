@@ -1,3 +1,8 @@
+export type ProcessBlock =
+  | { type: "text"; text: string }
+  | { type: "image"; src: string; caption?: string }
+  | { type: "video"; vimeoId?: string; src?: string; caption?: string };
+
 export interface Project {
   slug: string;
   title: string;
@@ -10,13 +15,21 @@ export interface Project {
   overview: string;
   audience: string;
   problem: string;
-  explorationItems: { title: string; description: string; tradeoff: string }[];
-  edgeCases: string[];
-  solution: string;
+  problemBullets?: { text: string; subpoints?: string[] }[];
+  explorationItems?: { title: string; description: string; tradeoff: string }[];
+  edgeCases?: string[];
+  process?: {
+    intro: ProcessBlock[];
+    sectionsHeading?: string;
+    sectionsNote?: string;
+    sections: { title: string; body: ProcessBlock[] }[];
+  };
+  playtests?: string[];
+  solution?: string;
   solutionDetail?: string;
   reflection: string[];
   imageUrl: string;
-  solutionImageUrl: string;
+  solutionImageUrl?: string;
   videoUrl?: string;
   vimeoBackgroundId?: string;
   galleryImages?: { src: string; caption: string }[];
@@ -37,70 +50,140 @@ export const projects: Project[] = [
     hook: "An escape room game where you solve problems to break out of a mad scientist's lab.",
     tags: ["Team · 4", "Godot", "2D/3D art", "Complete"],
     year: "Complete",
-    role: "Programmer (lighting & level design, asset implementation, UI); Lead 2D artist",
+    role: "Programmer, 2D artist, environment artist",
     timeline: "Complete",
-    tools: ["Godot", "Aseprite", "Blender", "GitHub"],
+    tools: ["Godot", "GDScript", "Aseprite", "Blender", "GitHub"],
     overview:
       "Slimed: Rebirth is a top-down escape room game featuring dialogue and interactive puzzles. Players team up with their enemy to break out of a mad scientist's lab. Puzzles unlock new areas as you progress, and two playable characters with unique abilities have to be used strategically to uncover clues. The project mixes 2D and 3D art.",
     audience:
       "Players who like puzzle games and character-driven worlds.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "The theme for this project was “escape room.” At first, I thought this project would be my bread and butter because I’ve played so many puzzle games in my time. However, I should’ve known things would soon go south, because I’m not really great at escape rooms in real life. My team and I sat down and immediately began brainstorming some slop.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png",
+          caption: "Photo of said slop",
+        },
+        {
+          type: "text",
+          text: "Making this gave me more respect for actual escape room designers. Through brainstorming, my team and I had a lot of moments where we had to ask ourselves “uh….so what next?” It was difficult to make the map feel balanced, especially when we would have more ideas for one room compared to others. Reading the diagram we made is like Challenge: Try to Decipher The Hieroglyphics.",
+        },
+        {
+          type: "text",
+          text: "TLDR: following the narrative from our earlier games — where a nanotyrannus and triceratops fight each other to the death and then get obliterated by a giant meteor (I realize this makes no sense; read the previous two entries for more context) — this game is about them getting reborn in a lab. Now stuck in an unfamiliar environment, they have to work together to escape before the mad scientist experiments on them.",
+        },
+        {
+          type: "text",
+          text: "The best part about this game is that you can switch between the T-Rex and Triceratops! I thought this was really cool because they both have different capabilities. While the Triceratops can equip a “language” hat (a.k.a. a tinfoil hat) that helps her read human language, the T-Rex can press buttons and keypads because… he has hands. Albeit small ones. Don’t think about it too hard.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-rebirth/slimeurself.png",
+          caption: "I’m not sure why this was made",
+        },
+        {
+          type: "text",
+          text: "This added a layer of complexity to our game by balancing puzzle-solving with character switching. To make this more apparent to the player, we also added a brief cutscene at the beginning and notes scattered throughout the map in journals and on computers.",
+        },
+      ],
+      sectionsHeading: "Some of the puzzles I designed!",
+      sectionsNote: "Look away if you wanna play the game! An escape room isn’t fun if you already know the answer.",
+      sections: [
+        {
+          title: "Test Tube Puzzle",
+          body: [
+            { type: "video", vimeoId: "1180146346", caption: "The test-tubes puzzle, in action" },
+            { type: "video", vimeoId: "1180149020", caption: "Solving the padlock puzzle" },
+            {
+              type: "text",
+              text: "This puzzle requires the player to be observant. After viewing the dinosaurs on the test tubes, the player should understand that the mutilations on them actually spell out numbers (2, 6, 7…wait…6 7?! Sorry, couldn’t help myself). Afterwards, they align the numbers with the lock on the door, where each space is outlined with one of the colors of the dinosaurs. It’s a pretty easy formula, but it primes the player to pay attention to their surroundings — which they’ll need later!",
+            },
+            {
+              type: "text",
+              text: "I pitched this idea to the team because we were looking for an extra puzzle to block Door 1, and created the 2D assets as a proof-of-concept. I also programmed the UI for the padlock puzzle. This wasn’t too bad — Godot has a good system with signals, so all I needed to make were the padlock’s circular arrays!",
+            },
+          ],
+        },
+        {
+          title: "Video Puzzle",
+          body: [
+            { type: "image", src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "Our definitive ranking of dinosaurs" },
+            { type: "video", src: "/videos/slimed-rebirth-gallery-3.mp4", caption: "Watching our own ranking play back in-game" },
+            {
+              type: "text",
+              text: "This was my FAVORITE puzzle to design. IT WAS SO FUNNY. Basically, I got my team to roleplay as the scientists and rank all the dinosaurs. Each of us got a dinosaur to defend, then we assigned them to S tier, A tier, B tier, or C tier. I think I got to defend the pterodactyl? Unfortunately, I didn’t get S tier, but at least I was above average.",
+            },
+            {
+              type: "text",
+              text: "You may ask what this ranking even has to do with solving puzzles. WELL — if the player was paying attention, they would have noticed that each room contains a giant mural on the floor with a dinosaur and the room number next to it. Using that plus our ranking, the player can figure out one of the codes.",
+            },
+            {
+              type: "text",
+              text: "If you watched the video, you may have noticed that it turned out super choppy. Unfortunately, Godot has its limitations, and we couldn’t figure out a better way to do video embedding, so we just had to deal with 2 frames per second. I was telling everyone it lowkeyyyy fits the scene, because all the 2D assets are pixelated, and so is our video. You think so too, right? Right?",
+            },
+            {
+              type: "text",
+              text: "This puzzle actually made me laugh so hard, and a lot of our playtesters surprisingly liked this weird format. I pitched the idea as a joke, but it made me so happy that we ended up pulling through. It ended up being our favorite part to make!",
+            },
+          ],
+        },
+        {
+          title: "Fusebox Puzzle",
+          body: [
+            { type: "video", src: "/videos/slimed-rebirth-gallery-2.mp4", caption: "Moving batteries between slots to reroute power" },
+            {
+              type: "text",
+              text: "This last one was the brainchild of my teammate, but it was so cool I had to include it. This puzzle involves finding batteries for a fusebox to open doors, since everything in the lab runs on shared power. In the beginning, before you’ve found all the batteries, you have to frequently move them around to unlock certain doors to rooms you still need to visit. It felt very horror-game-esque — I think I remember watching playthroughs of indie mascot horror games using this technique? It might also be in Resident Evil?",
+            },
+            {
+              type: "text",
+              text: "This puzzle gave me a really good opportunity to add to the atmosphere of the game — the main lights switch off once the fusebox is moved to power a different room. Looking back on it now, I should’ve also made it so the computers in unpowered rooms couldn’t open either… that’s probably something I’d change in a later version!",
+            },
+          ],
+        },
+      ],
+    },
     problem:
-      "The rooms had to work as puzzles and as spaces players can move through. Early rooms were scaled way bigger than the player and every other asset, so playtesters spent most of their time just walking between the actual puzzle beats. As lead environment artist, resizing the whole map fell to me — including every collision box by hand, since Godot doesn't rescale those for you. It also meant untangling a world tree where every room was still named 'rect1,' 'rect2,' 'rect2,' which nobody, including me, could keep straight once the scope grew past a two-person sketch. On top of the resize, I was covering programming (lighting, levels, assets, UI), 2D art, and puzzle design at the same time.",
-    explorationItems: [
+      "It wouldn’t be video game development if there weren’t problems. There were two in particular I focused on:",
+    problemBullets: [
       {
-        title: "Treat the two characters as interchangeable",
-        description:
-          "Same abilities, puzzles that only need two bodies in the right places.",
-        tradeoff:
-          "Easier rooms to build, but it drops the point of unique abilities and the archnemesis pairing.",
+        text: "The rooms had to work as puzzles and as spaces players can move through. In the beginning, I noticed our rooms were way too big and contained a lot of empty space — playtests mostly ended up being walking, with players wishing they could sprint to the next destination.",
+        subpoints: [
+          "I had to resize every room in the map, which was pretty annoying since Godot doesn’t rescale collision boxes alongside actual assets — I essentially had to resize everything twice.",
+        ],
       },
       {
-        title: "Split art and programming into non-overlapping jobs",
-        description:
-          "One person owns sprites; another owns Godot implementation, lighting, and UI.",
-        tradeoff:
-          "Cleaner ownership, but my role was both: primary 2D artist and programmer for lighting, levels, assets, and UI. In practice the two reinforced each other more than they competed — I'd design a clue in 2D art (like scar patterns on preserved dinosaurs that only make sense once you line them up) and then build the exact UI needed to sell it, same afternoon.",
-      },
-      {
-        title: "Asymmetric abilities, with art and implementation on the same person (what we built)",
-        description:
-          "Two unique ability sets, rooms that need both, plus lighting, level layout, UI, and 2D assets from one role, backed by design docs for Room 1, Room 3, the puzzle layout, and an enemy sprite sheet.",
-        tradeoff:
-          "The rooms can actually use both characters, but art and implementation compete for the same hours.",
+        text: "Because puzzle games naturally have more assets, our world tree was a complete mess.",
+        subpoints: [
+          "Every wall, floor, desk, etc. was called ‘rect1,’ ‘rect2,’ and so on. When I was resizing everything, I realized how horrible this was.",
+          "I refactored everything quickly, and immediately things got so much better. That’s when I really understood the importance of keeping your workflow and code clean — it makes a genuine difference.",
+        ],
       },
     ],
-    edgeCases: [
-      "Early rooms were scaled far larger than the player, so a big chunk of every playtest was just walking — the whole map got resized and reorganized room by room, collision boxes included.",
-      "The puzzle where the mech's own laser melts the ice around the last item wasn't obvious to players — a clue only works if it leaves a trail, not just a possibility, and this one asked for too big a logical leap.",
-      "The Room 3 monitor puzzle needed its shader stripped of emission — with it on, the evidence image on screen blew out to the point you couldn't read it.",
+    playtests: [
+      "Players enjoyed our game, but honestly, the later parts were kind of confusing.",
+      "There’s a part where the mad scientist’s mech is released and chases the player, who then has to redirect the mech’s laser beam to hit the glass encasing the player’s goal, Element Zero. Honestly, if I wasn’t a developer, I’d be confused too.",
     ],
-    solution:
-      "Slimed: Rebirth shipped as a full top-down escape room in Godot. Puzzles include a number-code padlock where the code comes from wound shapes on preserved dinosaur specimens color-matched to test tubes modeled in Blender, a monitor 'evidence' puzzle built around a definitive dinosaur power ranking, and a final puzzle where the mech enemy's own laser has to be used to melt the ice around the last item. Room 3's engravings, its closet fuse room, and the per-fuse lighting logic were mine end to end, on top of the shared programming, lighting, and UI work.",
-    solutionDetail:
-      "The dinosaur power-ranking video almost didn't make it in — an early version played back at something like 2 frames per second once it hit Godot. Rather than fight it, we kept it: the choppy playback reads like a deliberate part of the pixel-art aesthetic instead of a bug, which is either good design instinct or a very lucky accident. Possibly both.",
     reflection: [
-      "Environmental storytelling only works if the leap from clue to solution is small enough to actually make. The ice-and-laser puzzle taught me that a clue nobody notices isn't a clue — it's a secret, and secrets don't move a puzzle forward.",
-      "The 'rect1, rect2, rect2' naming disaster was a bigger lesson than the resize itself: once a team's scope outgrows what one person can hold in their head, sloppy internal organization stops being a personal quirk and starts taxing everyone else.",
-      "Being the lead artist and a programmer on the same puzzle meant I could design a clue and build the UI to sell it in the same sitting — that pairing is probably the thing I'm proudest of on this project, 2fps evidence video included.",
+      "Have you ever gone to an escape room where one of the solutions came completely out of the blue — something you wouldn’t have guessed even with eyes in the back of your head? I’ve had that happen, and I absolutely hate it. In my opinion, a puzzle that’s impossible to guess isn’t fulfilling at all — solving it becomes a matter of brute force rather than something you actually discovered.",
+      "Video games are the exact same way. Puzzles need to straddle a fine line between being child’s play and being completely unrealistic. A developer needs to craft an experience that builds — one that lets a player first adjust to the game’s mechanics, then combines those mechanics to deliver something they can walk away from feeling both challenged and fulfilled.",
+      "It’s the same thing with building products in real life. Your goal as a developer isn’t to impress yourself with your own technical prowess — it’s to make your users’ lives easier with something intuitive and fulfilling.",
+      "Did we hit that mark with this game? Honestly, both yes and no. I think with more time we could’ve delivered a more well-rounded experience, but I’m proud of what we pulled off with the time we had. We definitely had a lot of fun making it.",
     ],
     imageUrl: "/images/projects/slimed-rebirth-cover.jpg",
-    solutionImageUrl: "/images/projects/slimed-rebirth-solution.png",
     videoUrl: "/videos/slimed-rebirth-thumbnail.mp4",
     galleryImages: [
-      { src: "/images/projects/gallery/slimed-rebirth/puzzle-design.png", caption: "Puzzle design — the hotel-room floor plan, mapping fuses, mech prototype, and the pterodactyl/turtle rooms" },
       { src: "/images/projects/gallery/slimed-rebirth/level-design-2.png", caption: "Room 3 layout, blocked out in Godot" },
       { src: "/images/projects/gallery/slimed-rebirth/mech-sprite-sheet.png", caption: "Mech enemy sprite sheet" },
       { src: "/images/projects/gallery/slimed-rebirth/padlock-puzzle.png", caption: "Padlock puzzle — the code (726) comes from wound shapes on the dinosaur specimens" },
       { src: "/images/projects/gallery/slimed-rebirth/test-tubes-puzzle.png", caption: "Dinosaur specimens in Blender-modeled test tubes — each wound doubles as a digit in the padlock code" },
-      { src: "/images/projects/gallery/slimed-rebirth/journal-log.png", caption: "The 'definitive ranking of dinosaurs' — the evidence puzzle on the Room 3 monitor" },
-    ],
-    galleryVideos: [
-      { vimeoId: "1180146346", caption: "The test-tubes puzzle, in action" },
-      { vimeoId: "1180149020", caption: "Solving the padlock puzzle" },
-      { src: "/videos/slimed-rebirth-gallery-2.mp4", caption: "More gameplay footage" },
-      { src: "/videos/slimed-rebirth-gallery-3.mp4", caption: "More gameplay footage" },
     ],
     color: "#0D1A15",
+    itchLink: "https://underduke.itch.io/slimed-rebirth",
     status: "complete",
     category: "game",
   },
