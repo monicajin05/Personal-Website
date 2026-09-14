@@ -282,7 +282,7 @@ export default function CaseStudy() {
             {[
               { label: "Role", value: project.role },
               { label: "Timeline", value: project.timeline },
-              { label: "Year", value: project.year },
+              { label: "Date", value: project.year },
               { label: "Tools", value: project.tools.slice(0, 3).join(", ") + (project.tools.length > 3 ? " +" + (project.tools.length - 3) : "") },
             ].map(({ label, value }) => (
               <div key={label}>
