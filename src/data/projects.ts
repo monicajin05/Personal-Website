@@ -192,48 +192,108 @@ export const projects: Project[] = [
   {
     slug: "slimed-awakening",
     title: "Slimed: Awakening",
-    hook: "A souls-like 2D dungeon crawler: Tina fights through a meteor-torn forest to rescue stranded dino kids before the spreading fire — or Nano — gets to them first.",
+    hook: "A souls-like 2D dungeon crawler where you fight enemies and bosses through a fire-torn forest to save your village.",
     tags: ["Team · 4", "Lead artist", "Godot", "Complete"],
-    year: "Complete",
+    year: "February 2026",
     role: "Lead artist — all 2D pixel art (player/enemy idle & attack, environment, assets, ending cards)",
     timeline: "Complete",
-    tools: ["Aseprite", "Godot"],
+    tools: ["Aseprite", "Godot", "GitHub"],
     overview:
-      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat, picking up right where Slimed: Origins' solo-confrontation ending leaves off. A meteor hits just as Tina settles things with Nano, and she has to fight through procedurally generated forest floors to find him again while rescuing dinosaur kids stranded ahead of the spreading fire — save them all for the best ending, lose them all for the worst one. There are multiple enemy types, dodge/parry mechanics, and two bosses. The top-down pixel style drew a lot from games like Omori and The Binding of Isaac. Made for a class project themed 'Dueling Dinosaurs' by a museum sponsor. Published on itch.io.",
+      "Slimed: Awakening is a 2D dungeon crawler with souls-like combat, picking up where Slimed: Origins' solo-confrontation ending leaves off. A meteor hits just as Tina the Triceratops settles things with Nano the Nanotyrannus, and she has to fight through procedurally generated forest floors to find him again while rescuing dinosaur kids stranded in the burning forest. There are multiple enemy types, dodge/parry mechanics, and two bosses.",
     audience:
-      "Players who want a hard 2D action game with a lot of original pixel art. 4-person team: Jymon Ross, Jacob King, Louis Ton, and me.",
+      "Players who want a hard 2D action game with a lot of original pixel art.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "Coming into this, we knew we wanted to make a dungeon crawler with a top-down view. We debated for a bit about the specific game design, but we knew right away that we wanted aesthetics similar to the Binding of Isaac - pixelated with smooth movement.",
+        },
+        {
+          type: "text",
+          text: "We also wanted to consider the ease of animation, as having the view be purely top down would make it so we only needed one walking sprite rather than having to flip the sprite based on the direction the user is facing. I actually argued for the 3/4s view because I thought it would be more visually appealing, but my team member pushed me from the dark side by reminding me of our game’s scope. I was really thanking him by the time I had to make all the assets.",
+        },
+        {
+          type: "text",
+          text: "As this was an asset heavy game and I was the sole artist on the team, I agreed to be the lead (and only) artist. Personally, I think that when working with others, your responsibility to use your skills to create a viable product for the team is more important than your own personal wishes - which sounds really bad but what I mean is that even though I wanted to assist with the game’s programming, I was able to pivot to art because that’s what our team needed. Being flexible is definitely key when it comes to making games, which take a lot of effort from various people with specific domain knowledge (art, sound, writing, programming, etc). Besides, I knew I could always do programming in a later project!",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-awakening/dungeon-progress.png",
+          caption: "map with placeholders during testing",
+        },
+        {
+          type: "text",
+          text: "I also worked closely with the overall game design. We discussed procedural generation of the map levels for replayability, and I also contributed to the map design/layout. Above is a photo of the proposed layout with placeholder assets to determine functionality.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-awakening/gameplay-1.png",
+          caption: "map after adding custom assets",
+        },
+        {
+          type: "text",
+          text: "The benefit of being an artist is that the game’s feel and aesthetic is mainly determined by your own work. The programming of a game makes it functional, but the design is what makes it appealing. I felt this while making the project because it felt like I had a bigger hand in its creation and more ownership in my design decisions. I went through several iterations for a few assets and was able to draft different ideas. My team essentially told me to “go wild.”",
+        },
+        {
+          type: "text",
+          text: "I also proposed new features as I was working. For example, I created a sample pterodactyl animation for a new enemy type, which ended up being one of my team’s favorite features. This enemy, instead of directly attacking the player, flies over the screen and drops flaming rocks that light nearby trees on fire. The spreading fire hurts the player’s hp.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-awakening/pterodactyl.gif",
+          caption: "flying enemy animation",
+        },
+        {
+          type: "text",
+          text: "Technically, I also learned a lot. I was able to get very familiar with Aseprite (a pixel art software) and practiced animating on the software, which I’ve never done before. I practiced key animation principles like squash & stretch, follow through, slow in & slow out, etc, though I wish I had exaggerated my sprites more. Now looking at it, they look somewhat stiff, so I’d probably consider that in the future.",
+        },
+      ],
+      sections: [
+        {
+          title: "Edge Cases Discovered Along the Way",
+          body: [
+            {
+              type: "text",
+              text: "An early version of the final boss was going to have breakable bone armor that regenerated if he rolled around in mud. I created this concept in Aseprite, but it got cut due to scope creep.",
+            },
+            {
+              type: "text",
+              text: "The boss’s dodge needed real thought to not look dumb: it raycasts outward to find an open direction to dodge into, and charges straight out if every direction comes back blocked (i.e. it’s cornered).",
+            },
+          ],
+        },
+        {
+          title: "Boss Design",
+          body: [
+            {
+              type: "text",
+              text: "I was able to assist in the brainstorming of the boss design, even though I didn’t directly contribute to its code. I thought it was one of the coolest things about this project so I figured I should give it a mention!",
+            },
+            {
+              type: "text",
+              text: "My team used a state machine to transition between the boss’s varying states (idle, charging, attacking, etc.) which I thought made a pretty effective implementation. The coolest part about the boss fights is that the player has the ability to parry the boss’s attacks. I’ve played so many games with this mechanic that it was exciting to see it being implemented in our game!",
+            },
+            {
+              type: "text",
+              text: "On the art side, I was in charge of creating both the boss and player attack sprite. This was a critical game design decision, as the way the boss sprite is animated needs to indicate to the player that it will attack soon so the player can prepare. The game wouldn’t be intuitive if attacks suddenly came out of the blue. Thus, I ended up making an animation where the boss “reels back,” opening its mouth to attack. I also had the sprite flash briefly to show the incoming attack more obviously (three ticks every time so the player knows exactly when to expect the bite).",
+            },
+            {
+              type: "image",
+              src: "/images/projects/gallery/slimed-awakening/nandoattack.gif",
+              caption: "first boss attack animation",
+            },
+          ],
+        },
+      ],
+    },
     problem:
       "This was an asset-heavy project: I owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses, while Jacob built the floor generation and tile implementation and Louis handled enemy AI. Volume and consistency were the real constraint.",
-    explorationItems: [
-      {
-        title: "Limit original art to the player and reuse stock enemies",
-        description: "Spend the art budget on the player; fill the dungeon with simpler or reused foes.",
-        tradeoff:
-          "Faster, but the shipped game has multiple enemy types plus two bosses with attack animation — that needs a full sprite pipeline.",
-      },
-      {
-        title: "Hand-author every room instead of feeding a generator",
-        description: "Unique layouts and art per room, no procedural map.",
-        tradeoff:
-          "More control per screen, but the shipped design is a procedurally generated map — art has to tile and repeat, and every run lays out differently on purpose, for replayability.",
-      },
-      {
-        title: "Full original pixel suite for a procedural dungeon (what shipped)",
-        description:
-          "All 2D pixel art: player/enemy idle and attack, environment, assets, ending cards, plus level layout, pterodactyl animation, an enemy sheet, boss design and attack states, and promo art. We also weighed a slightly-angled art style against a strict top-down one, and picked top-down for more flexible movement and a simpler tile pipeline.",
-        tradeoff:
-          "Cohesive look across generated rooms; the cost is an asset-heavy schedule on one lead artist.",
-      },
-    ],
-    edgeCases: [
-      "An early version of the final boss, Nano, was going to have breakable bone armor that regenerated if he rolled around in mud — a fully drawn Aseprite concept that got cut once it started eating the schedule.",
-      "The boss's dodge needed real thought to avoid looking dumb: it raycasts outward to find an open direction to dodge into, and charges straight out if every direction comes back blocked (i.e. it's cornered).",
-    ],
     solution:
-      "Complete. Lead-artist pixel art covers characters, combat animation, environment, ending cards, and promo. Rescuing stranded kids doubles as an extra-life mechanic, and how many you save determines which ending you get. The final boss reuses an earlier boss's state machine as its base, with a parry built as its own state machine and a pterodactyl enemy added to vary room-to-room traversal. Built in Aseprite and Godot.",
+      "I made a few dozen assets including characters, combat animation, environment, ending cards, etc. Making good designs is pretty labor intensive, but it was a great experience getting familiar with a new software.",
     reflection: [
-      "Lead art on a procedural, combat-heavy game is mostly a production problem: enough animation states (idle, attack, bosses) that the generator still looks authored.",
-      "Cutting the bone-armor idea was the right call, but it's the one I still think about — it's a good reminder that a fun idea and a fundable idea aren't always the same thing on a fixed timeline.",
+      "While working in a team, I learned the importance of taking on the role that’s needed most - essentially learning to put the team before myself.",
+      "Being an artist allowed me to get a deeper understanding of design decisions and affect the game’s feel in a more influential way.",
+      "First time animating with pixel art, which was pretty sick!",
     ],
     imageUrl: "/images/projects/slimed-awakening-cover.jpg",
     solutionImageUrl: "/images/projects/slimed-awakening-solution.png",
@@ -241,9 +301,7 @@ export const projects: Project[] = [
     galleryImages: [
       { src: "/images/projects/gallery/slimed-awakening/boss-fight-design.png", caption: "Boss design doc — Nano's armor phases, attack states, and dodge logic" },
       { src: "/images/projects/gallery/slimed-awakening/boss-gameplay.png", caption: "Boss fight in progress" },
-      { src: "/images/projects/gallery/slimed-awakening/dungeon-progress.png", caption: "Dungeon combat mid-fight" },
       { src: "/images/projects/gallery/slimed-awakening/pterodactyl-sprite-sheet.png", caption: "Pterodactyl enemy sprite sheet" },
-      { src: "/images/projects/gallery/slimed-awakening/gameplay-1.png", caption: "Dungeon combat" },
       { src: "/images/projects/gallery/slimed-awakening/promo-art.png", caption: "Promo art" },
     ],
     docLinks: [
