@@ -372,21 +372,43 @@ export default function CaseStudy() {
                   <p className="text-muted-fg text-sm italic mb-8">{project.process.sectionsNote}</p>
                 )}
                 <div className="space-y-12">
-                  {project.process.sections.map((sec, i) => (
-                    <div key={i}>
-                      <h4
-                        className="font-display font-medium text-foreground text-lg mb-4"
-                        style={{ fontFamily: "var(--font-display)" }}
-                      >
-                        {sec.title}
-                      </h4>
-                      <div className="space-y-5">
-                        {sec.body.map((block, j) => (
-                          <ProcessBlockView key={j} block={block} />
-                        ))}
+                  {project.process.sections.map((sec, i) =>
+                    sec.style === "callout" ? (
+                      <div key={i} className="p-6 bg-muted rounded-sm border border-border">
+                        <p className="text-xs font-medium tracking-widest uppercase text-muted-fg mb-4">
+                          {sec.title}
+                        </p>
+                        <ul className="space-y-3">
+                          {sec.body.map((block, j) =>
+                            block.type === "text" ? (
+                              <li key={j} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
+                                <span className="text-accent mt-1 shrink-0">·</span>
+                                {block.text}
+                              </li>
+                            ) : (
+                              <li key={j}>
+                                <ProcessBlockView block={block} />
+                              </li>
+                            )
+                          )}
+                        </ul>
                       </div>
-                    </div>
-                  ))}
+                    ) : (
+                      <div key={i}>
+                        <h4
+                          className="font-display font-medium text-foreground text-lg mb-4"
+                          style={{ fontFamily: "var(--font-display)" }}
+                        >
+                          {sec.title}
+                        </h4>
+                        <div className="space-y-5">
+                          {sec.body.map((block, j) => (
+                            <ProcessBlockView key={j} block={block} />
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             )}

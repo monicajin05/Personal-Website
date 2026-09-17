@@ -22,7 +22,7 @@ export interface Project {
     intro: ProcessBlock[];
     sectionsHeading?: string;
     sectionsNote?: string;
-    sections: { title: string; body: ProcessBlock[] }[];
+    sections: { title: string; body: ProcessBlock[]; style?: "callout" }[];
   };
   playtests?: string[];
   solution?: string;
@@ -251,6 +251,7 @@ export const projects: Project[] = [
       sections: [
         {
           title: "Edge Cases Discovered Along the Way",
+          style: "callout",
           body: [
             {
               type: "text",
