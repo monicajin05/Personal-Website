@@ -152,6 +152,16 @@ function ProcessBlockView({ block }: { block: ProcessBlock }) {
       </div>
     );
   }
+  if (block.type === "callout") {
+    return (
+      <div className="p-6 bg-muted rounded-sm border border-border">
+        {block.title && (
+          <p className="text-xs font-medium tracking-widest uppercase text-muted-fg mb-3">{block.title}</p>
+        )}
+        <p className="text-sm text-foreground/80 leading-relaxed">{block.text}</p>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="overflow-hidden rounded-sm bg-muted relative w-full" style={{ aspectRatio: "16/9" }}>

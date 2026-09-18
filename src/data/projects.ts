@@ -1,7 +1,8 @@
 export type ProcessBlock =
   | { type: "text"; text: string }
   | { type: "image"; src: string; caption?: string }
-  | { type: "video"; vimeoId?: string; src?: string; caption?: string };
+  | { type: "video"; vimeoId?: string; src?: string; caption?: string }
+  | { type: "callout"; title?: string; text: string };
 
 export interface Project {
   slug: string;
@@ -428,24 +429,85 @@ export const projects: Project[] = [
   {
     slug: "crazy-old-mans-trip",
     title: "Crazy Old Man's Trip",
-    hook: "FPS: a veteran fights ghosts of his past and spends sanity to upgrade weapons and open the map.",
+    hook: "A veteran fights ghosts of his past and manages his sanity to survive.",
     tags: ["Team · 5", "Unreal", "3-week jam", "Complete"],
-    year: "Fall 2025",
+    year: "October - November 2025",
     role: "Texture and level designer — Unreal, Aseprite textures, core mechanics brainstorm, game design",
-    timeline: "3-week game jam, Fall 2025 (add-ons coming soon)",
+    timeline: "3-week game jam, complete",
     tools: ["Unreal", "Aseprite", "Blender", "GitHub"],
     overview:
-      "A first-person shooter built for a game jam themed 'Illusion.' The team wanted to try a horror game and took the psychological route: a veteran haunted by demons from his own past, who manages his sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity; the lower it gets, the harder the demons hit; the game ends below zero. Made in a 3-week jam, Fall 2025. Complete, with add-ons coming soon. Listed on itch.io.",
+      "A psychological horror game where a veteran, haunted by demons from his past, manages his sanity by defeating them. Sanity from kills upgrades weapons and unlocks map areas; getting hit costs sanity. The lower it gets, the harder the demons hit; the game ends below zero.",
     audience:
-      "Players who want a short FPS with a sanity economy. 5-person jam team.",
+      "Players who want a short FPS with a sanity economy.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "This was built for a game jam with the theme “illusion.” When brainstorming for ideas, we brought up a lot of interesting concepts (“veteran of war!” “fighting ghosts” “samurai battlefield” “ptsd, maybe?”), and, in order to include everyone's ideas, we synthesized all of them into one horrific amalgamation.",
+        },
+        {
+          type: "text",
+          text: "Thus, the story now follows an old veteran of war who fights demons born of his ptsd. It sounds kind of crazy (which is why we called it crazy old man's trip haha) but we were able to come up with a lot of interesting features using this premise! For example, we brainstormed a sanity management system where the player needs to avoid being hit by enemies, lest their sanity decrease. The player can also use their “sanity points” to buy upgraded weapons and unlock new areas of the map. We could've easily called these points the players health, or experience, or mana – but framing it as “sanity” ties into the theme of our game.",
+        },
+        {
+          type: "text",
+          text: "The difference between a “good” product and a “great” product is always framing!",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/crazy-old-mans-trip/design-doc.png",
+          caption: "Cutscene storyboard and menu sketch",
+        },
+        {
+          type: "text",
+          text: "Other than helping lead game design convos, I also was in charge of texturing and level design. This was my first major game developed in Unreal, so it was a great learning experience. I did encounter some problems, mostly with the textures.",
+        },
+        {
+          type: "text",
+          text: "I created a couple of tile patterns using Aseprite for a grainy, pixelated look, and it was relatively easy to import them in Unreal. However, I noticed that using textures on different sized objects would cause the texture to scale weirdly based on the object's dimensions. For example, the pattern would end up really stretched, squashed – just messed up in general.",
+        },
+        {
+          type: "text",
+          text: "Later on, I found out that what I actually needed was to scale the UVs by the object's own X and Y scale before using the texture. This was done through Unreal's material graph with node based coding, which really tripped me up in the beginning because I've never done anything node based before. However, this process of trying to figure out how to make textures scale proportionally made it somehow “click” for me, and now I have a better understanding of how node programming translates to actual code. I'm actually even fond of it now!",
+        },
+        {
+          type: "image",
+          src: "/images/projects/crazy-old-mans-trip-solution.png",
+          caption: "the material fix",
+        },
+        {
+          type: "callout",
+          title: "The More You Know",
+          text: "Looking back with what I know now about 3D art, it makes sense. Back then i didn't understand what UVs were, but now I realize that they are calculated separately from the actual entity and need to be considered for when applying scaling. The more you know!",
+        },
+        {
+          type: "text",
+          text: "I also created the main level for the game. I went through a couple iterations to make sure the rooms were sufficiently large enough for ease of moment, just wanted to make sure the level design lended itself to a satisfying play feel. I made this directly through unreal - let's just say I had to get real comfortable with booleans…",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/crazy-old-mans-trip/environment.png",
+          caption: "level design progress",
+        },
+        {
+          type: "text",
+          text: "I also made this profile icon that i'm pretty proud of.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/crazy-old-mans-trip/character-portrait.gif",
+          caption: "this took me way too long.",
+        },
+      ],
+      sections: [],
+    },
     problem:
       "Three weeks in Unreal for a sanity-gated FPS: the loop (kills grant sanity, hits take it, zero is game over) has to teach itself through space and surfaces, not a long tutorial. My job was textures and level design, porting custom Aseprite textures into Unreal, plus helping invent that loop.",
     explorationItems: [
       {
         title: "Ship without custom textures; block out levels only",
-        description: "Engine defaults and graybox volumes so combat can be tuned first.",
-        tradeoff:
-          "Faster jam combat, but the shipped work includes custom Aseprite textures, Unreal texture nodes, and level modeling.",
+        description: "Engine defaults and graybox volumes so combat can be tuned.",
+        tradeoff: "Faster jam combat, but no pizzazz. Harder to make the story come across fully.",
       },
       {
         title: "Drop sanity as a map-and-upgrade currency",
@@ -454,29 +516,25 @@ export const projects: Project[] = [
           "Simpler FPS, but then kills would not unlock weapons and areas the way the sanity system is built to.",
       },
       {
-        title: "Sanity as progression, with authored textures and levels (what shipped)",
-        description:
-          "Unreal levels plus custom Aseprite textures — a tile texture, texture-node work in-engine, and level modeling across two map prototypes, starting from early brainstorming docs.",
+        title: "Sanity as progression, with textures and levels (what shipped)",
+        description: "Unreal levels plus custom Aseprite textures.",
         tradeoff:
-          "The economy is readable in the world; a 3-week jam leaves little time to iterate both art and layout.",
+          "The economy is readable in the world; a 3-week jam leaves not a lot of time to iterate both art and game programming. We were kind of rushing to the finish line, but the end result was worth it!",
       },
     ],
     edgeCases: [
-      "Textures ported over from Aseprite came in stretched across surfaces of different sizes in Unreal. The fix was a material graph that scales the UVs by the object's own X and Y scale before sampling the texture, so it stays proportional no matter the size of the mesh it's on.",
+      "Long story short, textures ported over from Aseprite came in stretched across surfaces of different sizes in Unreal. The fix was a material graph that scales the UVs by the object's own X and Y scale before sampling the texture, so it stays proportional no matter the size of the mesh.",
     ],
     solution:
-      "Complete jam build in Unreal with custom textures and level design. Add-ons coming soon.",
+      "Complete jam build in Unreal with custom textures, level design, and a unique sanity management system that makes it stand out from other fps!",
     reflection: [
-      "Porting Aseprite textures through Unreal nodes in three weeks is a pipeline problem as much as a look problem.",
-      "Scaling UVs by the object's own dimensions before sampling is one of those small material-graph tricks I now just reach for by default.",
+      "Even when you got a crazy idea, being able to think outside the box and frame new features as part of your theme is key to making it believable.",
+      "Framing will change the way people view your narrative and your product.",
+      "My node programming skills have significantly improved from absolute zero.",
     ],
     imageUrl: "/images/projects/crazy-old-mans-trip-cover.jpg",
-    solutionImageUrl: "/images/projects/crazy-old-mans-trip-solution.png",
     videoUrl: "/videos/crazy-old-mans-trip-thumbnail.mp4",
     galleryImages: [
-      { src: "/images/projects/gallery/crazy-old-mans-trip/design-doc.png", caption: "Cutscene storyboard and menu sketch" },
-      { src: "/images/projects/gallery/crazy-old-mans-trip/environment.png", caption: "Mansion interior, blocked out in Unreal" },
-      { src: "/images/projects/gallery/crazy-old-mans-trip/character-portrait.gif", caption: "The veteran — character portrait" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/screenshot-2.png", caption: "In-engine screenshot" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/progress.png", caption: "Early level-building progress" },
       { src: "/images/projects/gallery/crazy-old-mans-trip/progress-2.png", caption: "Hallway lighting pass" },
