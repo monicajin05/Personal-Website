@@ -15,7 +15,7 @@ export interface Project {
   tools: string[];
   overview: string;
   audience: string;
-  problem: string;
+  problem?: string;
   problemBullets?: { text: string; subpoints?: string[] }[];
   explorationItems?: { title: string; description: string; tradeoff: string }[];
   edgeCases?: string[];
@@ -149,23 +149,6 @@ export const projects: Project[] = [
         },
       ],
     },
-    problem:
-      "It wouldn’t be video game development if there weren’t problems. There were two in particular I focused on:",
-    problemBullets: [
-      {
-        text: "The rooms had to work as puzzles and as spaces players can move through. In the beginning, I noticed our rooms were WAYY too big and contained a lot of empty space. Playtests mostly ended up being walking with irritation, wishing I could sprint to my next destination.",
-        subpoints: [
-          "I had to resize each room in the map, which was pretty annoying since Godot doesn’t rescale collision boxes alongside actual assets, so I had to essentially resize everything twice.",
-        ],
-      },
-      {
-        text: "Because puzzle games naturally have more assets, our world tree was a complete mess.",
-        subpoints: [
-          "Every wall, floor, desk, etc was called ‘rect1,’ ‘rect2,’ etc. When I was resizing everything, I realized this was horrible!",
-          "I refactored everything quickly and immediately everything became so much better. That was when I realized the importance of keeping your workflow and code clean…it really does make a difference.",
-        ],
-      },
-    ],
     playtests: [
       "Players enjoyed our game, but honestly, the later parts were kind of confusing.",
       "There was this one part where the mad scientist’s mech is released and chases after the player, but then the player needs to find a way to redirect the mech’s deadly lazer beam to aim for the glass that encases the player’s goal, Element Zero. Honestly, if I wasn’t a developer, I’d also be so confused.",
@@ -288,8 +271,6 @@ export const projects: Project[] = [
         },
       ],
     },
-    problem:
-      "This was an asset-heavy project: I owned player and enemy idle/attack animation, environment art, asset design, and ending cards, on top of a procedural map and two bosses, while Jacob built the floor generation and tile implementation and Louis handled enemy AI. Volume and consistency were the real constraint.",
     solution:
       "I made a few dozen assets including characters, combat animation, environment, ending cards, etc. Making good designs is pretty labor intensive, but it was a great experience getting familiar with a new software.",
     reflection: [
@@ -379,8 +360,6 @@ export const projects: Project[] = [
       ],
       sections: [],
     },
-    problem:
-      "A branching murder mystery needs art that still reads across every ending, plus a Twine flow that could carry real weight as the series opener — without a full game engine. Twine isn't built for anything beyond a passage graph, so interactive combat (a timed dodge, a parry-and-counter QTE) had to be hand-rolled as linked passages instead of real code.",
     explorationItems: [
       {
         title: "Build it in a game engine instead of Twine",
@@ -501,8 +480,6 @@ export const projects: Project[] = [
       ],
       sections: [],
     },
-    problem:
-      "Three weeks in Unreal for a sanity-gated FPS: the loop (kills grant sanity, hits take it, zero is game over) has to teach itself through space and surfaces, not a long tutorial. My job was textures and level design, porting custom Aseprite textures into Unreal, plus helping invent that loop.",
     explorationItems: [
       {
         title: "Ship without custom textures; block out levels only",
