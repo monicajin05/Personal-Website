@@ -204,7 +204,7 @@ export default function CaseStudy() {
   const sections = [
     { id: "overview", label: "Overview" },
     ...(project.process ? [{ id: "process", label: "Process" }] : []),
-    { id: "problem", label: "Problem" },
+    ...(project.problem ? [{ id: "problem", label: "Problem" }] : []),
     ...(project.playtests && project.playtests.length > 0 ? [{ id: "playtests", label: "Playtests" }] : []),
     ...(project.explorationItems && project.explorationItems.length > 0 ? [{ id: "exploration", label: "Exploration" }] : []),
     ...(project.solution ? [{ id: "solution", label: "Solution" }] : []),
@@ -437,33 +437,35 @@ export default function CaseStudy() {
           </CaseStudySection>
         )}
 
-        <CaseStudySection id="problem" label="Problem">
-          <p className="text-foreground text-base md:text-lg leading-relaxed">
-            {project.problem}
-          </p>
-          {project.problemBullets && project.problemBullets.length > 0 && (
-            <ul className="mt-5 space-y-4">
-              {project.problemBullets.map((point, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="text-accent mt-1.5 shrink-0">·</span>
-                  <div>
-                    <p className="text-foreground/90 text-base leading-relaxed">{point.text}</p>
-                    {point.subpoints && point.subpoints.length > 0 && (
-                      <ul className="mt-2 space-y-2 ml-1">
-                        {point.subpoints.map((sub, j) => (
-                          <li key={j} className="flex items-start gap-3">
-                            <span className="text-muted-fg mt-1.5 shrink-0 text-xs">○</span>
-                            <p className="text-muted-fg text-sm leading-relaxed">{sub}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </CaseStudySection>
+        {project.problem && (
+          <CaseStudySection id="problem" label="Problem">
+            <p className="text-foreground text-base md:text-lg leading-relaxed">
+              {project.problem}
+            </p>
+            {project.problemBullets && project.problemBullets.length > 0 && (
+              <ul className="mt-5 space-y-4">
+                {project.problemBullets.map((point, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-accent mt-1.5 shrink-0">·</span>
+                    <div>
+                      <p className="text-foreground/90 text-base leading-relaxed">{point.text}</p>
+                      {point.subpoints && point.subpoints.length > 0 && (
+                        <ul className="mt-2 space-y-2 ml-1">
+                          {point.subpoints.map((sub, j) => (
+                            <li key={j} className="flex items-start gap-3">
+                              <span className="text-muted-fg mt-1.5 shrink-0 text-xs">○</span>
+                              <p className="text-muted-fg text-sm leading-relaxed">{sub}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CaseStudySection>
+        )}
 
         {project.playtests && project.playtests.length > 0 && (
           <CaseStudySection id="playtests" label="Playtests">
