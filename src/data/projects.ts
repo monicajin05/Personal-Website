@@ -319,16 +319,65 @@ export const projects: Project[] = [
   {
     slug: "slimed-origins",
     title: "Slimed: Origins",
-    hook: "Interactive narrative: Tina, a triceratops, investigates her brother Tony's murder — confront his killer, rally her tribe for war, or walk away.",
+    hook: "An interactive narrative where a triceratops must investigate her brother's mysterious murder.",
     tags: ["Team · 4", "Lead artist", "Twine", "Complete"],
-    year: "Complete",
+    year: "January 2026",
     role: "Lead artist — all pixel art (environment, characters, ending cards); helped brainstorm narrative and series flow",
     timeline: "Complete",
     tools: ["Aseprite", "Twine"],
     overview:
-      "Slimed: Origins is an interactive narrative built in Twine — the first game in the Slimed series, meant to set its tone, so the team leaned hard into narrative and even built quick-time events (a timed dodge during training, a parry-and-counter fight) directly into the passage graph rather than cutting them for a simpler build. You play Tina, investigating the murder of her brother Tony, the tribe's chosen fighter for an annual duel that decides which of two food-scarce dinosaur tribes controls the region's resources. The trail leads to Nano, the rival tribe's own champion, who eventually breaks down and admits his tribe forced him to make sure Tony couldn't fight. From there, paths split: confront Nano's tribe alone, or return and try to rally your own tribe to war.",
+      "Slimed: Origins is an interactive narrative built in Twine. It's the first game in our series, meant to set its tone, so the team leaned into narrative and even built quick-time events (a timed dodge during training, a parry-and-counter fight) directly into the passage graph. You play as a triceratops investigating the murder of her brother, the tribe's chosen fighter for an annual duel that decides which of two food-scarce dinosaur tribes controls the region's resources. The trail leads to a nanotyrannus, the rival tribe's own champion. From there, you must choose: peace, or war?",
     audience:
-      "Players who want a choice-driven story with original pixel art. 4-person team.",
+      "Players who want a choice-driven story.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "Our team was asked to build a series of games for the North Carolina Museum of Sciences for their new exhibition: “dueling dinosaurs.” The exhibition is basically the fossil of a triceratops and nanotyrannus engaged in a battle where they met their end.",
+        },
+        {
+          type: "text",
+          text: "Because the premise of the exhibition was a duel, we decided to center the narrative around a war/conflict. We planned the series of games to follow a complete narrative as a whole, with this game being the first piece.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-origins/brainstorming.jpg",
+          caption: "Whiteboard — sketching how Origins' branches connect into the rest of the Slimed series",
+        },
+        {
+          type: "text",
+          text: "Depending on what ending the player got at the end of this game, it'll branch out to different games/endings in the next. As you can see in the above picture (if you can decipher it!), Origins has two endings: one peaceful, and one that leads to war.",
+        },
+        {
+          type: "text",
+          text: "The actual development of the game was pretty simple, as we did it through Twine. After writing the script, we simply had to make the flow of the story using Twine's software.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-origins/programming-flow.png",
+          caption: "Twine programming flow",
+        },
+        {
+          type: "text",
+          text: "To add more interaction, we made it more interactive by adding quick time events where the player has to dodge the enemy's bites. Additionally, we created a combat system where every choice has a random chance of landing a critical hit.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-origins/jaw.gif",
+          caption: "attack animation",
+        },
+        {
+          type: "text",
+          text: "As the lead artist for this game, I had to make a couple 2D assets, but nothing too intensive for this stage. My favorite part of development was making the ending cards!",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/slimed-origins/gameplay-3.png",
+          caption: "death screen, i tried to draw the peter griffin pose…",
+        },
+      ],
+      sections: [],
+    },
     problem:
       "A branching murder mystery needs art that still reads across every ending, plus a Twine flow that could carry real weight as the series opener — without a full game engine. Twine isn't built for anything beyond a passage graph, so interactive combat (a timed dodge, a parry-and-counter QTE) had to be hand-rolled as linked passages instead of real code.",
     explorationItems: [
@@ -341,33 +390,30 @@ export const projects: Project[] = [
       {
         title: "Text-only, skip original art",
         description: "Let Twine carry the story with little or no illustration.",
-        tradeoff:
-          "Faster writing, but my role was all pixel art: environment, characters, ending cards.",
+        tradeoff: "Faster writing, but kind of boring.",
       },
       {
         title: "Twine narrative + full pixel art, with hand-rolled QTEs (what shipped)",
         description:
-          "Aseprite art for environments, characters, and endings; Twine for flow, plus quick-time events built as passage chains — a timed dodge during training, a three-hit parry-and-counter against Nano's brother, Nando. After the murder is uncovered, the story splits: go alone to confront Nano's tribe (ending in a personal duel with Nano just as a meteor appears on the horizon — the connective tissue into Slimed: Awakening), or return to rally your own tribe into open war.",
+          "Aseprite art for environments, characters, and endings; Twine for flow, plus quick-time events built as passage chains: a timed dodge during training, a three-hit parry-and-counter against enemies. After the murder is uncovered, the story splits.",
         tradeoff:
-          "The series gets a visual identity and multiple endings; art has to cover every branch you actually ship.",
+          "The series gets a visual identity and multiple endings; more art assets needed.",
       },
     ],
     edgeCases: [],
     solution:
       "Complete interactive narrative in Twine with original pixel art for environments, characters, and ending cards.",
     reflection: [
-      "Helping set narrative and flow for the whole Slimed series meant Origins had to work as a story and as a visual template later games could follow.",
-      "Players gravitated toward the war ending more than the others in testing — though that's probably as much about how the story frames the choice as any real appetite for war.",
+      "Helping set narrative and flow for the whole Slimed series meant Origins had to work as a story and as a visual template later games could follow. For example, choosing pixel art as this game's visual style meant that we stuck to pixel art in later games as well.",
+      "Even when making a game without a solid gameplay loop, such as a visual novel like this, there are still ways you can make it interactive! For example, we made a combat system using the most basic Twine software. The most important part is thinking outside the box and not dissuading yourself from using software in a way it's not explicitly marketed to do.",
+      "I noticed due to the framing of the story, most playtesters chose the war ending, funnily enough. Looks like they all got caught up in the heat of the moment…!",
     ],
     imageUrl: "/images/projects/slimed-origins-cover.jpg",
     solutionImageUrl: "/images/projects/slimed-origins-solution.png",
     videoUrl: "/videos/slimed-origins-thumbnail.mp4",
     galleryImages: [
-      { src: "/images/projects/gallery/slimed-origins/brainstorming.jpg", caption: "Whiteboard — sketching how Origins' branches connect into the rest of the Slimed series" },
       { src: "/images/projects/gallery/slimed-origins/design-doc.png", caption: "Design doc — setting, goals, key challenges, and audience" },
-      { src: "/images/projects/gallery/slimed-origins/programming-flow.png", caption: "Twine programming flow" },
       { src: "/images/projects/gallery/slimed-origins/gameplay-2.png", caption: "In-game dialogue" },
-      { src: "/images/projects/gallery/slimed-origins/gameplay-3.png", caption: "Investigating a clue" },
       { src: "/images/projects/gallery/slimed-origins/ending.png", caption: "One of the three endings" },
     ],
     docLinks: [
