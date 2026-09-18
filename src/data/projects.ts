@@ -525,53 +525,108 @@ export const projects: Project[] = [
   {
     slug: "battle-zone-3d",
     title: "Battle Zone 3D",
-    hook: "Real-time WebGL remake of Battle Zone in 3D: custom shaders, Blockbench OBJs, third-person aim, mini-map.",
+    hook: "Real-time WebGL remake of Battle Zone in 3D.",
     tags: ["Solo", "WebGL", "GLSL", "Complete"],
-    year: "Complete",
+    year: "December 2025",
     role: "Solo — programming, 3D modeling, graphics processing",
     timeline: "Complete",
     tools: ["VS Code", "Blockbench", "GitHub"],
     overview:
-      "A real-time WebGL rendition of the classic Battle Zone game, in 3D — a deliberate twist, since the 1980 original didn't use any 3D models at all, just vectors drawn directly in space. Custom vertex and fragment shaders use Model-View-Projection transforms. Assets load from OBJ files I modeled myself in Blockbench, tanks included (albeit badly). Third-person camera with mouse aiming/shooting. Mini-map via a separate top-down viewport render.",
-    audience:
-      "A graphics-programming project that also has to play as a tank game in the browser. Solo.",
-    problem:
-      "The whole 3D path — MVP transforms, custom vertex/fragment shaders, OBJ loading, third-person mouse aim, and a second top-down viewport for a mini-map — had to be authored without a game engine, including the tank and spaceship meshes. I picked Battle Zone specifically because I wanted a real-time 3D graphics challenge with gameplay simple enough that the graphics could stay the actual focus.",
+      "A real-time WebGL rendition of Battle Zone with some extra modifications, such as being purely 3D. Contains two modes that the player can switch between: one that is traditionally Battle Zone, and a mode where the player can control a ship in space.",
+    audience: "Those who enjoy playing reboots of classic arcade games.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "Battle Zone is a game that I played as a kid, so I decided to try and recreate it using pure computer graphics. This project was mostly an experiment to push the limits of what I can do using WebGL shaders.",
+        },
+        {
+          type: "text",
+          text: "Every object you see on screen starts out as a bunch of points in 3D space, a mesh. To turn “a bunch of points” into “a picture on your screen,” the GPU runs every point through two programs: a vertex shader and a fragment shader.",
+        },
+        {
+          type: "text",
+          text: "The vertex shader's job is figuring out WHERE things go. It moves every point using a model-view-projection (MVP) transform, which is really just three transforms stacked on top of each other. “Model” moves an object to wherever it actually sits in the game world; “view” shifts everything relative to where the camera is looking; “projection” squishes that 3D world down into the flat 2D rectangle of your screen. Chain all three together and that's how a tank sitting at some coordinates in the game world ends up as a tank-shaped cluster of pixels in the right spot on your monitor.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/battle-zone-3d/vertex-shader.png",
+          caption: "Custom vertex shader — MVP transform",
+        },
+        {
+          type: "text",
+          text: "Once the GPU knows WHERE everything goes, the fragment shader decides what COLOR each pixel should be. Mine is pretty simple: a flat ambient glow so nothing is ever pitch black, plus Lambertian diffuse shading, which is really just a fancy way of saying “surfaces facing the light get brighter, surfaces facing away get darker.” I calculate that per-face instead of smoothing it across the whole model, which gives everything a blocky, low-poly look for a cooler aesthetic.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/battle-zone-3d/fragment-shader.png",
+          caption: "Custom fragment shader — ambient/diffuse lighting",
+        },
+        {
+          type: "text",
+          text: "I also had to build the rest of the rendering pipeline myself. I depth tested so objects actually occlude each other correctly instead of drawing on top of one another, and asset loading from OBJ files that get uploaded straight to GPU vertex buffers, alongside procedurally generated ground and obstacle meshes. For the camera, I built a third-person chase view plus mouse aiming, basically unprojecting the mouse's screen-space position into a world-space ray and figuring out where that ray hits the ground plane. This way, your aim actually lines up with where you're pointing, which is (obviously) pretty important.",
+        },
+        {
+          type: "text",
+          text: "My favorite part is the mini-map. I made it a second WebGL viewport, rendering the whole scene a second time from a top-down orthographic camera.",
+        },
+        {
+          type: "text",
+          text: "As for the actual 3D models — I built the tank (and the spaceship for the alternate mode) in Blockbench. I'm no genius at 3D modeling, but for a tank made of a base, a turret, and a barrel stuck together, it at least looks like a tank if you squint.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/battle-zone-3d/tank-model.png",
+          caption: "Simple custom tank model",
+        },
+        {
+          type: "text",
+          text: "Gameplay-wise, it's just like classic Battle Zone: W/S drive forward and backward, A/D rotate the tank, the mouse aims and rotates the turret, and space/mouse click fires. Mountains block you, but hills can be driven over, and the radar tells you where the enemies are. Get hit and your score resets.",
+        },
+        {
+          type: "text",
+          text: "Press “!” and you'll drop into the alternate mode I made using assets from the base game: Spaceship Battle Zone, which swaps the tanks and mountains for spaceships and asteroids. The controls open up to full 3D movement — W/S/A/D plus Q and E to move up and down.",
+        },
+        {
+          type: "text",
+          text: "I also added: a tracked and displayed score, a third-person camera attached to the back of the player's tank, actual 3D gameplay with varying elevation and rotating turrets/cannons you can aim up/down and left/right, and the minimap/radar display. If I had extra time, I would've liked to add a leaderboard or something to show off the highest score you earned in a single play session. Add some competition into it!",
+        },
+      ],
+      sections: [],
+    },
     explorationItems: [
       {
         title: "Use an engine or a high-level 3D library",
-        description: "Unity, Godot, or a scene-graph library so gameplay ships without writing shaders.",
+        description: "Unity, Godot, or a scene-graph library.",
         tradeoff:
-          "Faster game; you would not own MVP math, GLSL, or the second viewport the way this project is built.",
+          "No need to write my own shaders, MVP math, extra viewports, etc. Less deep understanding of graphics.",
       },
       {
         title: "Skip the mini-map and extra viewport",
-        description: "One camera, one render pass; HUD as HTML or a simple overlay.",
+        description: "Only add one camera; HUD as HTML or a simple overlay.",
         tradeoff:
-          "Less GPU and camera bookkeeping, but the mini-map here is a separate top-down viewport render.",
+          "Less GPU and camera bookkeeping, but no addition of one of Battle Zone's pivotal features.",
       },
       {
-        title: "Raw WebGL: custom shaders, Blockbench OBJs, dual viewport (what shipped)",
+        title: "Raw WebGL with custom shaders (what shipped)",
         description:
-          "Vertex/fragment shaders, MVP, OBJ assets, third-person mouse aim/shoot, mini-map viewport — a tank model and a spaceship model, both modeled in Blockbench.",
-        tradeoff:
-          "Full control of the pipeline; every system (load, shade, aim, map) is yours to debug.",
+          "Added vertex/fragment shaders, MVP, OBJ assets, third-person mouse aim/shoot, mini-map viewport, etc.",
+        tradeoff: "Full control of the pipeline, more effort.",
       },
     ],
     edgeCases: [
-      "The mini-map was the hardest part to get right — it's rendered as a genuine second WebGL viewport inside drawRadar(), not a separate canvas or an HTML overlay. The lesson that would've saved the most time: clear the depth buffer before moving the camera to the new view, or the second pass reads stale depth from the first.",
+      "The mini-map is a genuine second WebGL viewport inside drawRadar(), not a separate canvas or an HTML overlay. I learned I needed to clear the depth buffer before moving the camera to the new view, or the second pass reads stale depth from the first.",
     ],
     solution:
-      "Complete solo WebGL game: custom shaders, Blockbench OBJs, third-person shooting, mini-map viewport.",
+      "Complete solo WebGL game with custom shaders, 3D modeling, third person shooting, etc!",
     reflection: [
-      "Doing programming, modeling, and graphics processing solo makes the shader pair and the two models the whole visual system — there is no engine art pipeline to hide behind.",
+      "Doing programming, modeling, and graphics processing solo meant the shaders and the two models were the entire visual system. There's no engine art pipeline to hide behind, so every rough edge was on me.",
+      "This got me a lot more familiar with graphics and GPU processing. I knew before that a GPU actually turns 3D points into pixels, but I didn't really understand MVP transforms and shading models until I came out of this project. I really needed a strong foundation to make this game. It was a struggle, but worth it!",
+      "Recreating something you played before is a great way to practice something vs building an original concept — there's a very specific feeling in getting the radar and the third-person camera to finally click into place and realizing, oh, this actually feels like Battle Zone now.",
     ],
     imageUrl: "/images/projects/battle-zone-3d-cover.jpg",
-    solutionImageUrl: "/images/projects/battle-zone-3d-solution.png",
     vimeoBackgroundId: "1180000932",
     galleryImages: [
-      { src: "/images/projects/gallery/battle-zone-3d/vertex-shader.png", caption: "Custom vertex shader — MVP transform" },
-      { src: "/images/projects/gallery/battle-zone-3d/fragment-shader.png", caption: "Custom fragment shader — ambient/diffuse lighting" },
       { src: "/images/projects/gallery/battle-zone-3d/spaceship-model.png", caption: "Spaceship model, built in Blockbench" },
       { src: "/images/projects/gallery/battle-zone-3d/gameplay-2.png", caption: "Third-person gameplay" },
     ],
