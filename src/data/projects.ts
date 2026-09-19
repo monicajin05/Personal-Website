@@ -622,7 +622,7 @@ export const projects: Project[] = [
     reflection: [
       "Doing programming, modeling, and graphics processing solo meant the shaders and the two models were the entire visual system. There's no engine art pipeline to hide behind, so every rough edge was on me.",
       "This got me a lot more familiar with graphics and GPU processing. I knew before that a GPU actually turns 3D points into pixels, but I didn't really understand MVP transforms and shading models until I came out of this project. I really needed a strong foundation to make this game. It was a struggle, but worth it!",
-      "Recreating something you played before is a great way to practice something vs building an original concept — there's a very specific feeling in getting the radar and the third-person camera to finally click into place and realizing, oh, this actually feels like Battle Zone now.",
+      "Recreating something you played before is a great way to practice something vs building an original concept.",
     ],
     imageUrl: "/images/projects/battle-zone-3d-cover.jpg",
     vimeoBackgroundId: "1180000932",
@@ -639,58 +639,119 @@ export const projects: Project[] = [
   {
     slug: "catacombs",
     title: "Catacombs",
-    hook: "2-day jam RPG: find which of three hotel guests committed a murder, using evidence, dialogue, and the space.",
+    hook: "Find which of your three hotel guests committed a murder!",
     tags: ["Team · 4", "Godot", "2-day jam", "Complete"],
-    year: "Complete",
+    year: "September 2025",
     role: "Lead game manager — programming (assets, inventory, UI, assisted save-state), game design and narrative structure",
-    timeline: "2-day jam",
-    tools: ["Godot"],
+    timeline: "2-day jam, complete",
+    tools: ["Godot", "GitHub", "Procreate"],
     overview:
-      "An immersive RPG: you play Kit Pawson, an ex-detective turned hotel manager, investigating a guest's disappearance among three suspects — a washed-up musician crane looking for inspiration, a fish who claims to work in 'waste management,' and a boxer frog nursing a grudge after a bad match. You've got a task list to work through over a few in-game days, and the murders don't stop just because you're taking your time. Made for a 2-day jam, with a focus on lively per-character dialogue and environmental storytelling.",
-    audience:
-      "Players who want a short mystery with talky characters. 4-person jam team.",
-    problem:
-      "Two days to ship a three-suspect murder mystery that lives on dialogue and environment, while also being lead game manager and the person wiring assets, inventory, UI, and (with help) save-state. As the manager, that mostly meant calling frequent little huddles mid-session just to whiteboard what we could actually still pull off.",
-    explorationItems: [
-      {
-        title: "Combat RPG, mystery as flavor",
-        description: "Spend the jam on combat and loot; suspects are dressing.",
-        tradeoff:
-          "Familiar jam scope, but the brief is evidence, character dialogue, and environmental storytelling — not a dungeon crawl.",
-      },
-      {
-        title: "Program only one system (UI or inventory, not both)",
-        description: "Narrow the code so design and writing can move faster.",
-        tradeoff:
-          "Safer jam, but the shipped programming includes asset implementation, inventory, UI, and assisted save-state.",
-      },
-      {
-        title: "Mystery loop + manager role across systems (what shipped)",
-        description:
-          "Lead game manager in Godot: assets, inventory, UI, assisted saves; each suspect got their own motive and alibi (the fish had beef with the victim over a stolen bite of food, the frog blamed him for booing at a match, the crane just found him insufferable) worked out in the plot doc before any dialogue was written. We'd originally wanted evidence specific enough to individually incriminate each resident and really make you work for it, but caught early that two days wasn't going to cover that — so it ended up fairly linear, leaning on the writing itself to keep you second-guessing instead of a full deduction system.",
-        tradeoff:
-          "The investigation can actually run; two days means every extra system is a risk.",
-      },
-    ],
-    edgeCases: [
-      "Genuinely thought we'd made the culprit a little too obvious. Turns out most playtesters didn't guess it — the red herrings worked, maybe a bit too well. A few of the more seasoned players nailed it first try, but most didn't.",
-    ],
+      "After a guest's disappearance, a hotel manager must find evidence to find the culprit among three suspects: a washed-up musician looking for inspiration, a mobster who claims to work in 'waste management,' and a boxer nursing a grudge after a bad match. Discover evidence and puzzle through the suspect's dialogue to determine who the real murderer is.",
+    audience: "People who want a short mystery with talky characters.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "This was for a two-day game jam with the theme “Tunnel.”",
+        },
+        {
+          type: "text",
+          text: "I’m not sure why the first thing we thought of when the theme was brought up was “oh yeah, catacombs!” I guess in a way, catacombs are a type of tunnel? It was a bit of a sus way to start off a game jam, but it lent itself to a bunch of interesting ideas.",
+        },
+        {
+          type: "text",
+          text: "I advocated for a spunky game with horror elements, where the player could discover hidden catacombs under a map. It quickly turned into a murder mystery narrative because we all really like narrative based games. One of our members mentioned the board game Clue as a potential source of inspiration, and that was that.",
+        },
+        {
+          type: "text",
+          text: "Of course, the main character needed to be a cat. That was kind of our group’s thing.",
+        },
+      ],
+      sections: [
+        {
+          title: "Brainstorming",
+          body: [
+            {
+              type: "text",
+              text: "Choosing what format we wanted was one of our first big decisions. Did we want the map to be at a 3/4s angle? Or did we want it front-on? Personally, I thought a 3D 3/4s view could be very visually interesting, but due to the game jam’s timeline we needed to be extra cautious about scope. A 2D front-on perspective was much more practical.",
+            },
+            {
+              type: "image",
+              src: "/images/projects/gallery/catacombs/brainstorming.jpg",
+              caption: "brainstorming on a random piece of paper",
+            },
+          ],
+        },
+        {
+          title: "Programming",
+          body: [
+            {
+              type: "text",
+              text: "Learning how to set a scene and transition in Godot was a big part of this project for me, since I was mainly doing game programming. I built an inventory bar that stored things the player could pick up, as well as helping both the art and programming side during communication and imports. I programmed the major functionality of the game, such as scene set ups, transitions, main menu cards, the timer, accusation functionality, flow of finding evidence, etc.",
+            },
+            {
+              type: "image",
+              src: "/images/projects/gallery/catacombs/implementation.png",
+              caption: "placing collision boxes",
+            },
+            {
+              type: "image",
+              src: "/images/projects/gallery/catacombs/implementation-2.png",
+              caption: "The sewer scene, with the accusation timer wired up",
+            },
+          ],
+        },
+        {
+          title: "Issues",
+          body: [
+            {
+              type: "text",
+              text: "At 2 am in the morning, I noticed something was amiss with our save system. All player history (inventory, past pick-ups, etc.) was getting cleared every time we switched scenes, which would pose problems for the player. As it was 2 am, we were so exhausted that we could’ve easily ignored the bug, but instead decided to sacrifice our sleep and fix it. After poking around the code for a while, we discovered that a state machine would fix the issue.",
+            },
+            {
+              type: "text",
+              text: "As the de facto project manager, I called for frequent come-togethers and asides during our work sessions, just to whiteboard what our next steps should be based on how much we'd actually gotten done. At first, we wanted to add extra evidence that could individually incriminate each resident and make it more of a challenge, but we caught on early that we probably couldn't pull that off in two days. Instead, we made it more of a linear game that depended on careful writing to keep the player second-guessing, instead of building out a whole deduction mechanic.",
+            },
+            {
+              type: "text",
+              text: "I ended up being the bridge between art and programming by taking whatever our artist made and wiring it into the actual game. I found out this required really seamless communication skills so I wouldn’t direct our artist to create an asset for something that wasn’t even specified by our narrative designer. Thank goodness I’m an artist in my free time – since I knew the pain already, I avoided a lot of time-wasting decisions.",
+            },
+          ],
+        },
+        {
+          title: "What I Learned From Judging",
+          body: [
+            {
+              type: "text",
+              text: "Framing is key. A lot of people didn't guess the culprit, even though I thought we'd made it a little too obvious. Turns out the red herrings worked! (Just a little bit toooo well).",
+            },
+            {
+              type: "text",
+              text: "I think we should've considered the setting our game would actually be played in when gauging our audience. The testing room was packed, and people were bouncing from game to game all at once. A heavy narrative game that depends on paying close attention to clues just doesn't shine in that setting the way an addictive game loop does. Because it was such a short and chaotic judging period, most judges didn't have time to really play through our whole game, or they'd miss easy clues in favor of really obvious dialogue meant to mislead.",
+            },
+            {
+              type: "text",
+              text: "The biggest lesson I walked away with: CATERING TO YOUR DEMOGRAPHIC when making a product is more important than how clever it is.",
+            },
+          ],
+        },
+      ],
+    },
     solution:
-      "Complete 2-day jam RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character and plot design docs worked out ahead of implementation. If I'd had more time, the feature I really wanted was letting players pick up evidence and examine specific parts of it for more clues, instead of just collecting it.",
+      "Completed a RPG in Godot with inventory, UI, asset wiring, and assisted save-state, plus character and plot design docs worked out ahead of implementation. If I'd had more time, the feature I really wanted was letting players pick up evidence and examine specific parts of it for more clues, instead of just collecting it. I'd also love to do a 3D rendition of this game!",
     reflection: [
-      "Lead game manager on a 2-day jam is mostly integration: dialogue and rooms only work if inventory, UI, and saves do not eat the whole clock.",
-      "Biggest lesson from playtesting: catering to your actual demographic matters more than how clever your mystery is. The room was packed and people were bouncing between a dozen games at once — a game that wants you to slow down and actually read clues just doesn't shine in that setting the way a tight, addictive game loop does.",
+      "Managing a game is mostly about integration: dialogue and rooms only work if inventory, UI, and saves don't cause problems under the hood.",
+      "Catering to your actual demographic matters more than how clever your plot is, or how polished your assets are, or anything, really. Framing is EVERYTHING! Though I'm proud of what we made, we did not frame our game for the correct audience, as most players were looking more for a tight, addictive game loop that they could absorb easily.",
+      "Catching scope creep before it ate our two days and making the call to cut features down was heartbreaking, but also very much needed.",
+      "Bridging art and programming under a hard deadline was very interesting! I got to see this project from every angle instead of just my own corner of it.",
     ],
     imageUrl: "/images/projects/catacombs-cover.jpg",
     solutionImageUrl: "/images/projects/catacombs-solution.png",
     videoUrl: "/videos/catacombs-thumbnail.mp4",
     galleryImages: [
-      { src: "/images/projects/gallery/catacombs/brainstorming.jpg", caption: "Early brainstorm sketch — the accusation UI and timer" },
       { src: "/images/projects/gallery/catacombs/character-bios.png", caption: "Character bios and motives for each suspect" },
       { src: "/images/projects/gallery/catacombs/plot-doc.png", caption: "Plot doc — the opening scene and suspects' relationships" },
       { src: "/images/projects/gallery/catacombs/design-doc.png", caption: "Early brainstorm — genre and gameplay-loop ideas" },
-      { src: "/images/projects/gallery/catacombs/implementation.png", caption: "Hotel room scene in the Godot editor" },
-      { src: "/images/projects/gallery/catacombs/implementation-2.png", caption: "The sewer scene, with the accusation timer wired up" },
       { src: "/images/projects/gallery/catacombs/gameplay-2.png", caption: "Accusing a suspect" },
       { src: "/images/projects/gallery/catacombs/gameplay-3.png", caption: "Investigating the catacombs" },
       { src: "/images/projects/gallery/catacombs/end-screen.png", caption: "The end screen — \"Murder Strikes Again\"" },
