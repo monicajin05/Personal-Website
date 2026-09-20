@@ -406,6 +406,99 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "ai-glaze-visualization",
+    title: "Ceramic AI",
+    hook: "Predict physical glaze outcomes by picking a clay body, glaze type, and temperature cone in a 3D web simulation.",
+    tags: ["Team · 5", "three.js", "ML", "Complete"],
+    year: "Summer 2026",
+    role: "Lead software developer",
+    timeline: "Complete",
+    tools: ["VS Code", "Vercel", "GitHub", "three.js", "XGBoost"],
+    overview:
+      "Ceramic AI explores how AI can assist in complex material design, using ceramic glaze as the case study. Normally, firing ceramics is a trial-and-error process across composition, firing temperature, and many other variables. Ceramic AI uses machine learning to simulate a 3D prototype of what the glaze would look like without having to go through physical processes.",
+    audience:
+      "Artists, architects, ceramicists, and researchers who want to simulate potential glaze outcomes efficiently without using physical resources.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "Our team was awarded an Arts + Data Science Interdisciplinary Mini-Grant worth $5,000 for this project. Our intention was to find a way to help artists through technological solutions, saving money, resources, and time.",
+        },
+        {
+          type: "text",
+          text: "I worked on an interdisciplinary team where I led simulation and interface development, while others worked on the physical ceramic display.",
+        },
+        {
+          type: "text",
+          text: "One of the first problems I ran into was figuring out how to actually classify glazes in a way a program could use. Glaze names don't tell a model anything (what is “Rutile Blues” supposed to mean to an algorithm, anyways?). I figured out that we could represent every clay body and glaze as a set of oxide chemistry values instead (like SiO2_percent: 68.0) so the program had something it could actually quantify and adjust.",
+        },
+        {
+          type: "text",
+          text: "So the flow essentially is: a user picks a clay body, glaze, and firing temperature, and that gets converted into oxide composition percentages, which feed into a handful of separate Extreme Gradient Boosting (XGBoost) models: one for material type, one for surface type (glossy, satin, matte), one for transparency, and one for RGB color.",
+        },
+        {
+          type: "text",
+          text: "XGBoost is a machine learning method that builds a bunch of small decision trees one after another, where each new tree tries to correct the mistakes the previous ones made. We picked it because it's really good at finding patterns in this kind of structured, spreadsheet-style data, it trains fast, and it doesn't need a massive dataset.",
+        },
+        {
+          type: "text",
+          text: "Once those predictions come back, I used three.js. It's a JavaScript library for rendering 3D graphics in the browser using WebGL. Here, it takes the predicted color, gloss, and transparency and builds the glaze onto a 3D model that can be rotated and looked at.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/ai-glaze-visualization/glaze-simulation.png",
+          caption: "Glaze simulation interface",
+        },
+        {
+          type: "text",
+          text: "Training data turned out to be the harder problem. We originally wanted to train and test everything on the public Glazy ceramics database, but its colors didn't actually match our own clay. Glaze properties change based on how they're made, which varies based on who makes them. The Glazy samples weren't close at all to what we were producing in real life.",
+        },
+        {
+          type: "text",
+          text: "Glazy still worked fine for the material-type, surface-type, and transparency classifiers, since those patterns hold up fine. But for color, we had to fall back to a small experimental dataset we tested ourselves.",
+        },
+        {
+          type: "text",
+          text: "That's a tiny amount of data to train a regression model on, so the RGB predictor is likely overfit to it. It was fine for our purposes (proof of concept), but if we were to continue, we would need to gather more data. You can't make up data with algorithms.",
+        },
+        {
+          type: "text",
+          text: "While I was working on the simulation and tech, I was also attending frequent meetings with the rest of the team, who focused on the physical models. Our intention was to align what we could model with machine learning with what is actually fired, measuring the visual difference between glaze on three clay bodies (porcelain, dark star, and okee medium). Check out this prototype! Isn't it awesome?",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-1.jpg",
+          caption: "Physical ceramic sample, fired for comparison",
+        },
+      ],
+      sections: [],
+    },
+    solution:
+      "Complete. Ceramic AI is a working glaze-prediction tool: pick a clay body and glaze, and an XGBoost model trained on real fired samples (supplemented by the Glazy dataset) predicts the outcome, rendered live in three.js.",
+    reflection: [
+      "I learned how to creatively quantify measurements that may not have predefined methods of measurement.",
+      "Leading simulation and interface made me realize that the model, the three.js view, and the physical samples all have to stay aligned for a cohesive project.",
+      "Good data is everything when it comes to machine learning. No model can make up for a lack of data, and the amount of data you have makes all the difference when it comes to performance.",
+    ],
+    imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
+    solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
+    videoUrl: "/videos/ai-glaze-visualization-thumbnail.mp4",
+    galleryImages: [
+      { src: "/images/projects/gallery/ai-glaze-visualization/simulation-model.png", caption: "Simulated glaze-and-form combinations from the three.js model" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/glaze-model-code.png", caption: "The GlazeModel component — gloss and color drive the material in real time" },
+      { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
+    ],
+    docLinks: [
+      { label: "Project plan", href: "https://docs.google.com/document/d/1Pg_ZdsjxeiYKgU6v215eWJ7gSH4V4Cxr/edit?usp=sharing&ouid=114105664643759049425&rtpof=true&sd=true" },
+    ],
+    color: "#0A1520",
+    link: "https://github.com/monicajin05/CeramicAI",
+    liveLink: "https://ceramic-ml-glaze.vercel.app/",
+    status: "complete",
+    category: "software",
+  },
+
+  {
     slug: "crazy-old-mans-trip",
     title: "Crazy Old Man's Trip",
     hook: "A veteran fights ghosts of his past and manages his sanity to survive.",
@@ -911,71 +1004,6 @@ export const projects: Project[] = [
     itchLink: "https://nyela.itch.io/encore",
     status: "complete",
     category: "game",
-  },
-
-  {
-    slug: "ai-glaze-visualization",
-    title: "AI-Assisted Visualization of Ceramic Glaze Design",
-    hook: "A working glaze-prediction tool: pick a clay body and glaze, get back a rendered prediction instead of a kiln gamble.",
-    tags: ["Team · 5", "three.js", "ML", "Complete"],
-    year: "Complete",
-    role: "Lead of Simulation and Interface Development — train ML on real samples; assist 3D-printed material fabrication",
-    timeline: "Complete",
-    tools: ["VS Code", "GitHub", "three.js"],
-    overview:
-      "Ceramic AI explores how AI can assist human decision-making in complex material design, using ceramic glaze as the case study — normally a trial-and-error process across composition, firing temperature, and a dozen other variables. Advised by Dr. Cheryl Xu (Engineering) and Dr. Deborah Littlejohn (Design), on a team of five pairing ceramics/fabrication, information graphics, and me on simulation and interface. Awarded the Arts + Data Science Interdisciplinary Mini-Grant, $5,000.",
-    audience:
-      "Ceramicists and researchers who need to search a huge glaze-parameter space.",
-    problem:
-      "Glaze outcomes depend on composition and firing, and searching that space by kiln alone is slow. As the simulation/interface lead, I had to turn real fired samples into something a model could actually train on, and show a result people could judge against the real thing — not just a chart of numbers.",
-    explorationItems: [
-      {
-        title: "Optimization only, no visual or physical loop",
-        description: "Output recommended recipes as numbers; skip a 3D view and printed samples.",
-        tradeoff:
-          "Faster ML iteration; weaker for material design, where seeing and firing matter.",
-      },
-      {
-        title: "Physical samples only, no interactive simulation",
-        description: "Print and fire; no real-time interface.",
-        tradeoff:
-          "Grounded in real glaze, but you lose the three.js proof-of-concept demo the project already built.",
-      },
-      {
-        title: "XGBoost model + three.js render, trained on real samples (what shipped)",
-        description:
-          "Users pick a clay body and glaze and get a predicted result rendered live on a 3D model in three.js. Underneath, an XGBoost model does the prediction — picked for how cheap it is to train and run compared to heavier options, and because the public Glazy ceramics dataset (used to round out training data) tests similar parameters to ours.",
-        tradeoff:
-          "Human-in-the-loop design that actually shows you the material, not just a number.",
-      },
-    ],
-    edgeCases: [
-      "Glazy's public dataset didn't have colors close enough to our own clay (real North Carolina ceramics) to rely on, so the model had to train on our own color data instead. There wasn't nearly enough of it collected in our timeframe, so the model ended up overfit to a small sample. It still works well as a proof of concept — more data from our own clay is the obvious next step.",
-    ],
-    solution:
-      "Complete. Ceramic AI is a working glaze-prediction tool: pick a clay body and glaze, and an XGBoost model trained on real fired samples (supplemented by the Glazy dataset) predicts the outcome, rendered live in three.js.",
-    reflection: [
-      "Leading simulation and interface means the model, the three.js view, and the physical samples have to stay aligned — otherwise the AI is not actually assisting a maker.",
-      "Biggest lesson from this one: good data is everything. No amount of clever modeling fixes a dataset that doesn't actually look like your material.",
-    ],
-    imageUrl: "/images/projects/ai-glaze-visualization-cover.jpg",
-    solutionImageUrl: "/images/projects/ai-glaze-visualization-solution.png",
-    videoUrl: "/videos/ai-glaze-visualization-thumbnail.mp4",
-    galleryImages: [
-      { src: "/images/projects/gallery/ai-glaze-visualization/simulation-model.png", caption: "Simulated glaze-and-form combinations from the three.js model" },
-      { src: "/images/projects/gallery/ai-glaze-visualization/glaze-simulation.png", caption: "Glaze simulation interface" },
-      { src: "/images/projects/gallery/ai-glaze-visualization/glaze-model-code.png", caption: "The GlazeModel component — gloss and color drive the material in real time" },
-      { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-1.jpg", caption: "Physical ceramic sample, fired for comparison" },
-      { src: "/images/projects/gallery/ai-glaze-visualization/physical-sample-2.jpg", caption: "Physical ceramic sample, close-up" },
-    ],
-    docLinks: [
-      { label: "Project plan", href: "https://docs.google.com/document/d/1Pg_ZdsjxeiYKgU6v215eWJ7gSH4V4Cxr/edit?usp=sharing&ouid=114105664643759049425&rtpof=true&sd=true" },
-    ],
-    color: "#0A1520",
-    link: "https://github.com/monicajin05/CeramicAI",
-    liveLink: "https://ceramic-ml-glaze.vercel.app/",
-    status: "complete",
-    category: "software",
   },
 
   {
