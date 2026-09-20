@@ -842,45 +842,56 @@ export const projects: Project[] = [
   {
     slug: "encore",
     title: "Encore!",
-    hook: "2D environmental horror platformer: a stage magician defies a maestro obsessed with a 'perfect' show — starting with a ballerina who never stops dancing.",
+    hook: "An environmental horror platformer where a magician defies a maestro obsessed with a 'perfect' show.",
     tags: ["Team · 22", "Unity", "Environment art", "Complete"],
     year: "Summer 2025",
-    role: "Environment artist — 5 backgrounds; plot through art with game design; onboarded new artists; helped present at SGS, Summer 2025",
-    timeline: "First long-term student-team project · presented SGS Summer 2025",
+    role: "Environment artist",
+    timeline: "Complete",
     tools: ["Unity", "Procreate"],
     overview:
-      "Encore! is a 2D environmental horror puzzle-platformer set backstage at a theater. You play a small stage magician just trying to do his act; the Maestro, a conductor obsessed with keeping the show 'perfect,' will stop at nothing to prevent that. You fight through performers turned into monsters — starting with a ballerina who's always dancing somewhere in the distance — using cards thrown from your hat to cut things down and clear a path. Inspired by Little Nightmares, Omori, Inside, and Limbo. First long-term project on a student team (22 people).",
-    audience:
-      "Players who want atmosphere-led horror. Large student team.",
-    problem:
-      "Plot has to read through spaces, not cutscenes alone, on a 22-person team working entirely virtually — which made even small creative disagreements harder to untangle than they should've been. As an environment artist, I worked closely with our lead narrative designer, and there were times my read on a space didn't match how she wanted the story to come through it. I made 5 backgrounds and helped onboard new artists mid-project on top of that.",
-    explorationItems: [
-      {
-        title: "Generic horror kits, less authored story in the frame",
-        description: "Reuse stock halls so designers can place puzzles faster.",
-        tradeoff:
-          "Faster production; weaker environmental storytelling, which was the whole point of this game.",
-      },
-      {
-        title: "One hero environment, skip onboarding others",
-        description: "Spend the whole schedule on a single finished space.",
-        tradeoff:
-          "Higher peak quality; my role also included five backgrounds, a team of 22, and helping new artists ramp up.",
-      },
-      {
-        title: "Five authored backgrounds + design collaboration (what shipped)",
-        description:
-          "Five backgrounds — including the ballerina's shoe room, where you cut down her pointe shoes with thrown cards to reach a key, and a piano-drop trap where cutting the right rope swings open a new platform — worked out with game design in a shared level-design guide, plus a cut-scene concept environment. Presented at SGS, Summer 2025.",
-        tradeoff:
-          "Story is in the world and the team can share a guide; individual pieces get less solo polish.",
-      },
-    ],
-    edgeCases: [],
+      "Encore! is a 2D environmental horror puzzle-platformer. You play a small stage magician trying to escape the Maestro, a conductor obsessed with keeping the show 'perfect.' You fight through performers turned into monsters, starting with a ballerina who's always dancing somewhere in the distance.",
+    audience: "Players who want atmosphere-led horror.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "To get more hands on with game development, I joined a large student team as an artist to learn more about the development process. Through this experience, I was able to align artist decisions with narrative driven details, onboard new artists, and present at the Student Game Developers' Alliance (SGDA) Summit in Summer 2025.",
+        },
+        {
+          type: "text",
+          text: "The most important part of this process was learning how to communicate on a large team. It was surprising to me how closely artists, narrative designers, and programmers work together. Programmers would have to communicate with me which assets should be interactable and which ones shouldn't, or which parts will need to be edited on the programming side. For example, in the first level, a giant piano needed to drop from the ceiling once the rope was cut and crush the light below. Because the animation was instead done by a transformation on the programming end, I had to make considerations while designing the level by separating the piano and ropes onto different layers, and making two versions of the level: one with the light, and one without the light.",
+        },
+        {
+          type: "text",
+          text: "There was also a significant amount of back-and-forth between our team and the narrative designer. As no words are spoken in this game, the majority of the lore needed to be communicated from artistic choices. There were many iterations needed on the art team's end to make sure those plot points were being accurately conveyed.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/encore/game-design.png",
+          caption: "level & puzzle design",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/encore/trap-design.png",
+          caption: "level 1 design",
+        },
+        {
+          type: "text",
+          text: "There were also a lot of back-and-forths about how environment art may affect gameplay. We discussed how the size of platforms could affect the player's jumps or traversals based on how tall/long they are, and we did multiple playtests to make sure the game flowed as smoothly as possible. This was especially important when the enemies were finalized, because we didn't want to somehow softblock the player by making the level impossible to beat.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/encore/environment-0-final.png",
+          caption: "level 1 final product",
+        },
+      ],
+      sections: [],
+    },
     solution:
-      "Complete. Five environment backgrounds in Unity/Procreate, design-guide collaboration, SGS presentation Summer 2025.",
+      "Five environments created using Unity and Procreate. The game was shipped on itch and we did a presentation at the SGDA Summit in Summer 2025.",
     reflection: [
-      "First long-term, 22-person team: the job is as much onboarding and a shared design guide as it is painting a single hero shot.",
-      "Working fully virtual made creative disagreements harder than they needed to be. The fix wasn't some clever process — just more iteration, staying flexible, and actually taking feedback instead of getting attached to a first pass.",
+      "Iteration, staying flexible, and taking feedback instead of getting attached to a first pass is extremely important as a team member. These processes are key to making sure your product is intuitive and conveys the right ideas.",
+      "This was my first time working with such an interdisciplinary team, and I learned that communication and frequent check-ins/feedback is important to make sure we're all on the same page.",
     ],
     docLinks: [
       { label: "Game design doc", href: "https://docs.google.com/document/d/112Bh7UdHYZ9SufLIvyEaXYXoNVlwG5ILHBE_1vy-aco/edit?tab=t.0" },
@@ -889,11 +900,8 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/encore-cover.gif",
     solutionImageUrl: "/images/projects/encore-solution.png",
     galleryImages: [
-      { src: "/images/projects/gallery/encore/environment-0-final.png", caption: "Environment: the orchestra room" },
       { src: "/images/projects/gallery/encore/environment-1-iteration.png", caption: "Environment 1, an early iteration" },
       { src: "/images/projects/gallery/encore/environment-2-final.png", caption: "Environment: the vanity mirror" },
-      { src: "/images/projects/gallery/encore/game-design.png", caption: "Level flow — exploration areas and puzzles" },
-      { src: "/images/projects/gallery/encore/trap-design.png", caption: "Trap design — the power-cord puzzle" },
       { src: "/images/projects/gallery/encore/trap-mechanism.png", caption: "Trap mechanism sketch" },
       { src: "/images/projects/gallery/encore/gameplay-1.png", caption: "In-game — the ballerina always in the distance" },
       { src: "/images/projects/gallery/encore/gameplay-2.png", caption: "In-game — the throw tutorial" },
