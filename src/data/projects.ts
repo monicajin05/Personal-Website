@@ -662,10 +662,6 @@ export const projects: Project[] = [
           type: "text",
           text: "I advocated for a spunky game with horror elements, where the player could discover hidden catacombs under a map. It quickly turned into a murder mystery narrative because we all really like narrative based games. One of our members mentioned the board game Clue as a potential source of inspiration, and that was that.",
         },
-        {
-          type: "text",
-          text: "Of course, the main character needed to be a cat. That was kind of our group’s thing.",
-        },
       ],
       sections: [
         {
@@ -673,7 +669,7 @@ export const projects: Project[] = [
           body: [
             {
               type: "text",
-              text: "Choosing what format we wanted was one of our first big decisions. Did we want the map to be at a 3/4s angle? Or did we want it front-on? Personally, I thought a 3D 3/4s view could be very visually interesting, but due to the game jam’s timeline we needed to be extra cautious about scope. A 2D front-on perspective was much more practical.",
+              text: "Choosing what format we wanted was one of our first big decisions. Did we want the map to be at a 3/4s angle? Or did we want it front-on? Personally, I thought a 3D 3/4s view could be visually interesting, but due to the game jam’s timeline we needed to be extra cautious about scope. A 2D front-on perspective was much more practical.",
             },
             {
               type: "image",
@@ -714,7 +710,7 @@ export const projects: Project[] = [
             },
             {
               type: "text",
-              text: "I ended up being the bridge between art and programming by taking whatever our artist made and wiring it into the actual game. I found out this required really seamless communication skills so I wouldn’t direct our artist to create an asset for something that wasn’t even specified by our narrative designer. Thank goodness I’m an artist in my free time – since I knew the pain already, I avoided a lot of time-wasting decisions.",
+              text: "I ended up being the bridge between art and programming by taking whatever our artist made and wiring it into the actual game. I found out this required really seamless communication skills so I wouldn’t direct our artist to create an asset for something that wasn’t even specified by our narrative designer. It was good I've been a game artist before – since I knew the pain already, I avoided a lot of time-wasting decisions.",
             },
           ],
         },
@@ -769,53 +765,71 @@ export const projects: Project[] = [
   {
     slug: "tapioca-tails",
     title: "Tapioca Tails",
-    hook: "Papa's Freezeria–style restaurant game: serve critter customers through boba, ice, and syrup minigames.",
+    hook: "Papa's Freezeria–style restaurant game: serve customers through boba, ice, and syrup minigames.",
     tags: ["Team · 5", "Unity", "2-day jam", "Complete"],
-    year: "Complete",
-    role: "Asset implementation and UI programming; environment art and main menu in Procreate; Unity animations that did not make the build",
-    timeline: "2-day jam",
-    tools: ["Unity", "Procreate"],
+    year: "January 2025",
+    role: "Asset implementation and UI programming; environment art",
+    timeline: "2-day jam, complete",
+    tools: ["Unity", "Procreate", "GitHub", "GitHub Desktop"],
     overview:
-      "A restaurant time-management game in the Papa's Freezeria vein: serve cute critter customers accurately and on time. Minigames include boba selection, catching ice from dispensers, and syrup timing. Made in a 2-day jam.",
+      "A restaurant time-management game where you aim to serve customers accurately and on time. Minigames include boba selection, catching ice from dispensers, syrup timing, and tea dispensing.",
     audience:
       "Players who like short cooking/serving games. 5-person jam team.",
-    problem:
-      "A serving loop with three minigames has to be readable in two days. I owned asset implementation and UI in Unity, plus environment art and the main menu in Procreate — and Unity animation work that did not make the final build.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "This game was intended to play like restaurant management games, such as Papa's Freezeria – just with boba instead. These games are classics that everyone on the team had experience with, so it was easy to get a game plan going.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/tapioca-tails/game-plan.png",
+          caption: "Awesome Game Plan",
+        },
+        {
+          type: "text",
+          text: "Our team contained more artists than programmers, though as Papa's games rely on various art assets, we figured this would be a good thing. I mainly did UI programming and assisted the artists when they needed help; more basic work as this was my first time programming in Unity. I learned a lot about using version control during this project – version control for games is significantly more difficult to use than for any other software product, as they are usually quite large and have a lot of files that can be manipulated. Here, I learned how to use GitHub Desktop in my workflow to make pushing/pulling easier rather than doing it through the terminal. We also had a couple merge conflicts that I learned how to resolve.",
+        },
+        {
+          type: "callout",
+          title: "Sidenote",
+          text: "Unity is actually pretty good for version control; Unreal is the real menace. I'm still not sure why they track every file for even a change as small as moving your POV in the engine. I'm looking for a way to make the process easier — a professional studio I talked to mentioned they use Perforce, so I'm thinking of switching over.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/tapioca-tails/gameplay-2.png",
+          caption: "syrup minigame",
+        },
+        {
+          type: "text",
+          text: "Though we got our basic functionalities finished during the game jam, the game as a whole isn't done. There are still some bugs, buttons that don't work, and features/assets that weren't put in within the 48 hr time period. Remember when I mentioned that there were more artists than programmers on the team? Turns out, a balanced team is extremely necessary when wanting to create something end-to-end within a limited time frame. When the crunch was on, the programming side was very stretched and couldn't accommodate all the assets that were created by the artists.",
+        },
+      ],
+      sections: [],
+    },
     explorationItems: [
       {
-        title: "One serving action, no minigames",
+        title: "Don't implement minigames",
         description: "Tap to complete an order; skip boba / ice / syrup timing.",
-        tradeoff:
-          "Easier to finish, but the fantasy here is those three timed minigames.",
+        tradeoff: "Easier to finish, but not as engaging.",
       },
       {
-        title: "Prioritize Unity animation over menu and environment art",
-        description: "Spend jam time on character motion in-engine.",
-        tradeoff:
-          "Motion might feel better; in this project those Unity animations did not make production, while Procreate environment and main-menu art did.",
-      },
-      {
-        title: "UI + asset wiring + Procreate environment/menu (what shipped)",
-        description:
-          "Unity implementation and UI; Procreate environment art, main menu, and customer designs. Animation work stayed out of the build.",
-        tradeoff:
-          "The restaurant is playable and branded; unused animation is sunk jam time.",
+        title: "Add in minigames (what shipped)",
+        description: "Unity implementation and UI.",
+        tradeoff: "Requires more time on the programming side.",
       },
     ],
     edgeCases: [],
-    solution:
-      "Complete jam game in Unity with UI/asset implementation and Procreate environment plus main menu.",
+    solution: "Completed game in Unity with UI/asset implementation.",
     reflection: [
-      "The unused Unity animations are the honest lesson: jam scope has to pick what can actually land in the build. We just had more artists than programmers on the team, which happens on a jam sometimes — it doesn't matter how good something looks in isolation if it doesn't make the build.",
-      "Playtesters gravitated hard toward the topping-assembly minigame — stacking syrups and toppings onto the drink — and I'd bet that's mostly the art talking. Artists make a game memorable, but programmers, who handle the actual function, are what make a game... you know. Exist.",
+      "Though we were able to get a viable product, I learned through this experience that a team can only be truly efficient if all functionalities are accounted for. In games, which require a lot of interdisciplinary skill, this is especially true. A game cannot exist without art, as that gives it appeal, nor without programming, which makes it…you know, actually work.",
+      "Learned lots about correct version control best practices! Got more hands on with Unity too, which was pretty exciting.",
     ],
     imageUrl: "/images/projects/tapioca-tails-cover.jpg",
-    solutionImageUrl: "/images/projects/tapioca-tails-solution.png",
     videoUrl: "/videos/tapioca-tails-thumbnail.mp4",
     galleryImages: [
       { src: "/images/projects/gallery/tapioca-tails/side-view-background.png", caption: "Side-view restaurant environment art, painted in Procreate" },
       { src: "/images/projects/gallery/tapioca-tails/gameplay-1.png", caption: "Order selection screen" },
-      { src: "/images/projects/gallery/tapioca-tails/gameplay-2.png", caption: "Serving a customer" },
       { src: "/images/projects/gallery/tapioca-tails/gameplay-3.png", caption: "The ice-catching minigame" },
       { src: "/images/projects/gallery/tapioca-tails/bear-walk.gif", caption: "Customer walk cycle" },
     ],
