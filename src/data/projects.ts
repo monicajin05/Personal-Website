@@ -1008,54 +1008,85 @@ export const projects: Project[] = [
 
   {
     slug: "adversarial-attacks",
-    title: "Adversarial Attacks on AV Collision Detectors",
-    hook: "Recreating physical adversarial patterns that fool person-detection — and studying why they work.",
+    title: "Adversarial Attacks",
+    hook: "Recreating and studying physical adversarial patterns that fool person-detection.",
     tags: ["Solo", "Research", "REU", "Complete"],
     year: "Fall 2024",
     role: "Solo researcher",
-    timeline: "Fall 2024 REU",
-    tools: ["VS Code"],
+    timeline: "Complete",
+    tools: ["VS Code", "PyTorch", "TensorFlow"],
     overview:
-      "Research using adversarial attacks to find weaknesses in visual detectors via gradient-based models and physical systems. Recreated prior work showing physical adversarial patterns (e.g. patterned t-shirts) achieve high attack success against person-detection algorithms, and studied why. Awarded a Fall 2024 REU grant, $3,000. Solo.",
+      "Research using adversarial attacks to find weaknesses in visual detectors via gradient-based models and physical systems. Studied how physical adversarial patterns (e.g. patterned t-shirts) achieve high attack success against person-detection algorithms.",
     audience:
       "Readers interested in vision-system robustness and physical adversarial examples.",
-    problem:
-      "Digital attacks on detectors do not automatically explain physical ones (a patterned t-shirt in the real world). The work had to recreate known high-success physical patterns and then analyze why they transfer — not only generate a pretty patch on a screen.",
+    process: {
+      intro: [
+        {
+          type: "text",
+          text: "This was a Fall 2024 REU project with a $3000 grant that I designed and scoped. The starting question was about autonomous vehicle safety: visual detectors (the kind that spot pedestrians) can be tricked by adversarial attacks, and prior work/news stories had already shown that a specific pattern printed on a plain t-shirt could get a person detector to just...not see you. I wanted to actually recreate that and understand why.",
+        },
+        {
+          type: "text",
+          text: "This built on a smaller case study I'd done earlier comparing FGSM (Fast Gradient Sign Method, a single-step attack) against PGD (Projected Gradient Descent, a multi-step iterative attack) on image classifiers. PGD was consistently the more effective of the two. So, if iterative attacks work better in the digital world, do physical patterns transfer the same way?",
+        },
+        {
+          type: "text",
+          text: "For this project I tested AdvPatch alongside FGSM and PGD, working through gradient-based digital attacks before getting into the physical-pattern side of things.",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/adversarial-attacks/fgsm-attack.png",
+          caption: "FGSM attack, single-step perturbation",
+        },
+        {
+          type: "image",
+          src: "/images/projects/gallery/adversarial-attacks/pgd-attack.png",
+          caption: "PGD attack, iterative perturbation",
+        },
+        {
+          type: "text",
+          text: "I read into how models can be defended against these attacks in the first place, including a paper out of my advisor's own lab, ProTransformer, which proposes a “robust attention” mechanism. This is basically a way to make transformer models less swayed by adversarial input tokens by changing how those tokens get statistically weighted.",
+        },
+        {
+          type: "text",
+          text: "I was really surprised that the more robust a model is against adversarial attacks, the less accurate it tends to be on clean data. I was confused at first because, if a model is robust, isn't that a good thing? How could it be less accurate?",
+        },
+        {
+          type: "text",
+          text: "Turns out, an adversarially-trained model needs to build a wide buffer zone around its decision boundary, so predictions stay stable even when an input gets perturbed. That buffer costs precision fitting the actual clean data. I realized that there's always going to be tradeoffs when trying to improve a model, and unfortunately, there's no one model that's just “better.”",
+        },
+      ],
+      sections: [],
+    },
     explorationItems: [
       {
         title: "Digital-only attacks (image-space)",
-        description: "Perturb pixels; skip physical garments or printed patterns.",
+        description: "Perturb pixels only.",
         tradeoff:
-          "Easier experiments; misses the physical-system question entirely (t-shirts, real detectors).",
+          "Easier experiments; miss the physical-system question (t-shirts, real detectors).",
       },
       {
-        title: "New attack method without recreating prior physical results",
+        title: "New attack method without recreations",
         description: "Propose an original algorithm first.",
-        tradeoff:
-          "More novelty on paper; the approach I took was to recreate prior physical patterns first, then study why they succeed.",
+        tradeoff: "More novelty on paper; no prior background, risky.",
       },
       {
         title: "Recreate physical patterns, then analyze (what was done)",
         description:
-          "Gradient-based and physical systems, backed by a research proposal, an analysis of robust attention, an analysis of protransformers, and simulation code for patch generation, patch training, PGD, and FGSM. This built on an earlier case study I did comparing FGSM (single-step) against PGD (multi-step, iterative) — PGD was consistently the more effective of the two at fooling image classifiers, which set up the real question here: why do physical patterns transfer this well, and what does 'robust' actually cost a model?",
-        tradeoff:
-          "Grounded in prior success rates; less room to claim a brand-new attack in this writeup.",
+          "Gradient-based and physical systems. This built on an earlier case study I did comparing FGSM (single-step) against PGD (multi-step, iterative).",
+        tradeoff: "Less room to innovate a brand-new attack.",
       },
     ],
-    edgeCases: [],
     solution:
       "Complete REU project ($3,000): recreated physical adversarial patterns against person detection and analyzed why they work, with PGD/FGSM/patch training code.",
     reflection: [
-      "Recreating a known physical attack is the way to trust the 'why' — otherwise the analysis is about a different system than the t-shirt result.",
-      "The most surprising finding: the more robust a model is against adversarial attacks, the less accurate it tends to be on clean data. Didn't make sense to me at first — if a model is more robust, isn't that just better? Turns out an adversarially-trained model needs a wide buffer zone around its decision boundary so predictions stay stable even when an input gets perturbed, and that buffer costs it some precision fitting the clean data. Good reminder that there's no universally 'better' model, just different tradeoffs depending on what you're optimizing for.",
+      "Recreating a known physical attack is a great way to visualize a problem.",
+      "There's no such thing as a universally 'better' model. An adversarially-trained model trades away some clean-data accuracy for a wider, more stable decision boundary. Every improvement is a tradeoff depending on what you're optimizing for.",
+      "Research doesn't have to start from zero. Building on my own earlier FGSM-vs-PGD case study, and reading into existing work like ProTransformer, gave me a sharper question to ask than if I'd started with nothing.",
     ],
     imageUrl: "/images/projects/adversarial-attacks-cover.jpg",
     solutionImageUrl: "/images/projects/adversarial-attacks-solution.png",
     videoUrl: "/videos/adversarial-attacks-thumbnail.mp4",
-    galleryImages: [
-      { src: "/images/projects/gallery/adversarial-attacks/fgsm-attack.png", caption: "FGSM attack — single-step perturbation" },
-      { src: "/images/projects/gallery/adversarial-attacks/pgd-attack.png", caption: "PGD attack — iterative perturbation" },
-    ],
     docLinks: [
       { label: "REU research proposal", href: "https://docs.google.com/document/d/1u1j2eTiOSsLu97ch3YP8TU4xKlx7bYXQnqVBlrB-qAg/edit?tab=t.0" },
       { label: "Robust attention analysis", href: "https://docs.google.com/presentation/d/14JKQ-HDFEOG7anAx-F5ANpHHyHF7FQXUvqyVCx8QT0U/edit" },
